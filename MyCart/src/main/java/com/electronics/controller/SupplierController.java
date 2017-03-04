@@ -1,6 +1,7 @@
 package com.electronics.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.electronics.model.Supplier;
 import com.electronics.service.SupplierService;
 
+@Controller
 public class SupplierController
 {
 	@Autowired
 	SupplierService supplierService;
 
 	@RequestMapping("/supplier")
-	public String getSupplier(Model model) 
+	public String getSupplierPage(Model model) 
 	{
 		model.addAttribute("supplierList", supplierService.getAllSuppliers());
 		model.addAttribute("supplier", new Supplier());
@@ -25,7 +27,7 @@ public class SupplierController
 	}
 
 	@RequestMapping("/editsupplier-{supplierId}")
-	public String updateSupplier(@PathVariable("supplierId") int supplierId, Model model) 
+	public String editSupplier(@PathVariable("supplierId") int supplierId, Model model) 
 	{
 		model.addAttribute("supplierList", supplierService.getAllSuppliers());
 		model.addAttribute("supplier", supplierService.getSupplierById(supplierId));
@@ -48,25 +50,7 @@ public class SupplierController
 		return "redirect:/supplier";
 	}
 
-	@RequestMapping("/supplierenabled-{supplierId}")
-	public String activeToggleSupplier(@PathVariable("supplierId") int supplierId) 
-	{
-
-		Supplier supplier = supplierService.getSupplierById(supplierId);
-		
-		if ((supplier.getIsSupplierEnabled()).equalsIgnoreCase("yes")) 
-		{
-			supplier.setIsSupplierEnabled("yes");
-		} 
-		else 
-		{
-			supplier.setIsSupplierEnabled("no");
-		}
-		
-		supplierService.addSupplier(supplier);
-		
-		return "redirect:/supplier";
-	}
+	
 }
 
 

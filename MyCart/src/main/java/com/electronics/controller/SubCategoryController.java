@@ -47,7 +47,7 @@ public class SubCategoryController
 	{
 	   model.addAttribute("subCategory",subCategoryService.getSubCategoryById(subCategoryId));
 	   model.addAttribute("categoryList", categoryService.getAllCategories());
-	   model.addAttribute("subCategoryList", subCategoryService.getAllSubCategories());
+	  // model.addAttribute("subCategoryList", subCategoryService.getAllSubCategories());
 		return "subCategoryPage";
 	}
 	

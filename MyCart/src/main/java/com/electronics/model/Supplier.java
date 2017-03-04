@@ -15,7 +15,7 @@ public class Supplier
 	private String supplierName;
 	private String supplierFirmName;
 	
-	private String isSupplierEnabled;
+
 	private String supplierStreet;
 	private String supplierCity;
 	private String supplierState;
@@ -76,13 +76,5 @@ public class Supplier
 	}
 	public void setSupplierContact(String supplierContact) {
 		this.supplierContact = supplierContact;
-	}
-	//private String supplierDisabled;
-	
-	public String getIsSupplierEnabled() {
-		return isSupplierEnabled;
-	}
-	public void setIsSupplierEnabled(String isSupplierEnabled) {
-		this.isSupplierEnabled = isSupplierEnabled;
 	}
 }
