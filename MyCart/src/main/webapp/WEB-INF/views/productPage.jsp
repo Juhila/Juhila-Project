@@ -1,9 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored="false" %>
-<%@include file="index.jsp" %>
+<%@include file="header.jsp" %>
    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,12 +8,22 @@
 </head>
 <body>
 
-<form:form modelAttribute="product" action="addproduct">
+<form:form modelAttribute="product" action="addproduct" enctype="multipart/form-data">
 <form:input path="productId"  hidden="true" />
+
 <form:input path="productName" placeholder="Add Product Name" />
+<form:errors path="productName" />
+
 <form:input path="productPrice" placeholder="Add Product Price" />
+<form:errors path="productPrice" />
 <form:input path="productDiscountPrice" placeholder="Add Product Discount Price" />
+
+
 <form:input path="productStock" placeholder="Add Product Stock" />
+<form:errors path="productStock" />
+
+<form:input path="productImage" accept=".jpg,.jpeg,.png" type="file"/>
+
 <form:input path="productDescription" placeholder="Add Product Description" />
 <form:select path="categoryId" items="${categoryList}" itemValue="categoryId" itemLabel="categoryName"/>
 <form:select path="subCategoryId" items="${subCategoryList}" itemValue="subCategoryId" itemLabel="subCategoryName"/>
@@ -29,7 +34,9 @@
 <br><br>
 
 <table border="1">
-	<tr><th>Product Id</th>
+	<tr>
+	    <th>Product Image</th>
+	    <th>Product Id</th>
 		<th>Product Name</th>
 		<th>Category Name</th>
 		<th>SubCategory Name</th>
@@ -46,6 +53,10 @@
 
 	<c:forEach items="${productList}" var="pList">
 		<tr>
+		    <%-- <td><var="scr" "value="resources/images/products/productImage-${plist.productId}.jpg" height="100px" width="100px" />
+		    <img scr="${scr}" alt="image not uploaded">
+		    </td>--%>
+		    <td><img src="resources/images/products/productImage-${pList.productId}.jpg" height="100px" width="100px" alt="img not uploaded"/></td>
 		    <td>${pList.productId}</td>
 			<td>${pList.productName}</td>
 			<td>${pList.category.categoryName}</td>
@@ -64,5 +75,4 @@
 
 </table>
 
-</body>
-</html>
+<%@ include file="footer.jsp"%>

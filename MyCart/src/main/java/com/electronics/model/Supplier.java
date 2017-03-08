@@ -1,9 +1,15 @@
 package com.electronics.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Supplier
@@ -11,8 +17,9 @@ public class Supplier
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int supplierId;
-	
-	private String supplierName;
+     
+	@NotEmpty(message="Cannot be empty")
+    private String supplierName;
 	private String supplierFirmName;
 	
 
@@ -23,6 +30,16 @@ public class Supplier
 	private String supplierEmail;
 	private String supplierContact;
 	
+	@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
+	Set<Product>products;
+	
+	
+	public Set<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
 	public int getSupplierId() {
 		return supplierId;
 	}

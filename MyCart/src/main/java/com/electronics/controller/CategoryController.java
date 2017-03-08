@@ -1,8 +1,11 @@
 package com.electronics.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +33,12 @@ public class CategoryController
 	
 	
 	@RequestMapping("/addcategory")
-	public String addCategory(@ModelAttribute("category") Category category)
+	public String addCategory(@Valid @ModelAttribute("category") Category category,BindingResult result)
 	{
-		
+		if(result.hasErrors())
+		{
+			return "categoryPage";
+		}
 		categoryService.addCategory(category);
 		return "redirect:/category";
 	}

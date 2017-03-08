@@ -1,13 +1,16 @@
 package com.electronics.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.annotations.Expose;
 
@@ -35,6 +38,7 @@ public class Product
 
 	private int productDiscountPrice;
 	
+	@NotEmpty(message="Cannot be empty")
 	private String productDescription;
 
 
@@ -54,6 +58,18 @@ public class Product
 	@JoinColumn(name = "brandId", nullable=false, insertable=false, updatable=false)
 	private Brand  brand;
 	
+	@Transient
+	private MultipartFile productImage;
+
+	
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
 	public int getBrandId() {
 		return brandId;
 	}
