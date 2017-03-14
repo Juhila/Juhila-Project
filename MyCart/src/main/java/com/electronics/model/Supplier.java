@@ -8,8 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class Supplier
@@ -17,20 +21,38 @@ public class Supplier
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int supplierId;
-     
-	@NotEmpty(message="Cannot be empty")
+	
+	 @Expose
+	@NotEmpty(message="All fields are required")
     private String supplierName;
+	   
+	@NotEmpty(message="All fields are required")
 	private String supplierFirmName;
 	
-
+	   
+	@NotEmpty(message="All fields are required")
 	private String supplierStreet;
+	   
+	@NotEmpty(message="All fields are required")
 	private String supplierCity;
+	
+	   
+	@NotEmpty(message="All fields are required")
 	private String supplierState;
+	
+	   
+	@NotEmpty(message="All fields are required")
 	private String supplierCountry;
+	
+	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")  
+	@NotEmpty(message="All fields are required")
 	private String supplierEmail;
+	
+	@Pattern(regexp="^$|[0-9]{10}", message="Please enter 10 digit mob. no.")  
+	@NotEmpty(message="All fields are required")
 	private String supplierContact;
 	
-	@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
+/**	@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
 	Set<Product>products;
 	
 	
@@ -40,6 +62,9 @@ public class Supplier
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+	
+	**/
+	
 	public int getSupplierId() {
 		return supplierId;
 	}

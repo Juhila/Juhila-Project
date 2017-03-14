@@ -25,18 +25,24 @@ public class CategoryController
 	@RequestMapping("/category")
 	public String getCategoryPage(Model model)
 	{
+		model.addAttribute("buttonLabel","Add Category");
 		model.addAttribute("category",new Category());
-		model.addAttribute("categoryList", categoryService.getAllCategories());
+		//model.addAttribute("categoryList", categoryService.getAllCategories());
+		model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
 		return "categoryPage";
 	}
 	
 	
 	
 	@RequestMapping("/addcategory")
-	public String addCategory(@Valid @ModelAttribute("category") Category category,BindingResult result)
+	public String addCategory(@Valid @ModelAttribute("category") Category category,BindingResult result,Model model)
 	{
 		if(result.hasErrors())
 		{
+			model.addAttribute("buttonLabel","Retry");
+			
+			//model.addAttribute("categoryList", categoryService.getAllCategories());
+			model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
 			return "categoryPage";
 		}
 		categoryService.addCategory(category);
@@ -45,10 +51,12 @@ public class CategoryController
 	
 	
 	@RequestMapping("/editcategory-{categoryId}")
-	public String getCategoryById(@PathVariable("categoryId") int categoryId, Model model)
+	public String editCategory(@PathVariable("categoryId") int categoryId, Model model)
 	{
+		model.addAttribute("buttonLabel","Update Category");
 	   model.addAttribute("category",categoryService.getCategoryById(categoryId));
-	   model.addAttribute("categoryList", categoryService.getAllCategories());
+	 //  model.addAttribute("categoryList", categoryService.getAllCategories());
+	   model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
 		return "categoryPage";
 	}
 	

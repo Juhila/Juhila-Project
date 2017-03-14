@@ -36,4 +36,9 @@ public class SupplierService
 		supplierDaoImpl.deleteSupplier(supplierId);
 	}
 	
+	public String getAllSuppliersByJson() 
+	{
+	return supplierDaoImpl.getAllSuppliersByJson();
+	}
+	
 }

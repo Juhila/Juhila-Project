@@ -13,33 +13,38 @@ import com.electronics.model.Category;
 	{
 		
 		@Autowired
-	   private CategoryDaoImpl categoryDAOImpl;
+	   private CategoryDaoImpl categoryDaoImpl;
 	   
 		@Transactional
 		public void addCategory(Category category)
 		{
-			categoryDAOImpl.addCategory(category);
+			categoryDaoImpl.addCategory(category);
 		}
 		
 		@Transactional
 		public List<Category> getAllCategories() 
 		{
-		return categoryDAOImpl.getAllCategories();
+		return categoryDaoImpl.getAllCategories();
 		}
 		
+		@Transactional
+		public String getAllCategoriesByJson() 
+		{
+		return categoryDaoImpl.getAllCategoriesByJson();
+		}
 		
 		
 		
 		@Transactional
 		public Category getCategoryById(int categoryId)
 		{
-			return categoryDAOImpl.getCategoryById(categoryId);
+			return categoryDaoImpl.getCategoryById(categoryId);
 		}
 		
 		@Transactional
 		public void deleteCategory(int categoryId)
 		{
-			categoryDAOImpl.deleteCategory(categoryId);
+			categoryDaoImpl.deleteCategory(categoryId);
 		}
 		
 		

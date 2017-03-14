@@ -22,9 +22,12 @@ public class SupplierController
 	@RequestMapping("/supplier")
 	public String getSupplierPage(Model model) 
 	{
-		model.addAttribute("supplierList", supplierService.getAllSuppliers());
+		//model.addAttribute("supplierList", supplierService.getAllSuppliers());
 		model.addAttribute("supplier", new Supplier());
-		//model.addAttribute("btnLabel", "Add");
+		model.addAttribute("buttonLabel", "Add Supplier");
+		
+		model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
+		
 
 		return "supplierPage";
 	}
@@ -32,18 +35,23 @@ public class SupplierController
 	@RequestMapping("/editsupplier-{supplierId}")
 	public String editSupplier(@PathVariable("supplierId") int supplierId, Model model) 
 	{
-		model.addAttribute("supplierList", supplierService.getAllSuppliers());
+		//model.addAttribute("supplierList", supplierService.getAllSuppliers());
+		model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
 		model.addAttribute("supplier", supplierService.getSupplierById(supplierId));
-		//model.addAttribute("btnLabel", "Update");
+		model.addAttribute("buttonLabel", "Update Supplier");
 
 		return "supplierPage";
 	}
 
 	@RequestMapping("/addsupplier")
-	public String addSupplier(@Valid @ModelAttribute("supplier") Supplier supplier,BindingResult result) 
+	public String addSupplier(@Valid @ModelAttribute("supplier") Supplier supplier,BindingResult result, Model model) 
 	{   
 		if(result.hasErrors())
-		{
+		{ 
+			model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
+			//model.addAttribute("supplierList", supplierService.getAllSuppliers());
+		
+			model.addAttribute("buttonLabel", "Retry");
 			return "supplierPage";
 		}
 		supplierService.addSupplier(supplier);

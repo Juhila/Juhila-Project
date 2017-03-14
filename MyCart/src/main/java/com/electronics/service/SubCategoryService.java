@@ -17,19 +17,19 @@ import com.electronics.model.SubCategory;
 		
 	
 		@Autowired
-		   private SubCategoryDaoImpl subCategoryDAOImpl;
+		   private SubCategoryDaoImpl subCategoryDaoImpl;
 			
 	   
 		@Transactional
 		public void addSubCategory(SubCategory subCategory)
 		{
-			subCategoryDAOImpl.addSubCategory(subCategory);
+			subCategoryDaoImpl.addSubCategory(subCategory);
 		}
 		
 		@Transactional
 		public List<SubCategory> getAllSubCategories() 
 		{
-		return subCategoryDAOImpl.getAllSubCategories();
+		return subCategoryDaoImpl.getAllSubCategories();
 		}
 		
 		
@@ -37,13 +37,19 @@ import com.electronics.model.SubCategory;
 		@Transactional
 		public SubCategory getSubCategoryById(int subCategoryId)
 		{
-			return subCategoryDAOImpl.getSubCategoryById(subCategoryId);
+			return subCategoryDaoImpl.getSubCategoryById(subCategoryId);
 		}
 		
 		@Transactional
 		public void deleteSubCategory(int subCategoryId)
 		{
-			subCategoryDAOImpl.deleteSubCategory(subCategoryId);
+			subCategoryDaoImpl.deleteSubCategory(subCategoryId);
+		}
+		
+		@Transactional
+		public String getAllSubCategoriesByJson() 
+		{
+		return subCategoryDaoImpl.getAllSubCategoriesByJson();
 		}
 		
 		

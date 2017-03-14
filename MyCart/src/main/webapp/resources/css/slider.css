@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
+
+b {
+    font-family: 'Quicksand', sans-serif;
+   
+}
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+      max-height:300px;
+      padding-top:40px;
+  }
+
+ .carousel-indicators {
+  bottom: 0;
+}
+
+
+.carousel-control .glyphicon-chevron-left{
+    left: 50%;
+    width: 38px;
+    height: 38px;
+    margin-top: -15px;
+    font-size: 30px;
+    color: #fff;
+    border: 3px solid #ffffff;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 53px;
+}
+.carousel-control .glyphicon-chevron-right{
+    right: 50%;
+    width: 38px;
+    height: 38px;
+    margin-top: -15px;
+    font-size: 30px;
+    color: #fff;
+    border: 3px solid #ffffff;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 53px;
+}
+
+

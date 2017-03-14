@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.electronics.dao.ProductDao;
 import com.electronics.model.Product;
+import com.electronics.model.SubCategory;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 
 
 	@Repository
@@ -38,6 +42,14 @@ public class ProductDaoImpl implements ProductDao
 	{
 		
 		sessionFactory.getCurrentSession().delete(getProductById(productId));
+	}
+	public String getAllProductsByJson() {
+		List<Product> productList = sessionFactory.getCurrentSession().createQuery("from Product").getResultList();
+		Gson g = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+				
+
+		String list = g.toJson(productList);
+		return list;
 	}
 
 }

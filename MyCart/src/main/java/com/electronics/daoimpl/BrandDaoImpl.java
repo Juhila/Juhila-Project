@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.electronics.dao.BrandDao;
 import com.electronics.model.Brand;
+import com.electronics.model.Category;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 
 @Repository
@@ -36,6 +39,13 @@ public class BrandDaoImpl implements BrandDao
 	{
 		Brand brand = getBrandById(brandId);
 		sessionFactory.getCurrentSession().delete(brand);
+	}
+	public String getAllBrandsByJson() {
+		List<Brand> brandList = sessionFactory.getCurrentSession().createQuery("from Brand").getResultList();
+		Gson g = new Gson();
+		
+		String list = g.toJson(brandList);
+		return list;
 	}
 
 }

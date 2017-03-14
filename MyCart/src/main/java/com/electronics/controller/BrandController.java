@@ -22,28 +22,38 @@ public class BrandController
 	@RequestMapping(value="/brand")
 	public String getBrandPage(Model model)
 	{
-		model.addAttribute("brandList", brandService.getAllBrands());
+		//model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("brandListByJson", brandService.getAllBrandsByJson());
+		
 		model.addAttribute("brand",new Brand());
+		model.addAttribute("buttonLabel","Add Brand");
 		
 		return "brandPage";
 	}
 	
 	@RequestMapping("/editbrand-{brandId}")
-	public String updateBrand(@PathVariable("brandId")int brandId, Model model)
+	public String editBrand(@PathVariable("brandId")int brandId, Model model)
 	{
-		model.addAttribute("brandList", brandService.getAllBrands());
+		//model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("brandListByJson", brandService.getAllBrandsByJson());
 		model.addAttribute("brand", brandService.getBrandById(brandId));
-	
+		model.addAttribute("buttonLabel","Update Brand");
 	
 		return "brandPage";
 	}
 	
 	@RequestMapping("/addbrand")
-	public String addBrand(@Valid @ModelAttribute("brand")Brand brand, BindingResult result)
+	public String addBrand(@Valid @ModelAttribute("brand")Brand brand, BindingResult result, Model model)
 	{
 		
 		if(result.hasErrors())
-		{
+			
+		{  
+			//model.addAttribute("brandList", brandService.getAllBrands());
+			model.addAttribute("brandListByJson", brandService.getAllBrandsByJson());
+			
+
+			model.addAttribute("buttonLabel","Retry");
 			return "brandPage";
 		}
 		brandService.addBrand(brand);

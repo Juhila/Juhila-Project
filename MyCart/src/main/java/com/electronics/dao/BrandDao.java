@@ -10,6 +10,7 @@ public interface BrandDao
 		public List<Brand> getAllBrands();
 		public Brand getBrandById(int brandId);
 		//public String getBrandByName();
+		public String getAllBrandsByJson();
 		public void addBrand(Brand brand);
 		public void deleteBrand(int brandId);
 

@@ -9,45 +9,69 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>My Cart</title>
-<link href="resources/img/favicon.ico" rel="icon" type="image/x-icon" />
+
 
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
-<link rel="stylesheet" href="resources/css/main-style.css" />
+<link rel="stylesheet" href="resources/css/padding.css" />
+<link rel="stylesheet" href="resources/css/slider.css" />
+
+<link rel="stylesheet" href="resources/css/error.css" />
+<link rel="stylesheet" href="resources/css/header.css" />
+<link rel="stylesheet" href="resources/css/browse.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="resources/js/angular.min.js" ></script>
+<script type="text/javascript" src="resources/js/jquery.min.js" ></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+
+
 
 </head>
-
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid navv">
+   
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+       <span class="glyphicon glyphicon-menu-hamburger colorr"></span>
+        <%-- --<span class="icon-bar bgcolorr"></span>
+        <span class="icon-bar bgcolorr"></span>
+        <span class="icon-bar bgcolorr"></span> --%>
       </button>
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand colorr mystyle" href="#">Electronics
+      <i class="fa fa-refresh fa-spin"></i>
+      </a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
+    
+<div class="collapse navbar-collapse bgcolorr" id="myNavbar">
+ 
+ <ul class="nav navbar-nav">
+<form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input  type="text" class="form-control" placeholder="Search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    </ul>
+  
+
+
+<ul class="nav navbar-nav navbar-right">
+       
+        <li><a class="colorr" href="#"><span class="glyphicon glyphicon-home colorr"></span>Home</a></li>
+         <li><a class="colorr" href="#"><span class="glyphicon glyphicon-user colorr"></span>Sign Up</a></li>
+        
+        <li><a class="colorr" href="#"><span class="glyphicon glyphicon-log-in colorr"></span> Login</a></li>
+  <li><a class="colorr" href="#"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
+</div>
   </div>
 </nav>
+
+ 

@@ -34,6 +34,12 @@ import com.electronics.model.Product;
 		{
 			productDaoImpl.deleteProduct(productId);
 		}
+		
+		public String getAllProductsByJson() 
+		{
+		return productDaoImpl.getAllProductsByJson();
+		}
+		
 	}
 	
 

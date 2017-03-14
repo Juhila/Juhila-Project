@@ -52,11 +52,20 @@ public class ProductController
 		model.addAttribute("subCategoryList", subCategoryService.getAllSubCategories());
 		model.addAttribute("brandList", brandService.getAllBrands());
 		model.addAttribute("supplierList", supplierService.getAllSuppliers());
-		model.addAttribute("productList", productService.getAllProducts());
+		//model.addAttribute("productList", productService.getAllProducts());
+		
+		model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
+		model.addAttribute("subCategoryListByJson", subCategoryService.getAllSubCategoriesByJson());
+		model.addAttribute("brandListByJson", brandService.getAllBrandsByJson());
+		model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
+		model.addAttribute("productListByJson", productService.getAllProductsByJson());
+	
+
 		
 		model.addAttribute("product", new Product());
 		
-		
+		model.addAttribute("buttonLabel","Add Product");
+
 		return "productPage";
 	}
 	
@@ -69,21 +78,44 @@ public class ProductController
 		model.addAttribute("supplierList", supplierService.getAllSuppliers());
 		//model.addAttribute("productList", productService.getAllProducts());
 		
+		
+		
+		
+		model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
+		model.addAttribute("subCategoryListByJson", subCategoryService.getAllSubCategoriesByJson());
+		model.addAttribute("brandListByJson", brandService.getAllBrandsByJson());
+		model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
+		model.addAttribute("productListByJson", productService.getAllProductsByJson());
+		
 		model.addAttribute("product", productService.getProductById(productId));
-		//model.addAttribute("btnLabel","Update");
+		model.addAttribute("buttonLabel","Update Product");
 
 		return "productPage";
 	}
 	
 	@RequestMapping("/addproduct")
-	public String addProduct(@Valid @ModelAttribute("product")Product product,@RequestParam("productImage")MultipartFile productImage,BindingResult result,Model model)
+	public String addProduct(@Valid @ModelAttribute("product")Product product,BindingResult result,@RequestParam("productImage")MultipartFile productImage,Model model)
 	{
 		
 		
-		String path="E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products\\";
+		String path="D:\\S170012700291--Juhi\\My workspaceMyCart\\src\\main\\webapp\\resources\\images\\products\\";
 		if(result.hasErrors())
 		{
+			model.addAttribute("categoryList", categoryService.getAllCategories());
+			model.addAttribute("subCategoryList", subCategoryService.getAllSubCategories());
+			model.addAttribute("brandList", brandService.getAllBrands());
+			model.addAttribute("supplierList", supplierService.getAllSuppliers());
+			//model.addAttribute("productList", productService.getAllProducts());
 			
+			
+			model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
+			model.addAttribute("subCategoryListByJson", subCategoryService.getAllSubCategoriesByJson());
+			model.addAttribute("brandListByJson", brandService.getAllBrandsByJson());
+			model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
+			model.addAttribute("productListByJson", productService.getAllProductsByJson());
+			
+
+			model.addAttribute("buttonLabel","Retry");
 			return "productPage";
 		}
 		productService.addProduct(product);
@@ -124,7 +156,7 @@ public class ProductController
 	public String deleteProduct(@PathVariable("productId")int productId)
 	{
 		productService.deleteProduct(productId);
-		 File file = new File("E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products"+"."+"jpg");
+		 File file = new File("D:\\S170012700291--Juhi\\S170012700291\\MyCart\\src\\main\\webapp\\resources\\images\\products\\productImage-"+productId+"."+"jpg");
 			file.delete();
 	        return "redirect:/product";
 	}

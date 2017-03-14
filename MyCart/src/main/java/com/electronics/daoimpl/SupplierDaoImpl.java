@@ -6,13 +6,16 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.electronics.dao.SupplierDao;
+import com.electronics.model.Product;
 import com.electronics.model.Supplier;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Repository
 public class SupplierDaoImpl implements SupplierDao
 {
 	@Autowired
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 	public List<Supplier> getAllSuppliers() {
 		List<Supplier> supplierList = sessionFactory.getCurrentSession().createQuery("from Supplier").getResultList();
@@ -31,6 +34,13 @@ public class SupplierDaoImpl implements SupplierDao
 	public void deleteSupplier(int supplierId) {
 		sessionFactory.getCurrentSession().delete(getSupplierById(supplierId));
 
+	}
+	public String getAllSuppliersByJson() {
+		List<Supplier> supplier = sessionFactory.getCurrentSession().createQuery("from Supplier").getResultList();
+		Gson g = new Gson();
+
+		String list = g.toJson(supplier);
+		return list;
 	}
 
 	

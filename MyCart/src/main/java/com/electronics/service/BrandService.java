@@ -43,7 +43,11 @@ public class BrandService
 			brandDaoImpl.deleteBrand(brandId);
 		}
 		
+		public String getAllBrandsByJson() 
+		{
+		return brandDaoImpl.getAllBrandsByJson();
 		
+		}
 	}
 		
 

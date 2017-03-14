@@ -1,0 +1,46 @@
+.navv
+{
+	
+	background-color:rgb(193,0,0);
+	
+}  
+
+
+
+.colorr
+{
+	color:black;
+}
+
+.mystyle
+{
+	font-style:italic;
+	font-weight:bold
+}
+
+<!.hov a
+{
+	
+}
+
+.hov a:hover
+{
+	
+	font-weight:bold;
+	background-color:yellow;
+	
+	
+}
+
+.hov a:active
+{
+	font-weight:bold;
+	background-color:pink;
+	
+	
+}
+
+.t
+{
+	background-color:rgb(180,0,0);
+}

@@ -8,23 +8,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class Category 
 {  
 	
 	@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)  
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Expose
 	private int categoryId;
     
+	@Expose
 	@NotEmpty(message="Cannot be empty")
     private String categoryName;
     
+	@Expose
 	@NotEmpty(message="Cannot be empty")
     private String categoryDescription;
+	
+
 	
 	@OneToMany(mappedBy="category", fetch=FetchType.EAGER)
 	private Set<SubCategory> subCategory;
@@ -39,6 +49,25 @@ public class Category
 		this.subCategory = subCategory;
 	}
 
+	
+	
+	
+	/**@ManyToOne
+	@JoinColumn(name="brandId", updatable=false, insertable=false, nullable=false)
+	private Brand brand;
+	
+	
+
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+**/
+	
+	
 	public int getCategoryId() {
 		return categoryId;
 	}

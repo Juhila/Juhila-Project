@@ -9,8 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.electronics.dao.CategoryDao;
 import com.electronics.model.Category;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-	
+
 @Repository
 	public class CategoryDaoImpl implements CategoryDao
 	{
@@ -34,11 +36,19 @@ import com.electronics.model.Category;
 		public List<Category> getAllCategories() 
 		{
 			List<Category> categoryList = sessionFactory.getCurrentSession().createQuery("from Category").getResultList();
+
 			return categoryList;
 		}
 		
 		
-	
+		public String getAllCategoriesByJson() {
+			List<Category> categoryList = sessionFactory.getCurrentSession().createQuery("from Category").getResultList();
+			Gson g = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+			String list = g.toJson(categoryList);
+			return list;
+		}
+
+
 		
 		
 		public Category getCategoryById(int categoryId)
@@ -50,5 +60,7 @@ import com.electronics.model.Category;
 				return list.get(0);
 			
 		}
+
+		
 	}
 
