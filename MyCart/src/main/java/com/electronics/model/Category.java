@@ -27,11 +27,11 @@ public class Category
 	private int categoryId;
     
 	@Expose
-	@NotEmpty(message="Cannot be empty")
+	@NotEmpty(message="Required")
     private String categoryName;
     
 	@Expose
-	@NotEmpty(message="Cannot be empty")
+	@NotEmpty(message="Required")
     private String categoryDescription;
 	
 

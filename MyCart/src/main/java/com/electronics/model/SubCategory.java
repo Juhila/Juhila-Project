@@ -25,7 +25,7 @@ public class SubCategory
 	
 
 	@Expose
-	@NotEmpty(message="Cannot be empty")
+	@NotEmpty(message="Required")
 	private String subCategoryName;
 	
 

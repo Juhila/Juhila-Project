@@ -26,7 +26,7 @@ import com.google.gson.annotations.Expose;
 		private int brandId;
 	
 		 @Expose
-		@NotEmpty(message="Cannot be empty")
+		@NotEmpty(message="Required")
 		//@Column(unique=true)
 		private String brandName;
 		

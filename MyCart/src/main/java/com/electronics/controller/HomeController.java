@@ -15,13 +15,13 @@ public class HomeController
 		}
 		
 		
-		@RequestMapping("/aboutUs")
+		@RequestMapping("/aboutus")
 		   public String getAboutUs()
 		   {
 		    return "aboutUs";
 		}
 		
-		@RequestMapping("/contactUs")
+		@RequestMapping("/contactus")
 		   public String getContactUs()
 		   {
 		    return "contactUs";
@@ -33,17 +33,17 @@ public class HomeController
 		}
 		
 		
-		@RequestMapping("/register")
+		/**@RequestMapping("/register")
 		   public String getRegister()
 		   {
-		    return "index";
+		    return "registration";
 		}
 		
 		@RequestMapping("/login")
 		   public String getLogin()
 		   {
-		    return "index";
-		}
+		    return "login";
+		}**/
 		
 		@RequestMapping("/admin")
 		   public String getAdmin()

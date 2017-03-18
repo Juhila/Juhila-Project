@@ -37,17 +37,18 @@
  		
 
 <br>
-
-<%--<form:form modelAttribute="supplier" action="addsupplier">
+<%-- 
+<form:form modelAttribute="supplier" action="addsupplier">
 
 <form:input path="supplierId"  hidden="true" />
 
-<form:input path="supplierName" placeholder="Add Name" />
+<form:input path="supplierName" placeholder="Add Full Name" />
 <form:errors path="supplierName" />
 
 
 <form:input path="supplierFirmName" placeholder="Add Firm Name" />
 <form:errors path="supplierFirmName" />
+
 
 <form:input path="supplierEmail" placeholder="Add Email" />
 <form:errors path="supplierEmail" />
@@ -71,7 +72,7 @@
 
 </form:form>--%>
 
-<div class="form">
+ <div class="form">
 <form:form modelAttribute="supplier" action="addsupplier">
 <form:input path="supplierId"  hidden="true" />
 
@@ -81,10 +82,10 @@
  </div>
  
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:input path="supplierName" placeholder="Add Name" />
+ <form:input path="supplierName" placeholder="Add Name" autofocus="true"/>
  </div>
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierName" />
+ <form:errors cssClass="error" path="supplierName" />
  </div> 
  </div>
  
@@ -99,9 +100,9 @@
  <form:input path="supplierFirmName" placeholder="Add FirmName" />
  </div>
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierFirmName" />
+ <form:errors  cssClass="error" path="supplierFirmName" />
  </div>
- 
+ </div>
  <br>
  <div class="row">
  <div class="col-xs-12 col-sm-4 col-md-4">
@@ -112,7 +113,7 @@
  <form:input path="supplierEmail" placeholder="Add Email" />
  </div>
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierEmail" />
+ <form:errors  cssClass="error" path="supplierEmail" />
  </div>
  
  </div>
@@ -120,15 +121,18 @@
  
  <div class="row">
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:label path="supplierContact">Enter Supplier Moile No.</form:label>
+ <form:label path="supplierContact">Enter Supplier Mobile No.</form:label>
  </div>
  
  <div class="col-xs-12 col-sm-4 col-md-4">
  <form:input path="supplierContact" placeholder="Add Mobile No." />
  </div>
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierContact" />
+ <form:errors cssClass="error" path="supplierContact" />
  </div>
+ </div>
+ <br>
+ 
  
  
  <div class="row">
@@ -140,10 +144,11 @@
  <form:input path="supplierStreet" placeholder="Add Street" />
  </div>
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierStreet" />
+ <form:errors cssClass="error" path="supplierStreet" />
  </div>
  
- 
+ </div>
+ <br>
  
  <div class="row">
  <div class="col-xs-12 col-sm-4 col-md-4">
@@ -154,9 +159,11 @@
  <form:input path="supplierCity" placeholder="Add City" />
  </div>
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierCity" />
+ <form:errors  cssClass="error" path="supplierCity" />
+ </div>
  </div>
  
+ <br>
  <div class="row">
  <div class="col-xs-12 col-sm-4 col-md-4">
  <form:label path="supplierState">Enter Supplier State</form:label>
@@ -165,9 +172,14 @@
  <div class="col-xs-12 col-sm-4 col-md-4">
  <form:input path="supplierState" placeholder="Add State" />
  </div>
+ 
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierState" />
+ <form:errors cssClass="error" path="supplierState" />
  </div>
+ </div>
+ 
+ <br>
+ 
  <div class="row">
  <div class="col-xs-12 col-sm-4 col-md-4">
  <form:label path="supplierCountry">Enter Supplier City</form:label>
@@ -176,14 +188,25 @@
  <div class="col-xs-12 col-sm-4 col-md-4">
  <form:input path="supplierCountry" placeholder="Add Country" />
  </div>
+ 
  <div class="col-xs-12 col-sm-4 col-md-4">
- <form:errors path="supplierCountry" />
+ <form:errors cssClass="error" path="supplierCountry" />
  </div>
  
- 
- 
- 
- 
+</div>
+
+<br>
+
+<div class="row">
+		  	<div class="col-sm-12 col-md-12">	
+		  		<div class="text-center">	
+					<input class="btn btn-success" type="submit" value="${buttonLabel}" />
+					<input class="btn btn-danger" type="reset" value="Reset Category" />
+				</div>
+				
+			</div>
+		  </div>	
+		
 
  </form:form>
  </div>
@@ -202,8 +225,10 @@
 <div class="table-responsive">
 <table class="table table-hover" ng-controller="myController">
 	<tr class="info"><th>Supplier Id</th>
-		<th>Supplier Name</th>
+		<th>Supplier  Name</th>
+		
 		<th>Supplier FirmName</th>
+		
 		<th>Supplier Email</th>
 		<th>Supplier Mobile No.</th>
 		<th>Supplier Street</th>
@@ -217,8 +242,9 @@
 
 		<tr class="danger" ng-repeat="spList in myscope | filter:search">
 		    <td>{{spList.supplierId}}</td>
-			<td>{{spList.supplierName}}</td>
+			<td>{{spList.supplierName}}</td>	
 			<td>{{spList.supplierFirmName}}</td>
+			
 			<td>{{spList.supplierEmail}}</td>
 			<td>{{spList.supplierContact}}</td>
 			<td>{{spList.supplierStreet}}</td>

@@ -98,7 +98,7 @@ public class ProductController
 	{
 		
 		
-		String path="D:\\S170012700291--Juhi\\My workspaceMyCart\\src\\main\\webapp\\resources\\images\\products\\";
+		String path="E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products\\";
 		if(result.hasErrors())
 		{
 			model.addAttribute("categoryList", categoryService.getAllCategories());
@@ -138,7 +138,7 @@ public class ProductController
 			catch(Exception e)
 			{
 				e.printStackTrace();
-				model.addAttribute("uploadmessage","Image Upload Failed.... Please Try Again");
+				model.addAttribute("error","Image Upload Failed.... Please Try Again");
 			}
 		}
 			else
@@ -156,7 +156,7 @@ public class ProductController
 	public String deleteProduct(@PathVariable("productId")int productId)
 	{
 		productService.deleteProduct(productId);
-		 File file = new File("D:\\S170012700291--Juhi\\S170012700291\\MyCart\\src\\main\\webapp\\resources\\images\\products\\productImage-"+productId+"."+"jpg");
+		 File file = new File("E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products\\productImage-"+productId+"."+"jpg");
 			file.delete();
 	        return "redirect:/product";
 	}

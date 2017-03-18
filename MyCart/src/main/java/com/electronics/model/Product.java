@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,14 +37,15 @@ public class Product
 	private int brandId;
 
    @Expose
-	@NotEmpty(message="Cannot be Empty")
+	@NotEmpty(message="Required")
 	private String productName;
 	
    @Expose
 	private int productStock;
 	
-   @Expose
    @Min(500)
+
+   @Expose
 	private int productPrice;
     
    @Expose
@@ -58,7 +60,7 @@ public class Product
 	//@Size(min = 10, max =50, message="Write description between 10 to 50 characters")
 	
    @Expose
-	@NotEmpty(message="Cannot be empty")
+	@NotEmpty(message="Required")
 	private String productDescription;
 
    @Expose
@@ -83,40 +85,6 @@ public class Product
 	
 	@Transient
 	private MultipartFile productImage;
-
-	
-	public MultipartFile getProductImage() {
-		return productImage;
-	}
-
-	public void setProductImage(MultipartFile productImage) {
-		this.productImage = productImage;
-	}
-
-	
-/**	public String getProductCountry() {
-		return productCountry;
-	}
-
-	public void setProductCountry(String productCountry) {
-		this.productCountry = productCountry;
-	}
-**/
-	public int getBrandId() {
-		return brandId;
-	}
-
-	public void setBrandId(int brandId) {
-		this.brandId= brandId;
-	}
-
-	public Brand getBrand() {
-		return brand;
-	}
-
-	public void setBrand(Brand brand) {
-		this.brand = brand;
-	}
 
 	public int getProductId() {
 		return productId;
@@ -148,6 +116,14 @@ public class Product
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public int getBrandId() {
+		return brandId;
+	}
+
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
 	}
 
 	public String getProductName() {
@@ -213,6 +189,32 @@ public class Product
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
-	
 
+	public Brand getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 }
+	
+	
+	
+/**	public String getProductCountry() {
+		return productCountry;
+	}
+
+	public void setProductCountry(String productCountry) {
+		this.productCountry = productCountry;
+	}
+**/
+	

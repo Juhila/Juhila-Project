@@ -15,6 +15,8 @@
  		<div class="text-center"><h1>SubCategory Form</h1></div>
  		
 
+<br>
+
 <%--<form:form modelAttribute="subCategory" action="addsubcategory">
 <form:input path="subCategoryId"  hidden="true" />
 <form:input path="subCategoryName" placeholder="Add Subcategory Name" />
@@ -48,7 +50,7 @@
 			   <br>
 			   <div class="row">
 			 <div class="col-xs-12 col-sm-4 col-md-4">
-			      <form:label path="subCategoryName"> Select SubCategory Name</form:label>
+			      <form:label path="subCategoryName"> Select Category Name</form:label>
 			      </div>
 			      
 			      <div class="col-xs-12 col-sm-4 col-md-4">
@@ -80,7 +82,7 @@
  </div>
  <br>
 <div class="table-responsive">
-<table class="table" ng-controller="myController">
+<table class="table table-hover" ng-controller="myController">
 
 	<tr class="info"><th>SubCategory Id</th>
 		<th>SubCategory Name</th>

@@ -2,6 +2,7 @@ package com.electronics.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,34 +23,43 @@ public class Supplier
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int supplierId;
 	
-	 @Expose
-	@NotEmpty(message="All fields are required")
+     @Expose
+	@NotEmpty(message="Required")
     private String supplierName;
+	 
+	
+		
+		   
 	   
-	@NotEmpty(message="All fields are required")
+	@NotEmpty(message="Required")
 	private String supplierFirmName;
 	
+
+	
 	   
-	@NotEmpty(message="All fields are required")
+	@NotEmpty(message="Required")
 	private String supplierStreet;
 	   
-	@NotEmpty(message="All fields are required")
+	@NotEmpty(message="Required")
 	private String supplierCity;
 	
 	   
-	@NotEmpty(message="All fields are required")
+	@NotEmpty(message="Required")
 	private String supplierState;
 	
 	   
-	@NotEmpty(message="All fields are required")
+	@NotEmpty(message="Required")
 	private String supplierCountry;
 	
-	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")  
-	@NotEmpty(message="All fields are required")
+	
+	
+	@Column(unique=true)
+	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid  email address")  
+	@NotEmpty(message="Required")
 	private String supplierEmail;
 	
 	@Pattern(regexp="^$|[0-9]{10}", message="Please enter 10 digit mob. no.")  
-	@NotEmpty(message="All fields are required")
+	@NotEmpty(message="Required")
 	private String supplierContact;
 	
 /**	@OneToMany(mappedBy="supplier",fetch=FetchType.EAGER)
@@ -65,18 +75,21 @@ public class Supplier
 	
 	**/
 	
+	
+	
 	public int getSupplierId() {
 		return supplierId;
 	}
+	public String getSupplierName() {
+	return supplierName;
+}
+public void setSupplierName(String supplierName) {
+	this.supplierName = supplierName;
+}
 	public void setSupplierId(int supplierId) {
 		this.supplierId = supplierId;
 	}
-	public String getSupplierName() {
-		return supplierName;
-	}
-	public void setSupplierName(String supplierName) {
-		this.supplierName = supplierName;
-	}
+	
 	public String getSupplierFirmName() {
 		return supplierFirmName;
 	}

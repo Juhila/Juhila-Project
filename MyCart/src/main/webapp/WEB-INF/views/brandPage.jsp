@@ -66,7 +66,7 @@
  <div class="text-center">
  <div class="row">	
  	<div class="col-xs-12 col-md-4 col-sm-4">	
- 		<input class="form-control" type="text" ng-model="search" placeholder="search" />
+ 		<input class="form-control" type="text" ng-model="search" placeholder="Search" />
  	</div>
  </div>
  <br>

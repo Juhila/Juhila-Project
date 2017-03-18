@@ -65,7 +65,7 @@
 <ul class="nav navbar-nav navbar-right">
        
         <li><a class="colorr" href="#"><span class="glyphicon glyphicon-home colorr"></span>Home</a></li>
-         <li><a class="colorr" href="#"><span class="glyphicon glyphicon-user colorr"></span>Sign Up</a></li>
+         <li><a class="colorr" href="register-user"><span class="glyphicon glyphicon-user colorr"></span>Sign Up</a></li>
         
         <li><a class="colorr" href="#"><span class="glyphicon glyphicon-log-in colorr"></span> Login</a></li>
   <li><a class="colorr" href="#"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>

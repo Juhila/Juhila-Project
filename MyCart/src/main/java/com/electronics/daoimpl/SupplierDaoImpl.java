@@ -27,7 +27,8 @@ public class SupplierDaoImpl implements SupplierDao
 		return supplierList.get(0);
 	}
 
-	public void addSupplier(Supplier supplier) {
+	public void addSupplier(Supplier supplier) 
+	{ 
 		sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 	}
 

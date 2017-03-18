@@ -2,37 +2,207 @@
    
 <div class="container paddingg">
  	<div class="text-center">
- 		<a href="category" class="btn btn-info" role="button">Category Form</a>
-		<a href="subcategory" class="btn btn-info" role="button">SubCategory Form</a>
-		<a href="product" class="btn btn-info" role="button">Product Form</a>
-		<a href="brand" class="btn btn-info" role="button">Brand Form</a>
+ 		<a href="category" class="btn btn-danger" role="button">Category Form</a>
+		<a href="subcategory" class="btn btn-danger" role="button">SubCategory Form</a>
+		<a href="product" class="btn btn-danger" role="button">Product Form</a>
+		<a href="brand" class="btn btn-danger" role="button">Brand Form</a>
 		
-		<a href="supplier" class="btn btn-info" role="button">Supplier Form</a>						
+		<a href="supplier" class="btn btn-danger" role="button">Supplier Form</a>						
 	</div>
 	
  		<div class="text-center"><h1>Product Form</h1></div>
  		
+<br>
 
+<div class="form">
 <form:form modelAttribute="product" action="addproduct" enctype="multipart/form-data">
 <form:input path="productId"  hidden="true" />
 
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="productName">Enter Product Name</form:label>
+ </div>
+
+ <div class="col-xs-12 col-sm-4 col-md-4">
 <form:input path="productName" placeholder="Add Product Name" />
-<form:errors path="productName" />
+</div>
 
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:errors  cssClass="error" path="productName" />
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="productDescription">Enter Product Description </form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:input path="productDescription" placeholder="Add Product Description" />
+</div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:errors  cssClass="error" path="productDescription" />
+</div>
+
+</div>
+
+<br>
+
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="productPrice">Enter Product Price</form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
 <form:input path="productPrice" placeholder="Add Product Price" />
+</div>
 
-<form:input path="productDiscountPrice" placeholder="Add Product Discount Price" />
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:errors  cssClass="error" path="productPrice" />
+</div>
+
+</div>
+
+<br>
 
 
-<form:input path="productStock" placeholder="Add Product Stock" />
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="productDiscountPrice">Enter Discount Price </form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:input path="productDiscountPrice" placeholder="Add Discount Price" />
+</div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:errors  cssClass="error"  path="productDiscountPrice" />
+</div>
+
+</div>
+
+<br>
 
 <%--<form:input path="productCountry" placeholder="Add Product Country" />
 <form:errors path="productCountry" />--%>
 
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="productStock">Enter Stock </form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:input path="productStock" placeholder="Add Stock" />
+</div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:errors  cssClass="error" path="productStock" />
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="productImage">Upload product image </form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:input path="productImage" accept=".jpg,.jpeg,.png" type="file"/>
+</div>
+
+</div>
+
+<br>
+
+
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="categoryId"> Select Category</form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:select path="categoryId" items="${categoryList}" itemValue="categoryId" itemLabel="categoryName"/>
+</div>
+
+</div>
+<br>
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="subCategoryId"> Select SubCategory</form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:select path="subCategoryId" items="${subCategoryList}" itemValue="subCategoryId" itemLabel="subCategoryName"/>
+</div>
+
+</div>
+<br>
+
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="brandId"> Select Brand</form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:select path="brandId" items="${brandList}" itemValue="brandId" itemLabel="brandName"/>
+</div>
+
+</div>
+<br>
+
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+ <form:label path="supplierId"> Select Supplier</form:label>
+ </div>
+
+<div class="col-xs-12 col-sm-4 col-md-4">
+<form:select path="supplierId" items="${supplierList}" itemValue="supplierId" itemLabel="supplierName"/>
+</div>
+
+</div>
+<br>
+
+
+
+ <div class="row">
+	<div class="col-sm-12 col-md-12">	
+		<div class="text-center">	
+	<input class="btn btn-success" type="submit" value="${buttonLabel}" />
+		<input class="btn btn-danger" type="reset" value="Reset Category" />
+	</div>
+				
+      </div>
+	</div>	
+</form:form>
+ </div>
+
+<%-- 
 <form:input path="productImage" accept=".jpg,.jpeg,.png" type="file"/>
 
-<form:input path="productDescription" placeholder="Add Product Description" />
-<form:errors path="productDescription" />
 
 <form:select path="categoryId" items="${categoryList}" itemValue="categoryId" itemLabel="categoryName"/>
 <form:select path="subCategoryId" items="${subCategoryList}" itemValue="subCategoryId" itemLabel="subCategoryName"/>
@@ -41,7 +211,8 @@
 <input type="Submit" value="${buttonLabel }">
 <input type="Reset" value="Reset Product">
 
-</form:form>
+</form:form>--%>
+
 <br><br>
 <div ng-app="myApp">
  <div class="text-center">
@@ -54,7 +225,7 @@
 
 
 <div class="table-responsive">
-<table class="table" ng-controller="myController">
+<table class="table table-hover" ng-controller="myController">
 
 	<tr class="info">
 	    <th>Product Image</th>
@@ -79,7 +250,7 @@
 		    <%-- <td><var="src" "value="resources/images/products/productImage-${plist.productId}.jpg" height="100px" width="100px" />
 		    <img src="${src}" alt="image not uploaded">
 		    </td>--%>
-		    <td><img src="resources/images/products/productImage-${pList.productId}.jpg" height="100px" width="100px" alt="img not uploaded"/></td>
+		    <td><img src="resources/images/products/productImage-${pList.productId}.jpg" height="100px" width="100px" alt="error"/></td>
 		    <td>{{pList.productId}}</td>
 			<td>{{pList.productName}}</td>
 			<td>{{pList.category.categoryName}}</td>
