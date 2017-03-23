@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.electronics.daoimpl.CategoryDaoImpl;
 import com.electronics.model.Category;
 
+@Transactional
 @Service
 	public class CategoryService 
 	{
@@ -15,33 +16,33 @@ import com.electronics.model.Category;
 		@Autowired
 	   private CategoryDaoImpl categoryDaoImpl;
 	   
-		@Transactional
+		
 		public void addCategory(Category category)
 		{
 			categoryDaoImpl.addCategory(category);
 		}
 		
-		@Transactional
+		
 		public List<Category> getAllCategories() 
 		{
 		return categoryDaoImpl.getAllCategories();
 		}
 		
-		@Transactional
+		
 		public String getAllCategoriesByJson() 
 		{
 		return categoryDaoImpl.getAllCategoriesByJson();
 		}
 		
 		
+	
 		
-		@Transactional
 		public Category getCategoryById(int categoryId)
 		{
 			return categoryDaoImpl.getCategoryById(categoryId);
 		}
 		
-		@Transactional
+		
 		public void deleteCategory(int categoryId)
 		{
 			categoryDaoImpl.deleteCategory(categoryId);

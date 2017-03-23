@@ -65,7 +65,15 @@ public class SupplierController
 		return "redirect:/supplier";
 	}
     	    
-         
+	@RequestMapping("/enablesupplier-{supplierId}")
+	public String toggleSupplier(@PathVariable("supplierId") int supplierId)
+	{
+		supplierService.enableDisableSupplier(supplierId);
+		
+		return "redirect:/supplier";	
+	}
+	
+	
 	
 }
 

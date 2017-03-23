@@ -22,25 +22,23 @@
 	 <!-- enable use-expressions -->
 	<http auto-config="true" use-expressions="true">
 
-		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" /> 
-
-		
+		<!--  <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" /> 
 			<intercept-url pattern="/home" access="permitAll"/>
-			<!--  <intercept-url pattern="/resources/**" access="permitAll"/>-->
+			  <intercept-url pattern="/resources/**" access="permitAll"/>
 			<intercept-url pattern="/contactus" access="permitAll"/>
 			<intercept-url pattern="/FAQ" access="permitAll"/>
 				<intercept-url pattern="/aboutus" access="permitAll"/>
 			<intercept-url pattern="/" access="permitAll"/>
-			<!--  <intercept-url pattern="/viewfullprod**" access="permitAll"/>
-			<intercept-url pattern="/filter**" access="permitAll"/>-->
+			  <intercept-url pattern="/viewfullprod**" access="permitAll"/>
+			<intercept-url pattern="/filter**" access="permitAll"/>
 
-            <intercept-url pattern="/reg**" access="hasRole('ROLE_ANONYMOUS')"/>					
+             <intercept-url pattern="/reg**" access="hasRole('ROLE_ANONYMOUS')"/>					
 			<intercept-url pattern="/login" access="hasRole('ROLE_ANONYMOUS')"/>
             
 
-<!--  <intercept-url pattern="/**" access="isAuthenticated()" />
-<access-denied-handler error-page="/403"/>
--->
+  <intercept-url pattern="/**" access="isAuthenticated()" />
+<access-denied-handler error-page="/403"/>-->
+
 		<form-login
 		    login-page="/login"
 		    default-target-url="/home"

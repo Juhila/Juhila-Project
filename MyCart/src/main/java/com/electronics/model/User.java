@@ -1,20 +1,25 @@
 package com.electronics.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class User 
+public class User implements Serializable
 {
 
 	@Id
@@ -25,30 +30,36 @@ public class User
 	@Column(unique=true)
 	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address for username") 
 	@NotEmpty(message="Required")
+	@Expose
 	private String username;
 	
 	@NotEmpty(message="Required")
-	@Min(8)
+	@Length(min=8, max=20)
+	@Expose
 	private String password;
 	
-	@NotEmpty(message="Required")
+	
+	@Expose
 	private String role;
 	
-private String enabled;
+	@Expose
+   private boolean enabled;
 	
+	@Expose
 	@NotEmpty(message="Required")
 	private String userFirstName;
 	
+	@Expose
 	@NotEmpty(message="Required")
 	private String userLastName;
 	
-	
+	@Expose
 	@Column(unique=true)
 	@NotEmpty(message="Required")
 	@Pattern(regexp="^$|[0-9]{10}", message="Please enter 10 digit mob. no.")
 	private String userContact;
 	
-	
+		
 	public void setUserContact(String userContact) {
 		this.userContact = userContact;
 	}
@@ -85,11 +96,12 @@ private String enabled;
 		this.role = role;
 	}
 
-	public String getEnabled() {
+	
+		public boolean isEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(String enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 

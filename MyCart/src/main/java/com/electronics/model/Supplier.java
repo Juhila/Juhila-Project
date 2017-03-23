@@ -36,6 +36,9 @@ public class Supplier
 	
 
 	
+	@Expose
+	   private boolean enabled;
+		
 	   
 	@NotEmpty(message="Required")
 	private String supplierStreet;
@@ -76,6 +79,14 @@ public class Supplier
 	**/
 	
 	
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) 
+	{
+		this.enabled = enabled;
+	}
 	
 	public int getSupplierId() {
 		return supplierId;

@@ -250,7 +250,7 @@
 		    <%-- <td><var="src" "value="resources/images/products/productImage-${plist.productId}.jpg" height="100px" width="100px" />
 		    <img src="${src}" alt="image not uploaded">
 		    </td>--%>
-		    <td><img src="resources/images/products/productImage-${pList.productId}.jpg" height="100px" width="100px" alt="error"/></td>
+		    <td><img src="resources/images/products/productImage-{{pList.productId}}.jpg" height="100px" width="100px" alt="error"/></td>
 		    <td>{{pList.productId}}</td>
 			<td>{{pList.productName}}</td>
 			<td>{{pList.category.categoryName}}</td>

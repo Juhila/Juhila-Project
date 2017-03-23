@@ -41,4 +41,11 @@ public class SupplierService
 	return supplierDaoImpl.getAllSuppliersByJson();
 	}
 	
+	public void enableDisableSupplier(int supplierId)
+	{
+		
+		supplierDaoImpl.enableDisableSupplier(supplierId);
+	}
+	
+	
 }

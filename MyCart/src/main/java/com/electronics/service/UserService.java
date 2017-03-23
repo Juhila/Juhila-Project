@@ -32,4 +32,12 @@ public class UserService
 		return userDaoImpl.getUserById(userId);
 		
 	}
+	
+	public void enableDisableUser(int userId)
+	{
+		
+		userDaoImpl.enableDisableUser(userId);
+	}
+	
+	
 }

@@ -12,4 +12,5 @@ public Supplier getSupplierById(int supplierId);
 public String getAllSuppliersByJson();
 public void addSupplier(Supplier supplier);
 public void deleteSupplier(int supplierId);
+public void enableDisableSupplier(int supplierId);
 }

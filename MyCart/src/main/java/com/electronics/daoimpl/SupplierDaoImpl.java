@@ -44,5 +44,11 @@ public class SupplierDaoImpl implements SupplierDao
 		return list;
 	}
 
+	 public void enableDisableSupplier(int supplierId)
+	 {
+			sessionFactory.getCurrentSession().createQuery("update Supplier set enabled = case when enabled=true then false when enabled=false then true end where supplierId="+supplierId ).executeUpdate();
+
+		 
+	 }
 	
 }

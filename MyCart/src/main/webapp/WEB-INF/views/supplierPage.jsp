@@ -237,6 +237,7 @@
 		<th>Supplier Country</th>
 		<th>Edit</th>
 		<th>Delete</th>
+		<th>Enable/Disable</th>
 		</tr>
 
 
@@ -254,6 +255,13 @@
 			
 			<td><a href="editsupplier-{{spList.supplierId}}">EDIT</a></td>
 			<td><a href="deletesupplier-{{spList.supplierId}}">DELETE</a></td>
+			 <td><a href="enablesupplier-{{spList.supplierId}}"><div ng-if="spList.enabled == true">
+            <i class="fa fa-toggle-on largetxt" title="Disable"></i>
+            </div>
+            <div ng-if="spList.enabled != true">
+            <i class="fa fa-toggle-off largetxt" title="Enable" ></i>
+            </div></a></td>
+            
 			
 		</tr>
 	

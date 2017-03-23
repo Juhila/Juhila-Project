@@ -15,6 +15,8 @@ import com.electronics.model.User;
 
 		public User getUserById(int userId);
 		
+		public void enableDisableUser (int userId);
+		
 	}
 
 
