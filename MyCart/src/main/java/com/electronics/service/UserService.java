@@ -39,5 +39,15 @@ public class UserService
 		userDaoImpl.enableDisableUser(userId);
 	}
 	
+	public User getUserByUserName(String username)
+	{
+	 return userDaoImpl.getUserByUserName(username);
+	}
 	
+	/**public void deleteUser(int userId)
+	{
+		userDaoImpl.deleteUser(userId);
+	}
+	
+	**/
 }

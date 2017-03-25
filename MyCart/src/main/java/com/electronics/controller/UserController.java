@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.electronics.model.Supplier;
 import com.electronics.model.User;
@@ -26,38 +27,60 @@ public class UserController
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("/user")
-	public String getUserPage(Model model) 
+	@RequestMapping("/reg-user")
+	public String getRegistrationPage(Model model) 
 	{
-		//model.addAttribute("userList", supplierService.getAllUsers());
 		model.addAttribute("user", new User());
-		//model.addAttribute("buttonLabel", "Add User");
 		
-		//model.addAttribute("userListByJson", userService.getAllUsersByJson());
-		
-
 		return "registration";
 	}
 	
 	
-	@RequestMapping("/adduser")
-	public String addUser(@Valid @ModelAttribute("user") User user,BindingResult result, Model model) 
+	@RequestMapping("/user")
+	public String getUserPage(Model model) 
+	{
+		//model.addAttribute("userList", userService.getAllUsers());
+		model.addAttribute("user", new User());
+		
+		
+		model.addAttribute("userListByJson", userService.getAllUsersByJson());
+		
+
+		return "userListPage";
+	}
+
+	
+	@RequestMapping(value="/reg-adduser",  method=RequestMethod.POST)
+	public String addRegUser(@Valid @ModelAttribute("user") User user,BindingResult result, Model model) 
 	{   
 		if(result.hasErrors())
 		{ 
-			//model.addAttribute("userListByJson", userService.getAllUsersByJson());
-			//model.addAttribute("supplierList", supplierService.getAllSuppliers());
 		
 		model.addAttribute("buttonLabel", "Retry");
 			return "registration";
 		}
 		userService.addUser(user);
-		//return "redirect:/user";
-		return "redirect:/";
+	
+		return "redirect:/login";
 	}
 
 	
-	/**@RequestMapping("/edituser-{userId}")
+	
+	@RequestMapping(value="/adduser",  method=RequestMethod.POST)
+	public String addUser(@Valid @ModelAttribute("user") User user,BindingResult result, Model model) 
+	{   
+		if(result.hasErrors())
+		{ 
+			model.addAttribute("userListByJson", userService.getAllUsersByJson());
+			
+		model.addAttribute("buttonLabel", "Retry");
+			return "userListPage";
+		}
+		userService.addUser(user);
+		return "redirect:/user";
+	}
+
+	@RequestMapping("/edituser-{userId}")
 	public String editUser(@PathVariable("userId") int userId, Model model) 
 	{
 		//model.addAttribute("userList", userService.getAllUsers());
@@ -65,8 +88,8 @@ public class UserController
 		model.addAttribute("user", userService.getUserById(userId));
 		model.addAttribute("buttonLabel", "Update User");
 
-		return "userPage";
-	}**/
+		return "userListPage";
+	}
 	
 	@RequestMapping("/enableuser-{userId}")
 	public String toggleUser(@PathVariable("userId") int userId)
@@ -77,17 +100,6 @@ public class UserController
 	}
 	
 	
-	
-	
-	@RequestMapping("/userlist")
-	public String getUserList(Model model) 
-	{
-		//model.addAttribute("userList", supplierService.getAllUsers());
-		model.addAttribute("userListByJson", userService.getAllUsersByJson());
-		
-		return "userListPage";
-	}
-
 	
 	
 	@RequestMapping(value="/perform_logout")
@@ -103,19 +115,11 @@ public class UserController
 		
 	}
 	
-	/**@RequestMapping("/register-adduser")
-	public String addRegisterUser(@Valid @ModelAttribute("user") User user,BindingResult result, Model model) 
-	{   
-		if(result.hasErrors())
-		{ 
-			//model.addAttribute("userListByJson", userService.getAllUsersByJson());
-			//model.addAttribute("supplierList", supplierService.getAllSuppliers());
-		
-			return "registration";
-		}
-		userService.addUser(user);
+	@RequestMapping(value="/login")
+	public String loginPage()
+	{
 		return "login";
 	}
-**/
+	
 
 }

@@ -242,6 +242,7 @@
 		<th>Product Description</th>
 		<th> Product Edit</th>
 		<th>Product Delete</th>
+		<th>Product View</th>
 	</tr>
 
 
@@ -265,6 +266,7 @@
 			<td>{{pList.productDescription}}</td>
 			<td><a href="editproduct-{{pList.productId}}">EDIT</a></td>
 			<td><a href="deleteproduct-{{pList.productId}}">DELETE</a></td>
+			<td><a href="viewproduct-{{pList.productId}}">VIEW</a></td>
 		</tr>
 
 </table>

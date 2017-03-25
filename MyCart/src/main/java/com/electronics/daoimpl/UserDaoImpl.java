@@ -25,8 +25,7 @@ public class UserDaoImpl implements UserDao
 	public void addUser(User user) 
 	{
 		 Session session=sessionFactory.getCurrentSession();
-	 System.out.println("xxxxxxxxxxxxxxxxxxxx");
-	 
+	
 		user.setEnabled(true);
 	  user.setRole("ROLE_CUSTOMER");
 	  session.saveOrUpdate(user);
@@ -35,9 +34,9 @@ public class UserDaoImpl implements UserDao
 	  cart.setCartId(user.getUserId());
 	  cart.setUserId(user.getUserId());
 	  session.saveOrUpdate(cart);
-	  System.out.println("YYYYYYYYYYYYYYY");
+	 
 	  session.saveOrUpdate(user);
-	  System.out.println("zzzzzzzzzzzzzzzzzzzzz");
+	 
 	 //session.flush(); ....no need for currentSession
 	}
 
@@ -67,8 +66,21 @@ public class UserDaoImpl implements UserDao
 			sessionFactory.getCurrentSession().createQuery("update User set enabled = case when enabled=true then false when enabled=false then true end where userId="+userId ).executeUpdate();
 
 		 
+		
 	 }
+
+	public User getUserByUserName(String username) {
+		List<User> userLists = sessionFactory.getCurrentSession().createQuery("from User where username='"+username+"'").getResultList();
+		return userLists.get(0);
 	
+	}
+
+	
+	/** public void deleteUser(int userId) {
+			sessionFactory.getCurrentSession().delete(getUserById(userId));
+
+		}**/
+
 }
 
 

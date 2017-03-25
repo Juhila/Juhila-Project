@@ -1,12 +1,13 @@
 <%@ include file="header.jsp"%>
 
+
 <div class="container">
-<!--   <div class="text-center pad"><h1>Registration Form</h1></div>
+ <div class="text-center pad"><h1>Registration Form</h1></div>
  
  <br> 
  
  <div class="form">
- <form:form modelAttribute="user" action="adduser">
+ <form:form modelAttribute="user" action="adduser" method="post">
 
 <form:input path="userId"  hidden="true" />
 
@@ -87,10 +88,7 @@
 <form:errors cssClass="error" path="userContact" />
 </div>
 </div>
-<br>
- 
- <%-- <form:input path="enabled"  hidden="true" />--%>
-	<br>
+<br>	<br>
 
 <div class="row">
 		  	<div class="col-sm-12 col-md-12">	
@@ -107,7 +105,10 @@
 </form:form>
 	</div>
 	
--->
+
+
+	
+
 
 <div ng-app="myApp">
  <div class="text-center">
@@ -143,6 +144,7 @@
 			<td>{{userList.role}}</td>
 			
 			<td><a href="edituser-{{userList.userId}}">EDIT</a></td>
+			
 			 <td><a href="enableuser-{{userList.userId}}"><div ng-if="userList.enabled == true">
             <i class="fa fa-toggle-on largetxt" title="Disable"></i>
             </div>

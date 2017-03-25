@@ -53,11 +53,6 @@ public class Product
 	
 	
 	
-	/**@Expose
-	@NotEmpty(message="Cannot be empty")
-    private String productCountry;
-	**/
-	//@Size(min = 10, max =50, message="Write description between 10 to 50 characters")
 	
    @Expose
 	@NotEmpty(message="Required")

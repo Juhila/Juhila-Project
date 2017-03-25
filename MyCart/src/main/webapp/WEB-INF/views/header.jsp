@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -63,12 +64,31 @@
 
 
 <ul class="nav navbar-nav navbar-right">
-       
-        <li><a class="colorr" href="#"><span class="glyphicon glyphicon-home colorr"></span>Home</a></li>
-         <li><a class="colorr" href="register-user"><span class="glyphicon glyphicon-user colorr"></span>Sign Up</a></li>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <li><a class="colorr" href="category"><span class="glyphicon glyphicon-home colorr"></span>Admin</a></li>
+         </sec:authorize>
+         
+          
+        <li><a class="colorr" href="home"><span class="glyphicon glyphicon-home colorr"></span>Home</a></li>
+         
+         
+        <c:if test="${pageContext.request.userPrincipal.name == null}">  
+         <li><a class="colorr" href="reg-user"><span class="glyphicon glyphicon-user colorr"></span>Sign Up</a></li>
+        </c:if>
         
-        <li><a class="colorr" href="#"><span class="glyphicon glyphicon-log-in colorr"></span> Login</a></li>
-  <li><a class="colorr" href="#"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
+         <c:if test="${pageContext.request.userPrincipal.name == null}">  
+        <li><a class="colorr" href="login"><span class="glyphicon glyphicon-log-in colorr"></span> Login</a></li>
+        </c:if>
+         
+         <c:if test="${pageContext.request.userPrincipal.name != null}">  
+        <li><a class="colorr" href="perform_logout"><span class="glyphicon glyphicon-log-out colorr"></span> Logout</a></li>
+        </c:if>
+        
+        
+       <sec:authorize access="hasRole('ROLE_CUSTOMER')">
+  <li><a class="colorr" href="cartlist"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
+    </sec:authorize>
+         
       </ul>
 </div>
   </div>

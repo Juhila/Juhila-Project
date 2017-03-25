@@ -30,7 +30,7 @@ public class HomeController
 	BrandService brandService;
 	
 	
-		@RequestMapping("/")
+		@RequestMapping(value={"/", "/home"})
 		   public String getHome(Model model)
 		   {
 			
@@ -44,11 +44,6 @@ public class HomeController
 		}
 		
 		
-		@RequestMapping("/cart")
-		public String getCart()
-		{
-			return "cart";
-		}
 		
 		
 		@RequestMapping("/aboutus")
@@ -69,24 +64,8 @@ public class HomeController
 		}
 		
 		
-		/**@RequestMapping("/register")
-		   public String getRegister()
-		   {
-		    return "registration";
-		}
+
 		
-		@RequestMapping("/login")
-		   public String getLogin()
-		   {
-		    return "login";
-		}**/
-		
-		@RequestMapping("/admin")
-		   public String getAdmin()
-		   {
-		    return "admin";
-		}
-		
-	}
+}
 
 

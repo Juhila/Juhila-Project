@@ -21,23 +21,67 @@
 	
 	 <!-- enable use-expressions -->
 	<http auto-config="true" use-expressions="true">
+	
 
-		<!--  <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" /> 
-			<intercept-url pattern="/home" access="permitAll"/>
-			  <intercept-url pattern="/resources/**" access="permitAll"/>
-			<intercept-url pattern="/contactus" access="permitAll"/>
-			<intercept-url pattern="/FAQ" access="permitAll"/>
-				<intercept-url pattern="/aboutus" access="permitAll"/>
-			<intercept-url pattern="/" access="permitAll"/>
-			  <intercept-url pattern="/viewfullprod**" access="permitAll"/>
-			<intercept-url pattern="/filter**" access="permitAll"/>
+  <intercept-url pattern="/home" access="permitAll"/>
+<intercept-url pattern="/contactus" access="permitAll"/>
+<intercept-url pattern="/FAQ" access="permitAll"/>
+<intercept-url pattern="/" access="permitAll"/>		
+<intercept-url pattern="/aboutus" access="permitAll"/>
+ 		
+  <intercept-url pattern="/reg**" access="hasRole('ROLE_ANONYMOUS')"/>					
+<intercept-url pattern="/login" access="hasRole('ROLE_ANONYMOUS')"/>
+            			
+ 
+<intercept-url pattern="/brand**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/editbrand-{brandId}**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/addbrand**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/deletebrand-{brandId}**" access="hasRole('ROLE_ADMIN')" />
 
-             <intercept-url pattern="/reg**" access="hasRole('ROLE_ANONYMOUS')"/>					
-			<intercept-url pattern="/login" access="hasRole('ROLE_ANONYMOUS')"/>
+		<intercept-url pattern="/category**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/editcategory-{categoryId}**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/addcategory**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/deletecategory-{categoryId}**" access="hasRole('ROLE_ADMIN')" />
+
+		<intercept-url pattern="/subcategory**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/editsubcategory**-{subCategoryId}**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/addsubcategory**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/deletesubcategory-{subCategoryId}**" access="hasRole('ROLE_ADMIN')"/>
+
+		<intercept-url pattern="/supplier**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/editsupplier-{supplierId}**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/addsupplier**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/deletesupplier-{supplierId}**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="enablesupplier-{supplierId}**" access="hasRole('ROLE_ADMIN')"/>
+
+		<intercept-url pattern="/product**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/editproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/addproduct**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/deleteproduct-{productId}**" access="hasRole('ROLE_ADMIN')"/>
+		
+		<intercept-url pattern="/user**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/edituser-{userId}**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/adduser**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/enableuser-{userId}**" access="hasRole('ROLE_ADMIN')"/> 
+				
+<!--  <session-management>
+      		<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+  			</session-management>
+
+		  
             
-
-  <intercept-url pattern="/**" access="isAuthenticated()" />
+            <intercept-url pattern="/buyNow-{productId}" access="hasRole('ROLE_USER')"/>
+						<intercept-url pattern="/AddToCart-{productId}" access="hasRole('ROLE_USER')"/>
+						<intercept-url pattern="/wishlist-{productId}" access="hasRole('ROLE_USER')"/>
+						<intercept-url pattern="/buyNowList-{productId}" access="hasRole('ROLE_USER')"/>
+						<intercept-url pattern="/checkout" access="hasRole('ROLE_USER')"/>
+						<intercept-url pattern="/cartList" access="hasRole('ROLE_USER')"/>
+						
+					
+		  <intercept-url pattern="/**" access="isAuthenticated()" />
 <access-denied-handler error-page="/403"/>-->
+
+
 
 		<form-login
 		    login-page="/login"
@@ -46,7 +90,7 @@
 			authentication-failure-url="/login?error"
 			username-parameter="username"
 			password-parameter="password" />
-		<logout logout-success-url="/login?logout"  />
+		<logout logout-success-url="/perform_logout"  />
 		
 	
 		<!-- enable csrf protection -->
