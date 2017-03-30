@@ -32,6 +32,10 @@ public class ProductDaoImpl implements ProductDao
 		List <Product> productList = sessionFactory.getCurrentSession().createQuery("from Product where productId = "+productId).getResultList();
 		return productList.get(0);
 	}
+	
+	
+	
+
 
 	public void addProduct(Product product)
 	{
@@ -52,4 +56,21 @@ public class ProductDaoImpl implements ProductDao
 		return list;
 	}
 
-}
+	
+
+	public List<Product> getAllProductsByCategoryId(int categoryId) {
+		List <Product> productList = sessionFactory.getCurrentSession().createQuery("from Product where categoryId = "+categoryId).getResultList();
+		return productList;
+	}
+
+	
+
+	
+	
+
+	
+
+	
+	}
+
+

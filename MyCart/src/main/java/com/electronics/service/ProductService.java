@@ -40,6 +40,12 @@ import com.electronics.model.Product;
 		return productDaoImpl.getAllProductsByJson();
 		}
 		
-	}
+		
+		public List<Product> getAllProductsByCategoryId(int categoryId)
+		{
+			return productDaoImpl.getAllProductsByCategoryId(categoryId);
+		}
+		}
+	
 	
 

@@ -18,13 +18,15 @@
               <img src="http://www.amith.in/magazine/wp-content/uploads/2015/09/Top-5-4G-mobiles-below-15000.jpg" alt="Chania" width="1920" height="500">
             </div>
 
-            <div class="item">
-              <img src="resources/images/b.jpg" alt="Chania" width="1920" height="500">
+             <div class="item">
+              <img src="http://www.rentalwala.com/FreeAdImage/Ac-on-Rent-Ac-on-Hire-in-Juhu-Mumbai-4XF8JF3IG13ENU5GSK3C-02-04-2015-516.jpg" alt="Chania" width="1920" height="500">
             </div>
 
             <div class="item">
-              <img src="http://www.amith.in/magazine/wp-content/uploads/2015/09/Top-5-4G-mobiles-below-15000.jpg" alt="Flower" width="1920" height="500">
+              <img src="http://www.rentalwala.com/FreeAdImage/Ac-on-Rent-Ac-on-Hire-in-Juhu-Mumbai-4XF8JF3IG13ENU5GSK3C-02-04-2015-516.jpg" alt="Chania" width="1920" height="500">
             </div>
+            
+              
           </div>
 
           <!-- Left and right controls -->

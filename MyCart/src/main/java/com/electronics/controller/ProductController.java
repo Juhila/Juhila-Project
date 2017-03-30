@@ -100,7 +100,7 @@ public class ProductController
 	{
 		
 		
-		String path="D:\\S170012700291--Juhi\\S170012700291\\MyCart\\src\\main\\webapp\\resources\\images\\products\\";
+		String path="E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products\\";
 		if(result.hasErrors())
 		{
 			model.addAttribute("categoryList", categoryService.getAllCategories());
@@ -158,7 +158,7 @@ public class ProductController
 	public String deleteProduct(@PathVariable("productId")int productId)
 	{
 		productService.deleteProduct(productId);
-		 File file = new File("D:\\S170012700291--Juhi\\S170012700291\\MyCart\\src\\main\\webapp\\resources\\images\\products\\productImage-"+productId+"."+"jpg");
+		 File file = new File("E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products\\productImage-"+productId+"."+"jpg");
 			file.delete();
 	        return "redirect:/product";
 	}
@@ -166,7 +166,7 @@ public class ProductController
 	
 	
 	@RequestMapping("/viewproduct-{productId}")
-	public String viewOneProductJSON(@PathVariable("productId") int productId, Model model)
+	public String getViewProductPage(@PathVariable("productId") int productId, Model model)
 	{
 		Product product = productService.getProductById(productId);
 		
@@ -177,5 +177,15 @@ public class ProductController
 		model.addAttribute("viewProductByJson", productData);
 		
 		return "viewproduct";
+	}
+	
+	
+	@RequestMapping("/filter-{categoryId}")
+	public String getProductDisplayPage(@PathVariable("categoryId") int categoryId)
+	{
+	   
+		productService.getAllProductsByCategoryId(categoryId);
+		return "productDisplay";
+	
 	}
 }

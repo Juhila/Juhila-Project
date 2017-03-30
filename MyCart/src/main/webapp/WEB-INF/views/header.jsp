@@ -16,14 +16,17 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/padding.css" />
 <link rel="stylesheet" href="resources/css/slider.css" />
-
 <link rel="stylesheet" href="resources/css/error.css" />
 <link rel="stylesheet" href="resources/css/header.css" />
 <link rel="stylesheet" href="resources/css/browse.css" />
+<link rel="stylesheet" href="resources/css/navbar.css" />
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="resources/js/angular.min.js" ></script>
 <script type="text/javascript" src="resources/js/jquery.min.js" ></script>
 <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/navbar.js" ></script>
 
 
 
@@ -41,7 +44,7 @@
         <span class="icon-bar bgcolorr"></span>
         <span class="icon-bar bgcolorr"></span> --%>
       </button>
-      <a class="navbar-brand colorr mystyle" href="#">Electronics
+      <a class="navbar-brand colorr mystyle" href="home">Electronics
       <i class="fa fa-refresh fa-spin"></i>
       </a>
     </div>
@@ -62,15 +65,47 @@
     </ul>
   
 
-
 <ul class="nav navbar-nav navbar-right">
+
+<!--  <li><a class="colorr" href="home"><span class="glyphicon glyphicon-home colorr"></span>Home</a></li>-->
+         <li class="dropdown menu-large">
+				<a class="colorr" href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>				
+				 
+				<ul class="dropdown-menu megamenu row">
+				
+						<c:forEach var="cList" items="${categoryGlobalList}">
+					<li  class="col-sm-3">
+						<ul>
+						 <li>                 
+						<u><a class="heading" href="filter-${cList.categoryId}"><span><c:out value="${cList.categoryName}"/></span></a></u> </li>
+						   
+						   <c:forEach var="scList" items="${cList.subCategory}">
+						 	<li class="dropdown-header"><u><a class="colorr" href="filterr-${scList.subCategoryId}"><span><c:out value="${scList.subCategoryName}"/></span></a></u></li>					
+							
+						     </c:forEach>
+						
+								</li>					
+							</ul>			
+							 
+					      </li>
+					      
+					    
+							
+                            </c:forEach>
+							  <li class="divider"></li>
+							 <br>
+							</ul>
+							 
+							</li>
+			
+
+
         <sec:authorize access="hasRole('ROLE_ADMIN')">
         <li><a class="colorr" href="category"><span class="glyphicon glyphicon-home colorr"></span>Admin</a></li>
          </sec:authorize>
          
           
-        <li><a class="colorr" href="home"><span class="glyphicon glyphicon-home colorr"></span>Home</a></li>
-         
+       
          
         <c:if test="${pageContext.request.userPrincipal.name == null}">  
          <li><a class="colorr" href="reg-user"><span class="glyphicon glyphicon-user colorr"></span>Sign Up</a></li>
@@ -80,15 +115,21 @@
         <li><a class="colorr" href="login"><span class="glyphicon glyphicon-log-in colorr"></span> Login</a></li>
         </c:if>
          
+         <sec:authorize access="hasRole('ROLE_CUSTOMER')">
+  <li><a class="colorr" href="cartlist"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
+    </sec:authorize>
+    
          <c:if test="${pageContext.request.userPrincipal.name != null}">  
         <li><a class="colorr" href="perform_logout"><span class="glyphicon glyphicon-log-out colorr"></span> Logout</a></li>
         </c:if>
         
-        
-       <sec:authorize access="hasRole('ROLE_CUSTOMER')">
-  <li><a class="colorr" href="cartlist"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
-    </sec:authorize>
+          
          
+       
+        
+       
+   
+  
       </ul>
 </div>
   </div>

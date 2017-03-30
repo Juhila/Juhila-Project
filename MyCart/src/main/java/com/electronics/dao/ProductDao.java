@@ -11,4 +11,6 @@ public interface ProductDao
 	public String getAllProductsByJson();
 	public void addProduct(Product product);
 	public void deleteProduct(int productId);
+	
+	public List<Product> getAllProductsByCategoryId(int categoryId);
 }

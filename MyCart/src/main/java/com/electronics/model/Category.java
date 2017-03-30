@@ -1,5 +1,6 @@
 package com.electronics.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class Category 
+public class Category
 {  
 	
 	@Id
