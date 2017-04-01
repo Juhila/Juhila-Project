@@ -9,10 +9,10 @@
          
           <div class="text-center">
           
-            <a href="#" class="btn btn-danger btn-lg">
+            <a href="addtowishitems-{{myscope.productId}}-{{1}}" class="btn btn-danger btn-lg">
                   <span class="glyphicon glyphicon-heart"></span>Add To Wishlist</a>
                   
-                     <a href="addtocartlist-{{myscope.productId}}-{{1}}" class="btn btn-danger btn-lg">
+                     <a href="addtocartitems-{{myscope.productId}}-{{1}}" class="btn btn-danger btn-lg">
                         <span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</a>
       
         <a href="#" class="btn btn-danger btn-lg">

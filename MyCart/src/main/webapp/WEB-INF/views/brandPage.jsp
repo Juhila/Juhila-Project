@@ -1,29 +1,22 @@
 
 <%@include file="header.jsp" %>
 
-<%-- <form:form modelAttribute="brand" action="addbrand">
-<form:input path="brandId" type="text" hidden="true" />
-<form:input path="brandName" placeholder="Add Brand Name" />
-<form:errors path="brandName" />
-
-<input type="Submit" value="Add Brand">
-
-</form:form>--%>
 
 
   <div class="container paddingg">
  	<div class="text-center">
- 		<a href="category" class="btn btn-danger" role="button">Category Form</a>
-		<a href="subcategory" class="btn btn-danger" role="button">SubCategory Form</a>
-		<a href="product" class="btn btn-danger" role="button">Product Form</a>
-		<a href="brand" class="btn btn-danger" role="button">Brand Form</a>
+ 		<a href="category" class="btn btn-danger" role="button">Manage Category</a>
+		<a href="subcategory" class="btn btn-danger" role="button">Manage SubCategory</a>
+		<a href="brand" class="btn btn-danger" role="button">Manage Brand</a>
+		<a href="product" class="btn btn-danger" role="button">Manage Product</a>
 		
-		<a href="supplier" class="btn btn-danger" role="button">Supplier Form</a>						
+		<a href="supplier" class="btn btn-danger" role="button">Manage Supplier</a>	
+		<a href="user" class="btn btn-danger" role="button">Manage User</a>					
 	</div>
 	
 		
   	
- 		<div class="text-center"><h1>Brand Form</h1></div>
+ 		<div class="text-center"><h1>Manage Brand</h1></div>
  		<br>
  		
  	<div class="form">
@@ -86,8 +79,8 @@
 		<tr class="danger" ng-repeat="bList in myscope | filter:search">
 		<td>{{bList.brandId}}</td>
 			<td>{{bList.brandName}}</td>
-			<td><a href="editbrand-{{bList.brandId}}">EDIT</a></td>
-			<td><a href="deletebrand-{{bList.brandId}}">DELETE</a></td>
+			<td><a href="editbrand-{{bList.brandId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="deletebrand-{{bList.brandId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 		</tr>
 	
 

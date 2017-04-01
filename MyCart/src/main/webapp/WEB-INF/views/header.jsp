@@ -44,8 +44,9 @@
         <span class="icon-bar bgcolorr"></span>
         <span class="icon-bar bgcolorr"></span> --%>
       </button>
-      <a class="navbar-brand colorr mystyle" href="home">Electronics
-      <i class="fa fa-refresh fa-spin"></i>
+      <a class="navbar-brand colorr mystyle" href="home">MYCART
+      <i class="fa fa-shopping-cart" ></i>
+       <i class="fa fa-refresh fa-spin"></i>
       </a>
     </div>
     
@@ -77,10 +78,10 @@
 					<li  class="col-sm-3">
 						<ul>
 						 <li>                 
-						<u><a class="heading" href="filter-${cList.categoryId}"><span><c:out value="${cList.categoryName}"/></span></a></u> </li>
+						<u><a class="heading" href="filterforcategory-${cList.categoryId}"><span><c:out value="${cList.categoryName}"/></span></a></u> </li>
 						   
 						   <c:forEach var="scList" items="${cList.subCategory}">
-						 	<li class="dropdown-header"><u><a class="colorr" href="filterr-${scList.subCategoryId}"><span><c:out value="${scList.subCategoryName}"/></span></a></u></li>					
+						 	<li class="dropdown-header"><u><a class="colorr" href="filterforsubcategory-${scList.subCategoryId}"><span><c:out value="${scList.subCategoryName}"/></span></a></u></li>					
 							
 						     </c:forEach>
 						
@@ -116,7 +117,7 @@
         </c:if>
          
          <sec:authorize access="hasRole('ROLE_CUSTOMER')">
-  <li><a class="colorr" href="cartlist"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
+  <li><a class="colorr" href="cartitems"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
     </sec:authorize>
     
          <c:if test="${pageContext.request.userPrincipal.name != null}">  

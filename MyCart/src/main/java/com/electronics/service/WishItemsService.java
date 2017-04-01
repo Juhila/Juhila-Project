@@ -32,7 +32,7 @@ public class WishItemsService
 			wishItemsDaoImpl.addWishItem(wishItems);
 		}
 
-		public void deleteCartItem(int wishItemsId)
+		public void deleteWishItem(int wishItemsId)
 		{
 			wishItemsDaoImpl.deleteWishItem(wishItemsId);
 		}

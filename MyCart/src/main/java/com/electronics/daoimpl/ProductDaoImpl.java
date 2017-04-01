@@ -47,6 +47,7 @@ public class ProductDaoImpl implements ProductDao
 		
 		sessionFactory.getCurrentSession().delete(getProductById(productId));
 	}
+	
 	public String getAllProductsByJson() {
 		List<Product> productList = sessionFactory.getCurrentSession().createQuery("from Product").getResultList();
 		Gson g = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -65,11 +66,25 @@ public class ProductDaoImpl implements ProductDao
 
 	
 
-	
-	
+	public List<Product> getAllProductsBySubCategoryId(int subCategoryId) {
+		List <Product> productList = sessionFactory.getCurrentSession().createQuery("from Product where subCategoryId = "+subCategoryId).getResultList();
+		return productList;
+	}
 
+	public List<Product> getAllProductsByBrandAndCategory(int brandId, int categoryId) 
+	{
+		List <Product> productList = sessionFactory.getCurrentSession().createQuery("from Product where brandId = "+brandId+  "and categoryId="+categoryId).getResultList();
+		return productList;
+		
+	}
+  
+	public List<Product> getAllProductsByBrandAndSubCategory(int brandId, int subCategoryId) 
+	{
+		List <Product> productList = sessionFactory.getCurrentSession().createQuery("from Product where brandId = "+brandId+  "and subCategoryId="+subCategoryId).getResultList();
+		return productList;
+		
+	}
 	
-
 	
 	}
 

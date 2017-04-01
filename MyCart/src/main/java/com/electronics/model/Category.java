@@ -49,8 +49,22 @@ public class Category
 	public void setSubCategory(Set<SubCategory> subCategory) {
 		this.subCategory = subCategory;
 	}
+    
+	
+	/**@OneToMany(mappedBy="category", fetch=FetchType.EAGER)
+	private Set<Brand> brand;
 
 	
+
+	public Set<Brand> getBrand() {
+		return brand;
+	}
+
+	public void setBrand(Set<Brand> brand) {
+		this.brand = brand;
+	}
+
+	**/
 	
 	
 	/**@ManyToOne

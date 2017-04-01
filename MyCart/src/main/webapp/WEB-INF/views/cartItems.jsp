@@ -23,7 +23,6 @@
 		<th>Product Discount Price </th>
 		<th>Product Quantity </th>
 		<th>Product SubTotal </th>
-		<th>Buy Now</th>
 		<th>Checkout</th>
 		<!-- <th>Add To WishList</th>-->
 		<th>View Product</th>
@@ -32,24 +31,25 @@
 
 
 	
-		<tr class="danger" ng-repeat="cartList in myscope | filter:search">
+		<tr class="danger" ng-repeat="cartItemsList in myscope | filter:search">
 		    <%-- <td><var="src" "value="resources/images/products/productImage-${plist.productId}.jpg" height="100px" width="100px" />
 		    <img src="${src}" alt="image not uploaded">
 		    </td>--%>
-		    <td><img src="resources/images/products/productImage-{{cartList.productId}}.jpg" height="100px" width="100px" alt="error"/></td>
+		    <td><img src="resources/images/products/productImage-{{cartItemsList.productId}}.jpg" height="100px" width="100px" alt="error"/></td>
 
-			<td>{{cartList.productName}}</td>
+			<td>{{cartItemsList.productName}}</td>
 			
-			<td>{{cartList.productPrice}}</td>
-			<td>{{cartList.productDiscount}}</td>
-			<td>{{cartList.productQuantity}}</td>
+			<td>{{cartItemsList.productPrice}}</td>
+			<td>{{cartItemsList.productDiscount}}</td>
+			<td>{{cartItemsList.productQuantity}}</td>
 			
-			<td>{{cartList.amount}}</td>
-			  <td><a href="buynowfromcartlist-{{cartList.productId}}">BUY NOW</a></td>
-			<td><a href="checkoutfromcartlist-{{cartList.cartItemsId}}">CHECKOUT</a></td>
+			<td>{{cartItemsList.amount}}</td>
+			
+			 
+			<td><a href="checkoutfromcartitems-{{cartItemsList.cartItemsId}}">CHECKOUT</a></td>
 			<!-- <td><a href="addtowishlist-{{cartList.productId}}">ADD TO WISHLIST</a></td>-->
-			<td><a href="viewproductfromcartlist-{{cartList.productId}}">VIEW</a></td>
-			<td><a href="deletefromcartlist-{{cartList.cartItemsId}}">REMOVE</a></td>
+			<td><a href="viewproduct-{{cartItemsList.productId}}">VIEW</a></td>
+			<td><a href="deletefromcartitems-{{cartItemsList.cartItemsId}}">REMOVE</a></td>
 			</tr>
 
 </table>

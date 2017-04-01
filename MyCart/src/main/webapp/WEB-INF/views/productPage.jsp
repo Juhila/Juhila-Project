@@ -2,15 +2,16 @@
    
 <div class="container paddingg">
  	<div class="text-center">
- 		<a href="category" class="btn btn-danger" role="button">Category Form</a>
-		<a href="subcategory" class="btn btn-danger" role="button">SubCategory Form</a>
-		<a href="product" class="btn btn-danger" role="button">Product Form</a>
-		<a href="brand" class="btn btn-danger" role="button">Brand Form</a>
+ 		<a href="category" class="btn btn-danger" role="button">Manage Category</a>
+		<a href="subcategory" class="btn btn-danger" role="button">Manage SubCategory</a>
+		<a href="brand" class="btn btn-danger" role="button">Manage Brand</a>
+		<a href="product" class="btn btn-danger" role="button">Manage Product</a>
 		
-		<a href="supplier" class="btn btn-danger" role="button">Supplier Form</a>						
+		<a href="supplier" class="btn btn-danger" role="button">Manage Supplier</a>	
+		<a href="user" class="btn btn-danger" role="button">Manage User</a>					
 	</div>
 	
- 		<div class="text-center"><h1>Product Form</h1></div>
+ 		<div class="text-center"><h1>Manage Product</h1></div>
  		
 <br>
 
@@ -200,18 +201,6 @@
 </form:form>
  </div>
 
-<%-- 
-<form:input path="productImage" accept=".jpg,.jpeg,.png" type="file"/>
-
-
-<form:select path="categoryId" items="${categoryList}" itemValue="categoryId" itemLabel="categoryName"/>
-<form:select path="subCategoryId" items="${subCategoryList}" itemValue="subCategoryId" itemLabel="subCategoryName"/>
- <form:select path="brandId" items="${brandList}" itemValue="brandId" itemLabel="brandName"/> 
-<form:select path="supplierId" items="${supplierList}" itemValue="supplierId" itemLabel="supplierName"/>
-<input type="Submit" value="${buttonLabel }">
-<input type="Reset" value="Reset Product">
-
-</form:form>--%>
 
 <br><br>
 <div ng-app="myApp">
@@ -264,8 +253,8 @@
 			<td>{{pList.productStock}}</td>
 			<%--<td>${pList.productCountry}</td>--%>
 			<td>{{pList.productDescription}}</td>
-			<td><a href="editproduct-{{pList.productId}}">EDIT</a></td>
-			<td><a href="deleteproduct-{{pList.productId}}">DELETE</a></td>
+			<td><a href="editproduct-{{pList.productId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="deleteproduct-{{pList.productId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 			<td><a href="viewproduct-{{pList.productId}}">VIEW</a></td>
 		</tr>
 

@@ -51,7 +51,6 @@ public class SupplierController
 			model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
 			//model.addAttribute("supplierList", supplierService.getAllSuppliers());
 		
-			model.addAttribute("buttonLabel", "Retry");
 			return "supplierPage";
 		}
 		supplierService.addSupplier(supplier);

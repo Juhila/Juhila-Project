@@ -56,7 +56,6 @@ public class UserController
 		if(result.hasErrors())
 		{ 
 		
-		model.addAttribute("buttonLabel", "Retry");
 			return "registration";
 		}
 		userService.addUser(user);

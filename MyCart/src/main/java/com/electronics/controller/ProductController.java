@@ -3,6 +3,7 @@ package com.electronics.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -116,8 +117,6 @@ public class ProductController
 			model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
 			model.addAttribute("productListByJson", productService.getAllProductsByJson());
 			
-
-			model.addAttribute("buttonLabel","Retry");
 			return "productPage";
 		}
 		productService.addProduct(product);
@@ -180,12 +179,88 @@ public class ProductController
 	}
 	
 	
-	@RequestMapping("/filter-{categoryId}")
-	public String getProductDisplayPage(@PathVariable("categoryId") int categoryId)
+ 	@RequestMapping("/filterforcategory-{categoryId}")
+	public String getProductDisplayPage(@PathVariable("categoryId") int categoryId, Model model)
 	{
 	   
-		productService.getAllProductsByCategoryId(categoryId);
+		List<Product> productList=productService.getAllProductsByCategoryId(categoryId);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("productList",productList);
+		model.addAttribute("categoryId",categoryId);
+		
+		model.addAttribute("message", 0);
 		return "productDisplay";
 	
 	}
+ 	
+ 	
+ 	@RequestMapping("/filterforsubcategory-{subCategoryId}")
+	public String getProductDisplayPagee(@PathVariable("subCategoryId") int subCategoryId,Model model)
+	{
+	   
+ 		List<Product> productList=productService.getAllProductsBySubCategoryId(subCategoryId);
+		model.addAttribute("productList",productList);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("subCategoryId",subCategoryId);
+		model.addAttribute("message", 1);
+		return "productDisplay";
+	
+	}
+	
+ 	@RequestMapping("/filterforbrand-{brandId}-{categoryId}")
+	public String getProductDisplayPageee(@PathVariable("brandId") int brandId,Model model,@PathVariable("categoryId") int categoryId)
+	{
+	   
+ 		List<Product> productList=productService.getAllProductsByBrandAndCategory(brandId,  categoryId);
+		model.addAttribute("productList",productList);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("categoryId",categoryId);
+		model.addAttribute("brandId",brandId);
+		model.addAttribute("message", 0);
+		return "productDisplay";
+	
+	}
+	
+ 	
+	@RequestMapping("/filterforbrande-{brandId}-{subCategoryId}")
+	public String getProductDisplayPageeee(@PathVariable("brandId") int brandId,Model model,@PathVariable("subCategoryId") int subCategoryId)
+	{
+	   
+ 		List<Product> productList=productService.getAllProductsByBrandAndSubCategory(brandId,  subCategoryId);
+		model.addAttribute("productList",productList);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("subCategoryId",subCategoryId);
+		model.addAttribute("brandId",brandId);
+		model.addAttribute("message", 1);
+		return "productDisplay";
+	
+	}
+	
+	
+	/**@RequestMapping("/filterbyprice-{number}-{categoryId}-{brandId}")
+	public String getProductDisplayPageeeee(@PathVariable("brandId") int brandId,Model model,@PathVariable("categoryId") int categoryId,@PathVariable("number") int number)
+	{
+	   
+ 		List<Product> productList=productService.getAllProductsByPriceAndBrandAndCategory(number, brandId, categoryId);
+		model.addAttribute("productList",productList);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("categoryId",categoryId);
+		model.addAttribute("message", 0);
+		return "productDisplay";
+	
+	}
+	
+	
+	@RequestMapping("/filterbypricee-{number}-{subcategoryId}-{brandId}")
+	public String getProductDisplayPageeeeee(@PathVariable("brandId") int brandId,Model model,@PathVariable("subCategoryId") int subCategoryId,@PathVariable("number") int number)
+	{
+	   
+ 		List<Product> productList=productService.getAllProductsByPriceAndBrandAndSubCategory(number,brandId, subCategoryId);
+		model.addAttribute("productList",productList);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("subCategoryId",subCategoryId);
+		model.addAttribute("message", 1);
+		return "productDisplay";
+	
+	}**/
 }

@@ -30,21 +30,34 @@ import com.google.gson.annotations.Expose;
 		//@Column(unique=true)
 		private String brandName;
 		
-
-	/**@OneToMany(mappedBy="brand",fetch=FetchType.EAGER)
-		Set<Category> category;
 		
 		
+	/**	@ManyToOne
+		@JoinColumn(name="brandId", updatable=false, insertable=false, nullable=false)
+		private Category category;
 		
-		public Set<Category> getCategory() {
+		public Category getCategory() {
 			return category;
 		}
-		public void setCategory(Set<Category> category) {
+		public void setCategory(Category category) {
 			this.category = category;
 		
 		}
-		**/
-		/**@OneToMany(mappedBy="brand",fetch=FetchType.EAGER)
+		
+		
+		@ManyToOne
+		@JoinColumn(name="brandId", updatable=false, insertable=false, nullable=false)
+		private SubCategory subCategory;
+		
+		public SubCategory getSubCategory() {
+			return subCategory;
+		}
+		public void setSubCategory(SubCategory subCategory) {
+			this.subCategory = subCategory;
+		
+		}
+
+		@OneToMany(mappedBy="brand",fetch=FetchType.EAGER)
 		Set<Product>products;
 		
 		public Set<Product> getProducts() {

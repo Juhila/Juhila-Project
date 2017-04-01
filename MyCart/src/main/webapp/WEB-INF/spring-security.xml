@@ -70,12 +70,18 @@
 
 		  
             
-            <intercept-url pattern="/buyNow-{productId}" access="hasRole('ROLE_USER')"/>
-						<intercept-url pattern="/AddToCart-{productId}" access="hasRole('ROLE_USER')"/>
-						<intercept-url pattern="/wishlist-{productId}" access="hasRole('ROLE_USER')"/>
-						<intercept-url pattern="/buyNowList-{productId}" access="hasRole('ROLE_USER')"/>
-						<intercept-url pattern="/checkout" access="hasRole('ROLE_USER')"/>
-						<intercept-url pattern="/cartList" access="hasRole('ROLE_USER')"/>
+            <intercept-url pattern="/buyNow-{productId}" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/addtocartitems-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/wishitems" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/addtowishitems-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+						
+						<intercept-url pattern="/deletefromwishitems-{wishItemsId}" access="hasRole('ROLE_CUSTOMER')"/>
+						
+						<intercept-url pattern="/buyNowList-{productId}" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/checkoutfromcartitems-{cartItemsId}" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/deletefromcartitems-{cartItemsId}" access="hasRole('ROLE_CUSTOMER')"/>
+						
+						<intercept-url pattern="/cartitems" access="hasRole('ROLE_CUSTOMER')"/>
 						
 					
 		  <intercept-url pattern="/**" access="isAuthenticated()" />

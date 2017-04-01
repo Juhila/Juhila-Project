@@ -39,7 +39,6 @@ public class CategoryController
 	{
 		if(result.hasErrors())
 		{
-			model.addAttribute("buttonLabel","Retry");
 			
 			//model.addAttribute("categoryList", categoryService.getAllCategories());
 			model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());

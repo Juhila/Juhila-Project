@@ -13,4 +13,7 @@ public interface ProductDao
 	public void deleteProduct(int productId);
 	
 	public List<Product> getAllProductsByCategoryId(int categoryId);
-}
+	public List<Product> getAllProductsBySubCategoryId(int subCategoryId);
+	public List<Product> getAllProductsByBrandAndCategory(int brandId, int categoryId) ;
+	public List<Product> getAllProductsByBrandAndSubCategory(int brandId, int subCategoryId) ;
+	}

@@ -50,7 +50,6 @@ public class SubCategoryController
 			model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
 			model.addAttribute("subCategoryListByJson", subCategoryService.getAllSubCategoriesByJson());
 			
-		model.addAttribute("buttonLabel","Retry");
 			return "subCategoryPage";
 		}
 		subCategoryService.addSubCategory(subCategory);

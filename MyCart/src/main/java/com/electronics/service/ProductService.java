@@ -45,6 +45,27 @@ import com.electronics.model.Product;
 		{
 			return productDaoImpl.getAllProductsByCategoryId(categoryId);
 		}
+		
+		
+		public List<Product> getAllProductsBySubCategoryId(int subCategoryId)
+		{
+			return productDaoImpl.getAllProductsBySubCategoryId(subCategoryId);
+		}
+		
+		
+		public List<Product> getAllProductsByBrandAndCategory(int brandId, int categoryId)
+		{
+		return productDaoImpl.getAllProductsByBrandAndCategory(brandId,  categoryId);
+				
+			
+				}
+		
+		public List<Product> getAllProductsByBrandAndSubCategory(int brandId, int subCategoryId)
+		{
+		return productDaoImpl.getAllProductsByBrandAndSubCategory(brandId,  subCategoryId);
+				
+			
+				}
 		}
 	
 	

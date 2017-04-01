@@ -1,38 +1,22 @@
    
 <%@include file="header.jsp" %>
 
-<%-- <form:form modelAttribute="category" action="addcategory">
-<form:input path="categoryId" type="text" hidden="true" />
-<form:input path="categoryName" placeholder="Add category Name" />
-<form:errors path="categoryName" />
-<form:input path="categoryDescription" placeholder="Add category Description" />
-<form:errors path="categoryDescription" />
-<input type="Submit" value="Add Category">
-
-</form:form>--%>
-
-<%--<div class="container">
- 	<div class="text-center">
- 		<a href="category" class="btn btn-info" role="button">Category Form Page</a>
-		<a href="subcategory" class="btn btn-info" role="button">SubCategory Form Page</a>
-		<a href="product" class="btn btn-info" role="button">Product Form Page</a>
-		<a href="supplier" class="btn btn-info" role="button">Supplier Form Page</a>						
-	</div>--%>
 	
 <div class="container paddingg">
  	<div class="text-center">
- 		<a href="category" class="btn btn-danger" role="button">Category Form</a>
-		<a href="subcategory" class="btn btn-danger" role="button">SubCategory Form</a>
-		<a href="product" class="btn btn-danger" role="button">Product Form</a>
-		<a href="brand" class="btn btn-danger" role="button">Brand Form</a>
+ 		<a href="category" class="btn btn-danger" role="button">Manage Category</a>
+		<a href="subcategory" class="btn btn-danger" role="button">Manage SubCategory</a>
+		<a href="brand" class="btn btn-danger" role="button">Manage Brand</a>
+		<a href="product" class="btn btn-danger" role="button">Manage Product</a>
 		
-		<a href="supplier" class="btn btn-danger" role="button">Supplier Form</a>						
+		<a href="supplier" class="btn btn-danger" role="button">Manage Supplier</a>	
+		<a href="user" class="btn btn-danger" role="button">Manage User</a>					
 	</div>
 	
 		
 		
 <div class="text-center">
- 		<h1>Category Form</h1>
+ 		<h1>Manage Category</h1>
  	</div>
  	<br>
  	
@@ -125,8 +109,8 @@
 			<td>{{cList.categoryName}}</td>
 			<td>{{cList.categoryDescription}}</td>
 			<%--<td>{{cList.brand.brandName}}</td>--%>
-			<td><a href="editcategory-{{cList.categoryId}}">EDIT</a></td>
-			<td><a href="deletecategory-{{cList.categoryId}}">DELETE</a></td>
+			<td><a href="editcategory-{{cList.categoryId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="deletecategory-{{cList.categoryId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 		</tr>
 
 </table>

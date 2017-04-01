@@ -53,8 +53,8 @@ public class SubCategory
 	public void setBrand(Set<Brand> brand) {
 		this.brand = brand;
 	}
-   **/
-	
+   
+	**/
 	
     public int getCategoryId() {
 		return categoryId;

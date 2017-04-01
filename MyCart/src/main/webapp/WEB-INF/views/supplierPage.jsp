@@ -22,56 +22,22 @@
 
 <div class="container paddingg">
  	<div class="text-center">
- 		<a href="category" class="btn btn-danger" role="button">Category Form</a>
-		<a href="subcategory" class="btn btn-danger" role="button">SubCategory Form</a>
-		<a href="product" class="btn btn-danger" role="button">Product Form</a>
-		<a href="brand" class="btn btn-danger" role="button">Brand Form</a>
+ 		<a href="category" class="btn btn-danger" role="button">Manage Category</a>
+		<a href="subcategory" class="btn btn-danger" role="button">Manage SubCategory</a>
+		<a href="brand" class="btn btn-danger" role="button">Manage Brand</a>
+		<a href="product" class="btn btn-danger" role="button">Manage Product</a>
 		
-		<a href="supplier" class="btn btn-danger" role="button">Supplier Form</a>						
+		<a href="supplier" class="btn btn-danger" role="button">Manage Supplier</a>	
+		<a href="user" class="btn btn-danger" role="button">Manage User</a>					
 	</div>
 	
 	
  		
 
- 		<div class="text-center"><h1>Supplier Form</h1></div>
+ 		<div class="text-center"><h1>Manage Supplier</h1></div>
  		
 
 <br>
-<%-- 
-<form:form modelAttribute="supplier" action="addsupplier">
-
-<form:input path="supplierId"  hidden="true" />
-
-<form:input path="supplierName" placeholder="Add Full Name" />
-<form:errors path="supplierName" />
-
-
-<form:input path="supplierFirmName" placeholder="Add Firm Name" />
-<form:errors path="supplierFirmName" />
-
-
-<form:input path="supplierEmail" placeholder="Add Email" />
-<form:errors path="supplierEmail" />
-
-<form:input path="supplierContact" placeholder="Add Mob. No." />
-<form:errors path="supplierContact" />
-
-<form:input path="supplierStreet" placeholder="Add Street" />
-
-<form:input path="supplierCity" placeholder="Add City" />
-
-<form:input path="supplierState" placeholder="Add State" />
-
-<form:input path="supplierCountry" placeholder="Add Country" />
-<form:errors path="supplierCountry" />
-
-<!--form:input path="isSupplierEnabled" placeholder="Enabled(yes/no)" />-->
-
-<input type="Submit" value="${buttonLabel}">
-<input type="Reset" value="Reset Supplier">
-
-</form:form>--%>
-
  <div class="form">
 <form:form modelAttribute="supplier" action="addsupplier">
 <form:input path="supplierId"  hidden="true" />
@@ -253,8 +219,9 @@
 			<td>{{spList.supplierState}}</td>
 			<td>{{spList.supplierCountry}}</td>
 			
-			<td><a href="editsupplier-{{spList.supplierId}}">EDIT</a></td>
-			<td><a href="deletesupplier-{{spList.supplierId}}">DELETE</a></td>
+			<td><a href="editsupplier-{{spList.supplierId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i>
+			</a></td>
+			<td><a href="deletesupplier-{{spList.supplierId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></i></a></td>
 			 <td><a href="enablesupplier-{{spList.supplierId}}"><div ng-if="spList.enabled == true">
             <i class="fa fa-toggle-on largetxt" title="Disable"></i>
             </div>

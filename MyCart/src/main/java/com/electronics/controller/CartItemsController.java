@@ -35,7 +35,7 @@ public class CartItemsController
 		@Autowired
 		private ProductService productService;
 		
-		@RequestMapping("/cartlist")
+		@RequestMapping("/cartitems")
 		public String getCartItemsPage(Authentication auth,Model model)
 		{
 			if(auth!=null)
@@ -52,8 +52,8 @@ public class CartItemsController
 			}
 		}
 		
-		@RequestMapping("/addtocartlist-{productId}-{quantity}")
-		public String addToCart(@PathVariable("productId")int productId, @PathVariable("quantity")int quantity,Authentication auth, Model model,@ModelAttribute("cartItems") CartItems cartItems)
+		@RequestMapping("/addtocartitems-{productId}-{quantity}")
+		public String addToCartItems(@PathVariable("productId")int productId, @PathVariable("quantity")int quantity,Authentication auth, Model model,@ModelAttribute("cartItems") CartItems cartItems)
 		{
 			Product product = productService.getProductById(productId);
 			int stock=product.getProductStock();
@@ -90,7 +90,7 @@ public class CartItemsController
 			cartItemsService.addCartItem(cartItems);
 			
 			model.addAttribute("message", "Item is Successfully Added To Cart");
-			return "redirect:/cart";
+			return "redirect:/cartitems";
 			}
 			
 			else
@@ -111,14 +111,14 @@ public class CartItemsController
 			
 		}
 		
-		@RequestMapping("/deletefromcartlist-{cartItemsId}")
-		public String deleteFromCart(@PathVariable("cartItemsId")int cartItemsId,Authentication auth, Model model)
+		@RequestMapping("/deletefromcartitems-{cartItemsId}")
+		public String deleteFromCartItems(@PathVariable("cartItemsId")int cartItemsId,Authentication auth, Model model)
 		{
 			if(auth!=null)
 			{
 				cartItemsService.deleteCartItem(cartItemsId);
 				model.addAttribute("message", "Item is successfully Removed From Cart");
-				return "redirect:/cart";
+				return "redirect:/cartitems";
 			}
 			else
 			{
@@ -128,8 +128,8 @@ public class CartItemsController
 		}
 		
 		
-	@RequestMapping("/checkoutfromcartlist-{cartItemsId}")
-		public String checkoutFromCart(@PathVariable("cartItemsId")int cartItemsId,Authentication auth, Model model)
+	@RequestMapping("/checkoutfromcartitems-{cartItemsId}")
+		public String checkoutFromCartItems(@PathVariable("cartItemsId")int cartItemsId,Authentication auth, Model model)
 		{
 			if(auth!=null)
 			{
@@ -149,11 +149,11 @@ public class CartItemsController
 				item.setFlag(true);
 				
 				cartItemsService.addCartItem(item);
-				return "redirect:/cart";
+				return "redirect:/checkout";
 				}
 				
 				
-				return "redirect:/cart";
+				return "redirect:/cartitems";
 				}
 				
 	

@@ -52,8 +52,6 @@ public class BrandController
 			//model.addAttribute("brandList", brandService.getAllBrands());
 			model.addAttribute("brandListByJson", brandService.getAllBrandsByJson());
 			
-
-			model.addAttribute("buttonLabel","Retry");
 			return "brandPage";
 		}
 		brandService.addBrand(brand);
