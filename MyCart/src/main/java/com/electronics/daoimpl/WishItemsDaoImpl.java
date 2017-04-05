@@ -50,6 +50,13 @@ public class WishItemsDaoImpl implements WishItemsDao
 	}
 
 
+	public WishItems findWishItemId(int productId, int userId) {
+		List<WishItems> wishList = sessionFactory.getCurrentSession().createQuery("from WishItems where productId="+productId+ "and userId="+userId).getResultList();
+		WishItems wishItems = wishList.get(0);
+	
+		return wishItems;
+	}
+
 	
 
 	

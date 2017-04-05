@@ -253,9 +253,9 @@
 			<td>{{pList.productStock}}</td>
 			<%--<td>${pList.productCountry}</td>--%>
 			<td>{{pList.productDescription}}</td>
-			<td><a href="editproduct-{{pList.productId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
-			<td><a href="deleteproduct-{{pList.productId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
-			<td><a href="viewproduct-{{pList.productId}}">VIEW</a></td>
+			<td><a href="editproduct-{{pList.productId}}" class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="deleteproduct-{{pList.productId}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
+			 <td><a href="viewproduct-{{pList.productId}}">VIEW</a></td>
 		</tr>
 
 </table>

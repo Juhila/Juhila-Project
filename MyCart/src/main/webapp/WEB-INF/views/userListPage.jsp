@@ -12,7 +12,7 @@
 		<a href="user" class="btn btn-danger" role="button">Manage User</a>					
 	</div>
 
- <div class="text-center pad"><h1>Manage Customer</h1></div>
+ <div class="text-center"><h1>Manage User</h1></div>
  
  <br> 
  
@@ -153,7 +153,7 @@
 			<td>{{userList.userContact}}</td>
 			<td>{{userList.role}}</td>
 			
-			<td><a href="edituser-{{userList.userId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="edituser-{{userList.userId}}" class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
 			
 			 <td><a href="enableuser-{{userList.userId}}"><div ng-if="userList.enabled == true">
             <i class="fa fa-toggle-on largetxt" title="Disable"></i>

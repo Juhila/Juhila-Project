@@ -219,9 +219,9 @@
 			<td>{{spList.supplierState}}</td>
 			<td>{{spList.supplierCountry}}</td>
 			
-			<td><a href="editsupplier-{{spList.supplierId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i>
+			<td><a href="editsupplier-{{spList.supplierId}}" class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i>
 			</a></td>
-			<td><a href="deletesupplier-{{spList.supplierId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></i></a></td>
+			<td><a href="deletesupplier-{{spList.supplierId}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></i></a></td>
 			 <td><a href="enablesupplier-{{spList.supplierId}}"><div ng-if="spList.enabled == true">
             <i class="fa fa-toggle-on largetxt" title="Disable"></i>
             </div>

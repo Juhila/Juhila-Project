@@ -117,6 +117,8 @@ public class ProductController
 			model.addAttribute("supplierListByJson", supplierService.getAllSuppliersByJson());
 			model.addAttribute("productListByJson", productService.getAllProductsByJson());
 			
+			model.addAttribute("buttonLabel","Add Product");
+
 			return "productPage";
 		}
 		productService.addProduct(product);
@@ -169,12 +171,20 @@ public class ProductController
 	{
 		Product product = productService.getProductById(productId);
 		
+		int price=product.getProductPrice();
+		int discprice=product.getProductDiscountPrice();
+		
+		double amt=price-(price*discprice/100);
 		
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		 String productData=gson.toJson(product);
 		
 		model.addAttribute("viewProductByJson", productData);
+		model.addAttribute("discprice",amt);
 		
+		
+		if(discprice!=0)
+			model.addAttribute("message",0);
 		return "viewproduct";
 	}
 	
@@ -237,11 +247,11 @@ public class ProductController
 	}
 	
 	
-	/**@RequestMapping("/filterbyprice-{number}-{categoryId}-{brandId}")
-	public String getProductDisplayPageeeee(@PathVariable("brandId") int brandId,Model model,@PathVariable("categoryId") int categoryId,@PathVariable("number") int number)
+	@RequestMapping("/filterbyprice-{number}-{categoryId}")
+	public String getProductDisplayPageeeee(Model model,@PathVariable("categoryId") int categoryId,@PathVariable("number") int number)
 	{
 	   
- 		List<Product> productList=productService.getAllProductsByPriceAndBrandAndCategory(number, brandId, categoryId);
+ 		List<Product> productList=productService.getAllProductsByPriceAndCategory(number, categoryId);
 		model.addAttribute("productList",productList);
 		model.addAttribute("brandList", brandService.getAllBrands());
 		model.addAttribute("categoryId",categoryId);
@@ -250,17 +260,47 @@ public class ProductController
 	
 	}
 	
-	
-	@RequestMapping("/filterbypricee-{number}-{subcategoryId}-{brandId}")
-	public String getProductDisplayPageeeeee(@PathVariable("brandId") int brandId,Model model,@PathVariable("subCategoryId") int subCategoryId,@PathVariable("number") int number)
+	@RequestMapping("/filterbypricee-{number}-{subCategoryId}")
+	public String getProductDisplayPageeeeee(Model model,@PathVariable("subCategoryId") int subCategoryId,@PathVariable("number") int number)
 	{
 	   
- 		List<Product> productList=productService.getAllProductsByPriceAndBrandAndSubCategory(number,brandId, subCategoryId);
+ 		List<Product> productList=productService.getAllProductsByPriceAndCategory(number, subCategoryId);
 		model.addAttribute("productList",productList);
 		model.addAttribute("brandList", brandService.getAllBrands());
 		model.addAttribute("subCategoryId",subCategoryId);
 		model.addAttribute("message", 1);
 		return "productDisplay";
 	
-	}**/
+	}
+	
+	
+	
+	@RequestMapping("/filterbydiscountprice-{number}-{categoryId}")
+	public String getProductDisplayPageeeeeee(Model model,@PathVariable("categoryId") int categoryId,@PathVariable("number") int number)
+	{
+	   
+ 		List<Product> productList=productService.getAllProductsByDiscountPriceAndCategory(number, categoryId);
+		model.addAttribute("productList",productList);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("categoryId",categoryId);
+		model.addAttribute("message", 0);
+		return "productDisplay";
+	
+	}
+	
+	@RequestMapping("/filterbydiscountpricee-{number}-{subcategoryId}")
+	public String getProductDisplayPageeeeeeee(Model model,@PathVariable("subCategoryId") int subCategoryId,@PathVariable("number") int number)
+	{
+		model.addAttribute("messagee", "HHHHHHHHHHHHHHHH");
+ 		List<Product> productList=productService.getAllProductsByDiscountPriceAndSubCategory(number, subCategoryId);
+		model.addAttribute("productList",productList);
+		model.addAttribute("brandList", brandService.getAllBrands());
+		model.addAttribute("subCategoryId",subCategoryId);
+		model.addAttribute("message", 1);
+		return "productDisplay";
+	
+	}
+	
+	
+	
 }

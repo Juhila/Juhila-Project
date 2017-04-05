@@ -1,6 +1,6 @@
 <%@ include file="header.jsp" %>
 
-<div id="myCarousel"  class="carousel slide " data-ride="carousel">
+<div id="myCarousel"  class=" a carousel slide " data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -37,185 +37,106 @@
   <hr><hr>
   <BR>
   
+  <div class="container">
+ 
   <h1 style="color:red">LATEST TELEVISIONS</h1>
-  
+   
   <%--Browsing for products--%>
   
-  <div class="responsive">
+  
+    <c:forEach items="${pList}" var="p">
+    <div class="responsive">
   <div class="gallery">
-    <a href="#" target="_self">
-      <img src="resources/images/a.jpeg" alt="Trolltunga Norway" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Forest" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Northern Lights" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Mountains" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
  
-<hr><hr>
-  <br><br>
+  
+      <a target="_self" href="viewproduct-${p.productId}">
+      <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
+   </a>
+    <div class="desc">${p.productName}<br>
+    Rs.${p.productPrice}
+   </div>
+      
+  </div>
+ </div>
+  </c:forEach> 
+
+
+  
+  
+ 
   <h1 style="color:red">LEAST PRICE MOBILES</h1>
   </h1>
   
-  
-  
+   <c:forEach items="${pLists}" var="p">
   <div class="responsive">
   <div class="gallery">
-    <a target="_self" href="#">
+  
+ 
+     <a target="_self" href="viewproduct-${p.productId}">
+      <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
+   </a>
+    <div class="desc">${p.productName}<br>
+    Rs.${p.productPrice}
+   </div>
     
-      <img src="resources/images/a.jpeg" alt="Trolltunga Norway" width="300" height="200">
-    </a>
-    <div class="desc">Add a description of the image here</div>
   </div>
-</div>
+ </div> 
+  </c:forEach> 
 
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Forest" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Northern Lights" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Mountains" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-
-  <br><br>
+  
+  
+  
+  
   <h1 style="color:red">BEST DISCOUNTS ON  REFRIGERATORS</h1>
   
-  
-  
+   <c:forEach items="${pListss}" var="p">
   <div class="responsive">
   <div class="gallery">
-    <a target="_self" href="#">
+  
+  
+     <a target="_self" href="viewproduct-${p.productId}">
+      <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
+   </a>
+     <div class="desc">${p.productName}<br>
+    Rs.${p.productPrice}<br>
     
-      <img src="resources/images/a.jpeg" alt="Trolltunga Norway" width="300" height="200">
-    </a>
-    <div class="desc">Add a description of the image here</div>
+    <c:if test="${p.productDiscountPrice!=0}">
+    ${p.productDiscountPrice}% OFF
+    </c:if>
+    
+     <c:if test="${p.productDiscountPrice==0}">
+    &nbsp&nbsp&nbsp
+    </c:if>
+   </div>
+    
   </div>
-</div>
+ </div>  
+  </c:forEach>  
 
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Forest" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Northern Lights" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Mountains" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-
-<hr><hr>
-  <br><br>
+  
   <h1 style="color:red">SUMMER COOL AIRCONDITIONERS</h1>
-  
-  
-  
+ 
+ 
+  <c:forEach items="${pListsss}" var="p"> 
   <div class="responsive">
+  
   <div class="gallery">
-    <a target="_self" href="#">
-    
-      <img src="resources/images/a.jpeg" alt="Trolltunga Norway" width="300" height="200">
-    </a>
-    <div class="desc">Add a description of the image here</div>
+  
+  
+     <a target="_self" href="viewproduct-${p.productId}">
+      <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
+   </a>
+     <div class="desc">${p.productName}<br>
+    Rs.${p.productPrice}
+   </div>
+     
   </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Forest" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Northern Lights" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_self" href="#">
-      <img src="resources/images/a.jpeg" alt="Mountains" width="600" height="400">
-    </a>
-    <div class="desc">Add a description of the image here</div>
-  </div>
-</div>
+  </div> 
+  </c:forEach>
 
   
-
-  
-
-  
+  </div>
+ 
 
 <%@ include file="footer.jsp" %>

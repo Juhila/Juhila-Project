@@ -3,6 +3,8 @@ package com.electronics.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.tools.ant.taskdefs.condition.Http;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.electronics.model.Product;
 import com.electronics.service.BrandService;
 import com.electronics.service.CategoryService;
 import com.electronics.service.ProductService;
@@ -35,37 +38,27 @@ public class HomeController
 	
 	
 		@RequestMapping(value={"/","home"})
-		   public String getHome()
+		   public String getHome(Model model)
 		   {
 			
-		    // model.addAttribute("categoryList", categoryService.getAllCategories());
-			//model.addAttribute("subCategoryList", subCategoryService.getAllSubCategories());
+			List<Product> productList=productService.getAllTVProducts();
+			model.addAttribute("pList",productList);
+            
+			List<Product> productLists=productService.getAllMobileProducts();
+			model.addAttribute("pLists",productLists);
+            
+			List<Product> productListss=productService.getAllRefrigeratorProducts();
+			model.addAttribute("pListss",productListss);
+            
+			List<Product> productListsss=productService.getAllACProducts();
+			model.addAttribute("pListsss",productListsss);
+             
 			
-			//model.addAttribute("productList", productService.getAllProducts());
-			//model.addAttribute("brandList", brandService.getAllBrands());
 			return "home";
 				
-		}
+		   }
 		
-	   
 	
-	
-	/**
-
-		@RequestMapping(value={"/","home"})
-		   public String getHome(HttpSession session)
-		   {
-			
-		     session.setAttribute("categoryList", categoryService.getAllCategories());
-			session.setAttribute("subCategoryList", subCategoryService.getAllSubCategories());
-			
-			session.setAttribute("productList", productService.getAllProducts());
-			session.setAttribute("brandList", brandService.getAllBrands());
-			
-		    return "home";
-		}
-		
-		**/
 		
 		@RequestMapping("/404")
 		   public String get404Page()

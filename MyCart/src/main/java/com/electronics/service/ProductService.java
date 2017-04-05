@@ -66,7 +66,64 @@ import com.electronics.model.Product;
 				
 			
 				}
+		
+		
+		public List<Product>getAllProductsByPriceAndCategory(int number, int categoryId)
+		{
+			return productDaoImpl.getAllProductsByPriceAndCategory(number,  categoryId);
 		}
 	
-	
+		
+		public List<Product>getAllProductsByPriceAndSubCategory(int number, int subCategoryId)
+		{
+			return productDaoImpl.getAllProductsByPriceAndSubCategory(number,  subCategoryId);
+		}
+		
+		public List<Product>getAllProductsByDiscountPriceAndCategory(int number, int categoryId)
+		{
+			
+			return productDaoImpl.getAllProductsByDiscountPriceAndCategory(number,  categoryId);
+		}
+		
+		public List<Product>getAllProductsByDiscountPriceAndSubCategory(int number, int subCategoryId)
+		{
+			return productDaoImpl.getAllProductsByDiscountPriceAndSubCategory(number,  subCategoryId);
+		}
+		
+		
+		
+		
+		public List<Product> getAllTVProducts()
+		{
+		return productDaoImpl.getAllTVProducts();
+				
+			
+		}
+		
+		
+		public List<Product> getAllMobileProducts()
+		{
+		return productDaoImpl.getAllMobileProducts();
+				
+			
+		}
+		
+		public List<Product> getAllRefrigeratorProducts()
+		{
+		return productDaoImpl.getAllRefrigeratorProducts();
+				
+			
+		}
+		
+		
+		public List<Product> getAllACProducts()
+		{
+		return productDaoImpl.getAllACProducts();
+				
+			
+		}
+		
+		
+		
+	}
 

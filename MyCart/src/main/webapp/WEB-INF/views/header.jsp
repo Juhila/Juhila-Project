@@ -102,7 +102,25 @@
 
 
         <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <li><a class="colorr" href="category"><span class="glyphicon glyphicon-home colorr"></span>Admin</a></li>
+                    <li class="dropdown">
+            	<a href="#" class="dropdown-toggle colorr" data-toggle="dropdown"><span class="glyphicon glyphicon-home colorr"></span>Admin<span class="caret"></span></a>
+            	<ul class="dropdown-menu">
+          			<li><a href="category">Manage Category</a></li>
+                    <li class="divider"></li>
+          			<li><a href="subcategory">Manage SubCategory</a></li>
+                    <li class="divider"></li>
+          			<li><a href="brand">Manage Brand</a></li>
+                    <li class="divider"></li>
+                    <li><a href="product">Manage Product</a></li>
+                    <li class="divider"></li>
+                    <li><a href="supplier">Manage Supplier</a></li>
+        		     <li class="dropdown"></li>
+        		    <li><a href="user">Manage User</a></li>
+        		</ul>    
+            </li>
+        
+        
+    <!--      <li><a class="colorr" href="category"><span class="glyphicon glyphicon-home colorr"></span>Admin</a></li>-->
          </sec:authorize>
          
           
@@ -116,9 +134,24 @@
         <li><a class="colorr" href="login"><span class="glyphicon glyphicon-log-in colorr"></span> Login</a></li>
         </c:if>
          
+        
          <sec:authorize access="hasRole('ROLE_CUSTOMER')">
-  <li><a class="colorr" href="cartitems"><span class="glyphicon glyphicon-shopping-cart colorr"></span> My Cart</a></li>
-    </sec:authorize>
+         
+          <li class="dropdown">
+            	<a href="#" class="dropdown-toggle colorr" data-toggle="dropdown"><span class="glyphicon glyphicon-user colorr"></span>My Profile<span class="caret"></span></a>
+            	<ul class="dropdown-menu">
+          			<li><a href="wishitems">My Wishlist</a></li>
+                    <li class="divider"></li>
+          			<li><a href="cartitems">My CartList</a></li>
+                    <li class="divider"></li>
+          			<li><a href="#">My OrderSummary</a></li>
+                    <li class="divider"></li>
+                    
+        		</ul>    
+            </li>
+    <!--   <li><a class="colorr" href="cartitems"><span class="glyphicon glyphicon-user colorr"></span> My Profile</a></li-->
+      
+      </sec:authorize>
     
          <c:if test="${pageContext.request.userPrincipal.name != null}">  
         <li><a class="colorr" href="perform_logout"><span class="glyphicon glyphicon-log-out colorr"></span> Logout</a></li>

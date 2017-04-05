@@ -37,6 +37,12 @@ public class WishItemsService
 			wishItemsDaoImpl.deleteWishItem(wishItemsId);
 		}
 		
+		
+		public WishItems findWishItemId(int productId, int userId)
+		{
+			return wishItemsDaoImpl.findWishItemId(productId, userId);
+		}
+		
 	}
 	
 

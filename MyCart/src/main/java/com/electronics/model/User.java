@@ -1,13 +1,16 @@
 package com.electronics.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -59,6 +62,13 @@ public class User implements Serializable
 	@Pattern(regexp="^$|[0-9]{10}", message="Please enter 10 digit mob. no.")
 	private String userContact;
 	
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	private Set<BillingAddress> billingAddress;
+    
+	
+	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
+	private Set<ShippingAddress> shippingAddress;
+
 		
 	public void setUserContact(String userContact) {
 		this.userContact = userContact;

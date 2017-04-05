@@ -35,6 +35,12 @@ public class CartItemsService
 			cartItemsDaoImpl.deleteCartItem(cartItemsId);
 		}
 		
+		public CartItems findCartItemId(int productId, int userId)
+		{
+			return cartItemsDaoImpl.findCartItemId(productId, userId);
+		}
+		
+		
 	}
 	
 

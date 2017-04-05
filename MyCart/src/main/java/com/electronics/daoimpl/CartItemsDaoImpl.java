@@ -47,6 +47,18 @@ public class CartItemsDaoImpl implements CartItemsDao
 		sessionFactory.getCurrentSession().delete(cartItem);
 	}
 
+
+	public CartItems findCartItemId(int productId, int userId)
+	{
+		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where productId="+productId+ "and userId="+userId).getResultList();
+		CartItems cartItems = cartList.get(0);
+	
+		return cartItems;
+	}
+	}
+
+
+	
 	
 
-}
+

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.electronics.model.Supplier;
 import com.electronics.model.User;
@@ -55,7 +56,7 @@ public class UserController
 	{   
 		if(result.hasErrors())
 		{ 
-		
+			model.addAttribute("buttonLabel", "Register");
 			return "registration";
 		}
 		userService.addUser(user);
@@ -72,7 +73,7 @@ public class UserController
 		{ 
 			model.addAttribute("userListByJson", userService.getAllUsersByJson());
 			
-		model.addAttribute("buttonLabel", "Retry");
+		model.addAttribute("buttonLabel", "Add User");
 			return "userListPage";
 		}
 		userService.addUser(user);
@@ -115,10 +116,13 @@ public class UserController
 	}
 	
 	@RequestMapping(value="/login")
-	public String loginPage()
+	public String loginPage(Model model)
 	{
+		model.addAttribute("msg",0);
+		
 		return "login";
 	}
 	
-
+	
+	
 }

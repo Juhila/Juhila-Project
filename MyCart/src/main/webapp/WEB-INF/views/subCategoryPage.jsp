@@ -88,8 +88,8 @@
 		    <td>{{scList.subCategoryId}}</td>
 			<td>{{scList.subCategoryName}}</td>
 			<td>{{scList.category.categoryName}}</td>
-			<td><a href="editsubcategory-{{scList.subCategoryId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
-			<td><a href="deletesubcategory-{{scList.subCategoryId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
+			<td><a href="editsubcategory-{{scList.subCategoryId}}" class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="deletesubcategory-{{scList.subCategoryId}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 		</tr>
 
 </table>

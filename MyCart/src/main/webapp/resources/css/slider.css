@@ -2,8 +2,9 @@
 
 b {
     font-family: 'Quicksand', sans-serif;
-   
+    
 }
+
 
 .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
@@ -11,10 +12,12 @@ b {
       margin: auto;
       max-height:300px;
       padding-top:40px;
+    
   }
 
  .carousel-indicators {
   bottom: 0;
+   
 }
 
 
@@ -29,6 +32,7 @@ b {
     -webkit-border-radius: 23px;
     -moz-border-radius: 23px;
     border-radius: 53px;
+    
 }
 .carousel-control .glyphicon-chevron-right{
     right: 50%;
@@ -41,6 +45,7 @@ b {
     -webkit-border-radius: 23px;
     -moz-border-radius: 23px;
     border-radius: 53px;
+    
 }
 
 

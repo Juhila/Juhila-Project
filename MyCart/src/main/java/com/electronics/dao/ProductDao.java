@@ -16,4 +16,15 @@ public interface ProductDao
 	public List<Product> getAllProductsBySubCategoryId(int subCategoryId);
 	public List<Product> getAllProductsByBrandAndCategory(int brandId, int categoryId) ;
 	public List<Product> getAllProductsByBrandAndSubCategory(int brandId, int subCategoryId) ;
-	}
+	
+	public List<Product>getAllProductsByPriceAndCategory(int number, int categoryId);
+	public List<Product>getAllProductsByPriceAndSubCategory(int number, int subCategoryId);
+	public List<Product>getAllProductsByDiscountPriceAndCategory(int number, int categoryId);
+	public List<Product>getAllProductsByDiscountPriceAndSubCategory(int number, int subCategoryId);
+	
+	
+	public List<Product> getAllTVProducts();
+	public List<Product> getAllMobileProducts();
+	public List<Product> getAllRefrigeratorProducts();
+	public List<Product> getAllACProducts();
+}

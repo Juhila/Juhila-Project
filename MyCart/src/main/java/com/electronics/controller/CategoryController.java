@@ -42,6 +42,7 @@ public class CategoryController
 			
 			//model.addAttribute("categoryList", categoryService.getAllCategories());
 			model.addAttribute("categoryListByJson", categoryService.getAllCategoriesByJson());
+			model.addAttribute("buttonLabel","Add Category");
 			return "categoryPage";
 		}
 		categoryService.addCategory(category);

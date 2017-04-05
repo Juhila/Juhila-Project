@@ -34,8 +34,7 @@ public class WishItemsController
 	@RequestMapping("/wishitems")
 	public String getWishItemsPage(Authentication auth,Model model)
 	{
-		
-		model.addAttribute("H", "HELLLOOOOO");
+		//System.out.println("HELOOOOOOOOOOOOO");
 		if(auth!=null)
 		{
 		User user= userService.getUserByUserName(auth.getName());	
@@ -54,17 +53,43 @@ public class WishItemsController
 	public String addToWishItems(@PathVariable("productId")int productId, @PathVariable("quantity")int quantity,Authentication auth, Model model,@ModelAttribute("wishItems") WishItems wishItems)
 	{
 		
-		model.addAttribute("H", "HELLLOOOOO");
+	
 		Product product = productService.getProductById(productId);
 		//int stock=product.getProductStock();
 		
+		 //System.out.println("HHHHHHHHHHH"+wishItems.getProductId()+wishItems.getUserId());
+       String username = auth.getName();
+       User user = userService.getUserByUserName(username);
+      
+		int uId=user.getUserId();
+		
+		
 		if(auth!=null && quantity>0)
 		{
-		String username = auth.getName();
+		 System.out.println("HHHHHHHHHHH"+wishItems.getProductId()+wishItems.getUserId());
+			
+				
 
+				WishItems w=wishItemsService.findWishItemId(productId, uId);
+				int p=w.getProductId();
+				int u=w.getUserId();
+				
+				if(u==uId && p==productId)
+					
+				{
+					int q=w.getProductQuantity();
+					q++;
+					w.setProductQuantity(q);
+					
+					double a=w.getAmount();
+					w.setAmount(a*2);
+					wishItemsService.addWishItem(w);
+					return "redirect:/wishitems";
+					
+				}
+			
+			
 		
-		
-		User user = userService.getUserByUserName(username);
 		
 		int rate = product.getProductPrice();
 		int discount = product.getProductDiscountPrice();

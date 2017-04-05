@@ -1,8 +1,17 @@
 <%@include file="header.jsp" %>
 
-<div class="pad"ng-app="myApp">
+
+<div class="container pad">
+ 	<div class="text-center">
+ 		<a href="wishitems" class="btn btn-danger" role="button">My WishList</a>
+		<a href="cartitems" class="btn btn-danger" role="button">My CartList</a>
+		<a href="#" class="btn btn-danger" role="button">My OrderSummary</a>
+		
+		</div>
+
+<div ng-app="myApp">
  <div class="text-center">
- <h1 class="heading">YOUR   WISHLIST</h1>
+ <h1 class="heading">MY   WISHLIST</h1>
  <div class="row">	
  	<div class="col-xs-12 col-md-4 col-sm-4">	
  		<input class="form-control" type="text" ng-model="search" placeholder="search" />
@@ -43,12 +52,13 @@
 			<td>{{wishItemsList.productQuantity}}</td>
 			
 			<td>{{wishItemsList.amount}}</td>
-			   <td><a href="addtowishitems-{{wishItemsList.productId}}-{{1}}">ADD TO WISHLIST</a></td>-->
-			<td><a href="viewproduct-{{wishItemsList.productId}}">VIEW</a></td>
-			<td><a href="deletefromwishitems-{{wishItemsList.wishItemsId}}">REMOVE</a></td>
+		    <td><a href="addtocartitems-{{wishItemsList.productId}}-{{1}}"  class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-shopping-cart" title="Add To Cart"></span></a></td>
+			<td><a href="viewproduct-{{wishItemsList.productId}}" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-check" title="View"></a></td>
+			<td><a href="deletefromwishitems-{{wishItemsList.wishItemsId}}"  class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 			</tr>
 
 </table>
+</div>
 </div>
 </div>
 </div>

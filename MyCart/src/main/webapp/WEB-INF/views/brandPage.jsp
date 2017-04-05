@@ -79,8 +79,8 @@
 		<tr class="danger" ng-repeat="bList in myscope | filter:search">
 		<td>{{bList.brandId}}</td>
 			<td>{{bList.brandName}}</td>
-			<td><a href="editbrand-{{bList.brandId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
-			<td><a href="deletebrand-{{bList.brandId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
+			<td><a href="editbrand-{{bList.brandId}}" class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="deletebrand-{{bList.brandId}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 		</tr>
 	
 

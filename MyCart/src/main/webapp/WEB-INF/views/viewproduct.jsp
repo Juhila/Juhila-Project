@@ -4,8 +4,8 @@
 
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 well-sm" width="500">
 
-           
-         <img width="100%" src="resources/images/products/productImage-{{myscope.productId}}.jpg" alt="NO IMAGE TO DISPLAY"/>
+          
+         <img width="100%" src="resources/images/products/productImage-{{myscope.productId}}.jpg" alt="COMING SOON"/>
          
           <div class="text-center">
           
@@ -26,16 +26,20 @@
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 well-sm" width="500">
 <h1 style="color:red;">{{myscope.productName}}</h1>
 
-<h2>Discount:{{myscope.productDiscountPrice}}%</h1>
-<span style="text-decoration: line-through;color:red;"><h1 style="color:black;">Rs.{{myscope.productPrice}}</h1></span>
+<h1>Rs.${discprice}</h1>
+
+<c:if test="${message==0}">
+<h2 style="color:black;">
+<span style="text-decoration: line-through;">Rs.{{myscope.productPrice}}</span>&nbsp&nbsp{{myscope.productDiscountPrice}}%OFF</h2>
+</c:if>
 <br>
 
 <h2>{{myscope.productDescription}}</h3>
 <br>
-<h3>Brand:{{myscope.brand.brandName}}</h3>
-<h3>Type:{{myscope.subCategory.subCategoryName}}</h3>
-<h3>Supplier:{{myscope.supplier.supplierName}}</h3>
-<h3>Stock:{{myscope.productStock}}</h3>
+<h3><span style="background-color:orange;">Brand:</span>{{myscope.brand.brandName}}</h3>
+<h3><span style="background-color:orange;">Type:</span>{{myscope.subCategory.subCategoryName}}</h3>
+<h3><span style="background-color:orange;">Supplier:</span>{{myscope.supplier.supplierName}}</h3>
+<h3><span style="background-color:orange;">Stock:</span>{{myscope.productStock}}</h3>
 
 
 <script>
@@ -45,6 +49,8 @@ a.controller('myController', function($scope)
 $scope.myscope= ${viewProductByJson};
 });
 </script> 
+
+
 
 
 

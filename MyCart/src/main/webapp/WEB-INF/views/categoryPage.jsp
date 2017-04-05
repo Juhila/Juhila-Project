@@ -109,8 +109,8 @@
 			<td>{{cList.categoryName}}</td>
 			<td>{{cList.categoryDescription}}</td>
 			<%--<td>{{cList.brand.brandName}}</td>--%>
-			<td><a href="editcategory-{{cList.categoryId}}"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
-			<td><a href="deletecategory-{{cList.categoryId}}"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
+			<td><a href="editcategory-{{cList.categoryId}}" class="btn btn-danger btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></a></td>
+			<td><a href="deletecategory-{{cList.categoryId}}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 		</tr>
 
 </table>

@@ -1,8 +1,19 @@
 <%@include file="header.jsp" %>
 
-<div class="pad"ng-app="myApp">
+
+<div class="container pad">
+ 	<div class="text-center">
+ 		<a href="wishitems" class="btn btn-danger" role="button">My WishList</a>
+		<a href="cartitems" class="btn btn-danger" role="button">My CartList</a>
+		<a href="#" class="btn btn-danger" role="button">My OrderSummary</a>
+		
+		</div>
+
+<div ng-app="myApp">
  <div class="text-center">
- <h1 class="heading">YOUR  CART ITEMS</h1>
+ <h1 class="heading">MY  CARTLIST</h1>
+ <br>
+ 
  <div class="row">	
  	<div class="col-xs-12 col-md-4 col-sm-4">	
  		<input class="form-control" type="text" ng-model="search" placeholder="search" />
@@ -25,7 +36,7 @@
 		<th>Product SubTotal </th>
 		<th>Checkout</th>
 		<!-- <th>Add To WishList</th>-->
-		<th>View Product</th>
+
 		<th>Remove Product</th>
 	</tr>
 
@@ -46,13 +57,13 @@
 			<td>{{cartItemsList.amount}}</td>
 			
 			 
-			<td><a href="checkoutfromcartitems-{{cartItemsList.cartItemsId}}">CHECKOUT</a></td>
+			<td><a href="checkoutfromcartitems-{{cartItemsList.cartItemsId}}"  class="btn btn-danger btn-lg"> <span class="glyphicon glyphicon-check" title="CheckOut"></span></a></td>
 			<!-- <td><a href="addtowishlist-{{cartList.productId}}">ADD TO WISHLIST</a></td>-->
-			<td><a href="viewproduct-{{cartItemsList.productId}}">VIEW</a></td>
-			<td><a href="deletefromcartitems-{{cartItemsList.cartItemsId}}">REMOVE</a></td>
+					<td><a href="deletefromcartitems-{{cartItemsList.cartItemsId}}" class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 			</tr>
 
 </table>
+</div>
 </div>
 </div>
 </div>

@@ -58,13 +58,46 @@ public class CartItemsController
 			Product product = productService.getProductById(productId);
 			int stock=product.getProductStock();
 			
-			if(auth!=null && quantity>0 && stock!=0)
-			{
 			String username = auth.getName();
-
-			
-			
 			User user = userService.getUserByUserName(username);
+			int uId=user.getUserId();
+			
+			if(auth!=null && quantity>0  && stock!=0)
+			{
+				
+				CartItems c=cartItemsService.findCartItemId(productId, uId);
+				int p=c.getProductId();
+				int u=c.getUserId();
+				
+				if(u==uId && p==productId)
+					
+				{
+				
+				int q=c.getProductQuantity();
+					
+					//if((q+quantity)<=4)
+					//{
+					
+					q++;
+					c.setProductQuantity(q);
+					
+					double a=c.getAmount();
+					c.setAmount(a*2);
+					cartItemsService.addCartItem(c);
+					return "redirect:/cartitems";
+					
+				//}
+				
+			//	else
+				//{
+					
+				//	model.addAttribute("message"," Only 4 itema are allowed in cartlist.But, Your cart items quantity is getting more than 4");
+				//}
+			
+                }
+			
+			
+			
 			
 			int rate = product.getProductPrice();
 			int discount = product.getProductDiscountPrice();
@@ -128,7 +161,7 @@ public class CartItemsController
 		}
 		
 		
-	@RequestMapping("/checkoutfromcartitems-{cartItemsId}")
+ /**	@RequestMapping("/checkoutfromcartitems-{cartItemsId}")
 		public String checkoutFromCartItems(@PathVariable("cartItemsId")int cartItemsId,Authentication auth, Model model)
 		{
 			if(auth!=null)
@@ -163,7 +196,7 @@ public class CartItemsController
 				return "redirect:/login";
 			}
 		}
-		
+		**/
 	}
 	
 

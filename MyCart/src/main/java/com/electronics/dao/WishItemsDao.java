@@ -1,5 +1,6 @@
 package com.electronics.dao;
 
+import com.electronics.model.CartItems;
 import com.electronics.model.WishItems;
 
 public interface WishItemsDao
@@ -10,4 +11,5 @@ public interface WishItemsDao
 		
 		public void addWishItem(WishItems wishItems);
 		public void deleteWishItem(int wishItemId);
+		public WishItems findWishItemId(int productId, int userId);
 	}

@@ -4,8 +4,9 @@
 
 <div class="container">
  <div class="text-center pad"><h1>Registration Form</h1></div>
+ <hr style="background-color: red; height: 1px; border: 0;">
  
- <br> 
+ 
  
  <div class="form">
  <form:form modelAttribute="user" action="reg-adduser" method="post">
@@ -45,7 +46,7 @@
 <br>
 <div class="row">
 <div class="col-xs-12 col-sm-4 col-md-4">
- <form:label path="username">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Enter User Name&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp &nbsp(email-id)</form:label>
+ <form:label path="username">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Enter User Name&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp   &nbsp &nbsp  &nbsp &nbsp &nbsp    &nbsp &nbsp &nbsp &nbsp(email-id)</form:label>
  </div>
 
 
@@ -61,7 +62,7 @@
 <br>
 <div class="row">
 <div class="col-xs-12 col-sm-4 col-md-4">
- <form:label path="password">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Enter Password &nbsp &nbsp &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp(Min. 8 characters)</form:label>
+ <form:label path="password">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Enter Password &nbsp &nbsp &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp  &nbsp &nbsp   &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp &nbsp &nbsp(Min. 8 characters)</form:label>
  </div>
 
 
@@ -89,25 +90,22 @@
 <form:errors cssClass="error" path="userContact" />
 </div>
 </div>
-<br>	<br>
+
+<hr style="background-color: red; height: 1px; border: 0;">
+
+
 
 <div class="row">
-		  	<div class="col-sm-12 col-md-12">	
-		  		<div class="text-center">	
-					<input class="btn btn-success" type="submit" value"${buttonLabel}" />
-					<input class="btn btn-danger" type="reset" value="Reset" />
-				</div>
-				
+  <div class="col-sm-12 col-md-12">	
+  
+			 <div class="text-center">
+			<input class="btn btn-success btn-lg " type="submit" value"${buttonLabel}" />		
+			<input class="btn btn-danger btn-lg " type="reset" value="Reset" />
 			</div>
+			 </div>	
 		  </div>	
-		
-
-
+	
 </form:form>
 	</div>
-	
-
-
-	
 
 <%@ include file="footer.jsp"%>
