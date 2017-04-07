@@ -35,6 +35,7 @@
 		 <th>Add To CartList</th>
 		<th>View Product</th>
 		<th>Remove Product</th>
+		
 	</tr>
 
 
@@ -43,7 +44,7 @@
 		    <%-- <td><var="src" "value="resources/images/products/productImage-${plist.productId}.jpg" height="100px" width="100px" />
 		    <img src="${src}" alt="image not uploaded">
 		    </td>--%>
-		    <td><img src="resources/images/products/productImage-{{wishItemsList.productId}}.jpg" height="100px" width="100px" alt="error"/></td>
+		    <td><a href="viewproduct-{{wishItemsList.productId}}"><img src="resources/images/products/productImage-{{wishItemsList.productId}}.jpg" height="100px" width="100px" alt="error"/></a></td>
 
 			<td>{{wishItemsList.productName}}</td>
 			
@@ -52,7 +53,7 @@
 			<td>{{wishItemsList.productQuantity}}</td>
 			
 			<td>{{wishItemsList.amount}}</td>
-		    <td><a href="addtocartitems-{{wishItemsList.productId}}-{{1}}"  class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-shopping-cart" title="Add To Cart"></span></a></td>
+		    <td><a href="addtocartitems-{{wishItemsList.productId}}-{{wishItemsList.productQuantity}}"  class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-shopping-cart" title="Add To Cart"></span></a></td>
 			<td><a href="viewproduct-{{wishItemsList.productId}}" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-check" title="View"></a></td>
 			<td><a href="deletefromwishitems-{{wishItemsList.wishItemsId}}"  class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 			</tr>

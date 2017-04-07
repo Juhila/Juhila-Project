@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.electronics.dao.UserDao;
+import com.electronics.model.BillingAddress;
 import com.electronics.model.Cart;
+import com.electronics.model.ShippingAddress;
 import com.electronics.model.Supplier;
 import com.electronics.model.User;
 import com.google.gson.Gson;
@@ -34,6 +36,23 @@ public class UserDaoImpl implements UserDao
 	  cart.setCartId(user.getUserId());
 	  cart.setUserId(user.getUserId());
 	  session.saveOrUpdate(cart);
+	  
+	  session.saveOrUpdate(user);
+		 
+	 /** BillingAddress billingAddress=new BillingAddress();
+	  billingAddress.setBillingAddressId(user.getUserId());
+	  billingAddress.setUserId(user.getUserId());
+	  session.saveOrUpdate(billingAddress);
+	  
+	   session.saveOrUpdate(user);
+	 
+	  
+	  ShippingAddress shippingAddress=new ShippingAddress();
+	  shippingAddress.setShippingAddressId(user.getUserId());
+	  shippingAddress.setUserId(user.getUserId());
+	  session.saveOrUpdate(shippingAddress);**/
+	  
+	  
 	 
 	  session.saveOrUpdate(user);
 	 

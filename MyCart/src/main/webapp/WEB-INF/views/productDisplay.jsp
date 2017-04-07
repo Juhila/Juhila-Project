@@ -122,13 +122,13 @@
     <a href="viewproduct-${pList.productId}" target="_self">
       <img src="resources/images/products/productImage-${pList.productId}.jpg" alt="Trolltunga Norway">
     </a>
-    <div class="text-center desc">${pList.productName}<br>
+    <div class="text-center desc"><strong>${pList.productName}</strong><br>
     
-    Rs.${pList.productPrice}</h4><br>
+   <strong> Rs.${pList.productPrice}</strong></h4><br>
    
      
      <c:if test="${pList.productDiscountPrice!=0}">
-    ${pList.productDiscountPrice}% OFF
+    <strong>${pList.productDiscountPrice}% OFF</strong>
      </c:if>
      
     <c:if test="${pList.productDiscountPrice==0}">

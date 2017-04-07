@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -16,22 +18,43 @@ public class ShippingAddress
 {
 	@Expose
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int shippingAddressId;
+	private int userId;
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	@NotEmpty(message="Required")
 	@Expose
 	private String city;
+	
+	@NotEmpty(message="Required")
 	@Expose
 	private String state;
 	
 	
 	@Expose
-	@Pattern(regexp="^$|[0-9]", message="Only numeric digits allowed" )
+	@NotEmpty(message="Required")
+	@Pattern(regexp="[\\d]{6}", message="Enter valid pincode digits")
+	//@Pattern(regexp="^$|[0-9]", message="Only numeric digits allowed" )
 	private String pinCode;
+	
 	@Expose
+	@NotEmpty(message="Required")
 	private String district;
+	
+	@NotEmpty(message="Required")
 	@Expose
 	private String landmark;
 	
+	
+	@NotEmpty(message="Required")
 	@Expose
 	private String address;
 	

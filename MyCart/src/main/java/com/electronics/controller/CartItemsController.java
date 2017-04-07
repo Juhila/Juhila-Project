@@ -58,73 +58,95 @@ public class CartItemsController
 			Product product = productService.getProductById(productId);
 			int stock=product.getProductStock();
 			
-			String username = auth.getName();
-			User user = userService.getUserByUserName(username);
-			int uId=user.getUserId();
+			
+			
 			
 			if(auth!=null && quantity>0  && stock!=0)
 			{
 				
+				String username = auth.getName();
+				User user = userService.getUserByUserName(username);
+				int uId=user.getUserId();
+				try
+				{
 				CartItems c=cartItemsService.findCartItemId(productId, uId);
+				if(c!=null)
+					
+				{
+					
 				int p=c.getProductId();
 				int u=c.getUserId();
 				
 				if(u==uId && p==productId)
 					
 				{
+					
 				
 				int q=c.getProductQuantity();
+					try
+					{
+					if((q+quantity)<=3)
+					{
 					
-					//if((q+quantity)<=4)
-					//{
+						q=q+quantity;
+						c.setProductQuantity(q);
 					
-					q++;
-					c.setProductQuantity(q);
+						int price = c.getProductPrice();
+						int discountprice = c.getProductDiscount();
+						double amountperitem =q*(price-(price*discountprice/100));
+						
+						//double a=c.getAmount();
+						c.setAmount(amountperitem);
+						cartItemsService.addCartItem(c);
+						return "redirect:/cartitems";
 					
-					double a=c.getAmount();
-					c.setAmount(a*2);
-					cartItemsService.addCartItem(c);
-					return "redirect:/cartitems";
+				}
+					}
 					
-				//}
+					catch(Exception e)
+					{
+						model.addAttribute("message","cartlistquantity");
+						return  "404Page";
+					}
 				
-			//	else
-				//{
-					
-				//	model.addAttribute("message"," Only 4 itema are allowed in cartlist.But, Your cart items quantity is getting more than 4");
-				//}
+				
 			
                 }
-			
-			
-			
-			
-			int rate = product.getProductPrice();
-			int discount = product.getProductDiscountPrice();
-			double amountperitem = rate-(rate*discount/100);
-			
-			cartItems.setCartId(user.getUserId());
-			cartItems.setUserId(user.getUserId());
-			
-			cartItems.setUserName(user.getUsername());
-			
-			cartItems.setProductName(product.getProductName());
-			cartItems.setProductId(product.getProductId());
-			cartItems.setProductPrice(product.getProductPrice());
-			cartItems.setProductDiscount(discount);
-			cartItems.setProductQuantity(quantity);
-			cartItems.setAmount(amountperitem * quantity);
-			cartItems.setFlag(false);
-			Long l=System.currentTimeMillis();
-			Date d= new Date(l);
-			
-			cartItems.setOrderDate(d);
-			
-			cartItemsService.addCartItem(cartItems);
-			
-			model.addAttribute("message", "Item is Successfully Added To Cart");
-			return "redirect:/cartitems";
+			  }
 			}
+		
+			
+			
+	catch(Exception e)
+	{
+		int rate = product.getProductPrice();
+		int discount = product.getProductDiscountPrice();
+		double amountperitem = rate-(rate*discount/100);
+			
+		cartItems.setCartId(user.getUserId());
+		cartItems.setUserId(user.getUserId());
+			
+		cartItems.setUserName(user.getUsername());
+			
+		cartItems.setProductName(product.getProductName());
+		cartItems.setProductId(product.getProductId());
+		cartItems.setProductPrice(product.getProductPrice());
+		cartItems.setProductDiscount(discount);
+		cartItems.setProductQuantity(quantity);
+		cartItems.setAmount(amountperitem * quantity);
+		cartItems.setFlag(false);
+		Long l=System.currentTimeMillis();
+		Date d= new Date(l);
+			
+		cartItems.setOrderDate(d);
+			
+		cartItemsService.addCartItem(cartItems);
+			
+		model.addAttribute("message", "Item is Successfully Added To Cart");
+		return "redirect:/cartitems";
+			}
+			}
+			
 			
 			else
 			{
@@ -140,7 +162,8 @@ public class CartItemsController
 			return "redirect:/login";
 				}
 			}
-			return null;
+			
+			return "null";
 			
 		}
 		

@@ -57,40 +57,70 @@ public class WishItemsController
 		Product product = productService.getProductById(productId);
 		//int stock=product.getProductStock();
 		
-		 //System.out.println("HHHHHHHHHHH"+wishItems.getProductId()+wishItems.getUserId());
-       String username = auth.getName();
-       User user = userService.getUserByUserName(username);
+		//model.addAttribute("message",wishItems.getProductId());
+		//model.addAttribute("messagee",wishItems.getUserId());
+		
       
-		int uId=user.getUserId();
 		
 		
 		if(auth!=null && quantity>0)
 		{
-		 System.out.println("HHHHHHHHHHH"+wishItems.getProductId()+wishItems.getUserId());
+			
+			 String username = auth.getName();
+		       User user = userService.getUserByUserName(username);
+		      
+				int uId=user.getUserId();
+		 //System.out.println("HHHHHHHHHHH"+wishItems.getProductId()+wishItems.getUserId());
 			
 				
-
+              try
+               {
 				WishItems w=wishItemsService.findWishItemId(productId, uId);
-				int p=w.getProductId();
+				if(w!=null)
+				{
 				int u=w.getUserId();
+				int p=w.getProductId();
 				
 				if(u==uId && p==productId)
 					
 				{
 					int q=w.getProductQuantity();
-					q++;
-					w.setProductQuantity(q);
 					
-					double a=w.getAmount();
-					w.setAmount(a*2);
+					try
+					{
+					if((q+quantity)<=3)
+					
+					{
+					q=q+quantity;
+					w.setProductQuantity(q);
+				
+					int price = w.getProductPrice();
+					int discountprice = w.getProductDiscount();
+					double amountperitem =q*(price-(price*discountprice/100));
+					
+					//double a=w.getAmount();
+					w.setAmount(amountperitem);
 					wishItemsService.addWishItem(w);
 					return "redirect:/wishitems";
+					}
+					}
+					
+					
+					catch(Exception e)
+					{
+						model.addAttribute("message","wishlistquantity");
+						return  "404Page";
+					}
+					
 					
 				}
+				}
+				}
+               
 			
 			
-		
-		
+		catch(Exception e)
+         {
 		int rate = product.getProductPrice();
 		int discount = product.getProductDiscountPrice();
 		double amountperitem = rate-(rate*discount/100);
@@ -117,6 +147,8 @@ public class WishItemsController
 		model.addAttribute("message", "Item is Successfully Added To WishList");
 		return "redirect:/wishitems";
 		}
+	}
+		
 		
 		else
 		{
@@ -132,7 +164,7 @@ public class WishItemsController
 		return "redirect:/login";
 			}
 		}
-		return null;
+		return "null";
 		
 	}
 	

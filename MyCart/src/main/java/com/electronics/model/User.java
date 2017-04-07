@@ -62,13 +62,7 @@ public class User implements Serializable
 	@Pattern(regexp="^$|[0-9]{10}", message="Please enter 10 digit mob. no.")
 	private String userContact;
 	
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private Set<BillingAddress> billingAddress;
-    
 	
-	@OneToMany(mappedBy="user", fetch=FetchType.EAGER)
-	private Set<ShippingAddress> shippingAddress;
-
 		
 	public void setUserContact(String userContact) {
 		this.userContact = userContact;

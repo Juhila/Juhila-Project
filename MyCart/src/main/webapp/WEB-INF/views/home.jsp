@@ -52,8 +52,8 @@
       <a target="_self" href="viewproduct-${p.productId}">
       <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
    </a>
-    <div class="desc">${p.productName}<br>
-    Rs.${p.productPrice}
+    <div class="desc"><strong>${p.productName}</strong><br>
+   <strong> Rs.${p.productPrice}</strong>
    </div>
       
   </div>
@@ -75,8 +75,8 @@
      <a target="_self" href="viewproduct-${p.productId}">
       <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
    </a>
-    <div class="desc">${p.productName}<br>
-    Rs.${p.productPrice}
+    <div class="desc"><strong>${p.productName}</strong><br>
+   <strong> Rs.${p.productPrice}</strong>
    </div>
     
   </div>
@@ -97,11 +97,11 @@
      <a target="_self" href="viewproduct-${p.productId}">
       <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
    </a>
-     <div class="desc">${p.productName}<br>
-    Rs.${p.productPrice}<br>
+     <div class="desc"><strong>${p.productName}</strong><br>
+  <strong>  Rs.${p.productPrice}</strong><br>
     
-    <c:if test="${p.productDiscountPrice!=0}">
-    ${p.productDiscountPrice}% OFF
+    <c:if test="${p.productDiscountPrice!=0}"><strong>
+    ${p.productDiscountPrice}% OFF</strong>
     </c:if>
     
      <c:if test="${p.productDiscountPrice==0}">
@@ -127,8 +127,8 @@
      <a target="_self" href="viewproduct-${p.productId}">
       <img src="resources/images/products/productImage-${p.productId}.jpg" alt="COMING SOON" width="600" height="400">
    </a>
-     <div class="desc">${p.productName}<br>
-    Rs.${p.productPrice}
+     <div class="desc"><strong>${p.productName}</strong><br>
+   <strong> Rs.${p.productPrice}</strong>
    </div>
      
   </div>

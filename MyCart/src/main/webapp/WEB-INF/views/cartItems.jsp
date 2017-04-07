@@ -46,7 +46,7 @@
 		    <%-- <td><var="src" "value="resources/images/products/productImage-${plist.productId}.jpg" height="100px" width="100px" />
 		    <img src="${src}" alt="image not uploaded">
 		    </td>--%>
-		    <td><img src="resources/images/products/productImage-{{cartItemsList.productId}}.jpg" height="100px" width="100px" alt="error"/></td>
+		    <td><a href="viewproduct-{{cartItemsList.productId}}"><img src="resources/images/products/productImage-{{cartItemsList.productId}}.jpg" height="100px" width="100px" alt="error"/></a></td>
 
 			<td>{{cartItemsList.productName}}</td>
 			

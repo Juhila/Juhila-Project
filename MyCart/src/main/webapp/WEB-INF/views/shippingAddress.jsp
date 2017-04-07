@@ -4,26 +4,17 @@
 
 <div class="container">
 
- <div class="text-center pad"><h1>BILLING ADDRESS</h1></div>
+ <div class="text-center pad"><h1>SHIPPING ADDRESS</h1></div>
  
- <c:if test="${message eq 0}">
- <center><h4 style="color:blue">(You Can Skip If You Have Already Submitted)</h4></center>
- </c:if>
- 
-
- 
- <c:if test="${message eq 1}">
-  <center><h4 style="color:blue">(You Cant Skip As You Have Not Submitted It Before)</h4></center>
- </c:if>
- 
+<center><h4 style="color:blue">(You Can Skip If You Have Already Submitted)</h4></center>
  <hr style="background-color: red; height: 1px; border: 0;">
  
  
  
  <div class="form">
- <form:form modelAttribute="billingAddress" action="addbillingaddress" method="post">
+ <form:form modelAttribute="shippingAddress" action="addshippingaddress" method="post">
 
-<form:input path="billingAddressId"  hidden="true" />
+<form:input path="shippingAddressId" type="hidden" />
 
 <div class="row">
 
@@ -79,7 +70,7 @@
 
 
 <div class="col-xs-12 col-sm-4 col-md-4">
-<form:input path="landmark" placeholder="Enter Your LandMark" />
+<form:input path="landmark"  placeholder="Enter Your LandMark" />
 </div>
 
 <div class="col-xs-12 col-sm-4 col-md-4">
@@ -104,8 +95,8 @@
 </div>
 
 
-
 <br>
+
 <div class="row">
 <div class="col-xs-12 col-sm-4 col-md-4">
  <form:label path="address">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Enter Your Address</form:label>
@@ -113,8 +104,7 @@
 
 
 <div class="col-xs-12 col-sm-4 col-md-4">
-
-<form:textarea  path="address" cssClass="form-control"  maxlength="255" cols="30" placeholder="Enter Your Full Address" />
+<form:textarea path="address" cssClass="form-control"  maxlength="255" cols="30" placeholder="Enter Your Full Address" />
 </div>
 
 <div class="col-xs-12 col-sm-4 col-md-4">
@@ -127,17 +117,19 @@
 
 
 <div class="row">
-  <div class="col-sm-6 col-md-6">	
-  
-	&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp	&nbsp &nbsp &nbsp 
-	<div class="text-center">
-			&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-			<input class="btn btn-success" type="submit" value="${buttonLabel}" />
+  <div class="col-xs-12 col-sm-4 col-md-4">	
+               
+               <div class="text-center">
+			
+			 <input class="btn btn-success" type="submit" value="${buttonLabel}"/>		
 			<input class="btn btn-danger" type="reset" value="Reset" />
-			<a href="shippingaddress" class="btn btn-info">Skip</a>
-			</div>
+			 <a href="payment" class="btn btn-info">Skip</a>
+			
+			 </div>	
 			 </div>	
 		  </div>	
+		  
+
 	
 </form:form>
 	</div>

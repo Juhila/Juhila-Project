@@ -180,12 +180,13 @@ public class ProductController
 		 String productData=gson.toJson(product);
 		
 		model.addAttribute("viewProductByJson", productData);
+		model.addAttribute("viewProduct", product);
 		model.addAttribute("discprice",amt);
 		
 		
 		if(discprice!=0)
 			model.addAttribute("message",0);
-		return "viewproduct";
+		return "viewProduct";
 	}
 	
 	

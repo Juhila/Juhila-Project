@@ -19,19 +19,34 @@ public class BillingAddress
 	
 	@Expose
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int billingAddressId;
-	
+	private int userId;
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	@Expose
+	@NotEmpty(message="Required")
 	private String city;
 	
 	@NotEmpty(message="Required")
 	@Expose
 	private String state;
 	
+	
+	// @Pattern(regexp="[\\d]")
+	
+	//@EnsureNumber(decimal = true,message = "Only digits are aloowed.")
+	//@Pattern(regexp="^$|[0-9]", message="Only numeric digits allowed" )
+	@Pattern(regexp="[\\d]{6}", message="Enter valid pincode digits")
 	@NotEmpty(message="Required")
-	@Pattern(regexp="^$|[0-9]", message="Only numeric digits allowed" )
-	@Expose
+    @Expose
 	private String pinCode;
 	
 	@NotEmpty(message="Required")
