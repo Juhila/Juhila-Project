@@ -184,42 +184,6 @@ public class CartItemsController
 		}
 		
 		
- /**	@RequestMapping("/checkoutfromcartitems-{cartItemsId}")
-		public String checkoutFromCartItems(@PathVariable("cartItemsId")int cartItemsId,Authentication auth, Model model)
-		{
-			if(auth!=null)
-			{
-				CartItems item = cartItemsService.getCartItemById(cartItemsId);
-				Product product = productService.getProductById(item.getProductId());
-				//int quantity=item.getProductQuantity();
-			  //int stock=product.getProductStock();
-			  
-	
-				
-				if(item.getFlag()==false)
-				{
-					
-				//int finalstock=stock-quantity;
-				//product.setProductStock(finalstock);
-				//productService.addProduct(product);
-				item.setFlag(true);
-				
-				cartItemsService.addCartItem(item);
-				return "redirect:/checkout";
-				}
-				
-				
-				return "redirect:/cartitems";
-				}
-				
-	
-			else
-			{
-				model.addAttribute("message", "Please Login!");
-				return "redirect:/login";
-			}
-		}
-		**/
-	}
+ 	}
 	
 

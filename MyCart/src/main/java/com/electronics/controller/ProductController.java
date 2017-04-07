@@ -186,7 +186,7 @@ public class ProductController
 		
 		if(discprice!=0)
 			model.addAttribute("message",0);
-		return "viewProduct";
+		return "productView";
 	}
 	
 	

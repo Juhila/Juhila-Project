@@ -1,5 +1,6 @@
 package com.electronics.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,10 @@ public class BillingAddressController
 	
 	@Autowired
 	UserService userService;
-
-	@RequestMapping("/billingaddress")
-	public String getBillingAddressPage(Authentication auth, Model model) 
+    
+	
+	@RequestMapping("/billingaddress-{productId}-{quantity}")
+	public String getBillingAddressPage(Authentication auth, Model model, HttpSession session, @PathVariable("productId") int productId,@PathVariable("quantity") int quantity) 
 	{
 		
 		if(auth!=null)
@@ -35,6 +37,8 @@ public class BillingAddressController
 		int userId=user.getUserId();
 		model.addAttribute("buttonLabel","Submit");
 		model.addAttribute("message",0);
+		session.setAttribute("productId",productId);
+		session.setAttribute("quantity",quantity);
 		model.addAttribute("billingAddress", new BillingAddress());
 		return "billingAddress";
 		}
@@ -47,6 +51,33 @@ public class BillingAddressController
 	
 		
 	}
+	
+	
+	
+	@RequestMapping("/billingaddress-{cartItemsId}")
+	public String getBillingAddressPagee(Authentication auth, Model model,@PathVariable("cartItemsId") int cartItemsId,HttpSession session) 
+	{
+		
+		if(auth!=null)
+		{
+		User user= userService.getUserByUserName(auth.getName());	
+		int userId=user.getUserId();
+		model.addAttribute("buttonLabel","Submit");
+		model.addAttribute("message",0);
+		session.setAttribute("cartItemsId",cartItemsId);
+		model.addAttribute("billingAddress", new BillingAddress());
+		return "billingAddress";
+		}
+		else
+		{
+			
+			model.addAttribute("message", " Please Login!");
+			return "login";	
+		}
+	
+		
+	}
+	
 	
 	
 	@RequestMapping("/addbillingaddress")

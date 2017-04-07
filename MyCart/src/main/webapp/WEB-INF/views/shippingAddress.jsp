@@ -6,11 +6,17 @@
 
  <div class="text-center pad"><h1>SHIPPING ADDRESS</h1></div>
  
+  <c:if test="${message eq 0}">
 <center><h4 style="color:blue">(You Can Skip If You Have Already Submitted)</h4></center>
+</c:if>
+
+<c:if test="${message eq 1}">
+  <center><h4 style="color:blue">(You Cant Skip As You Have Not Submitted It Before)</h4></center>
+ </c:if>
+ 
  <hr style="background-color: red; height: 1px; border: 0;">
  
- 
- 
+  
  <div class="form">
  <form:form modelAttribute="shippingAddress" action="addshippingaddress" method="post">
 

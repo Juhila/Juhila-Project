@@ -57,7 +57,7 @@
 			<td>{{cartItemsList.amount}}</td>
 			
 			 
-			<td><a href="checkoutfromcartitems-{{cartItemsList.cartItemsId}}"  class="btn btn-danger btn-lg"> <span class="glyphicon glyphicon-check" title="CheckOut"></span></a></td>
+			<td><a href="billingaddress-{{cartItemsList.cartItemsId}}"  class="btn btn-danger btn-lg"> <span class="glyphicon glyphicon-check" title="CheckOut"></span></a></td>
 			<!-- <td><a href="addtowishlist-{{cartList.productId}}">ADD TO WISHLIST</a></td>-->
 					<td><a href="deletefromcartitems-{{cartItemsList.cartItemsId}}" class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 			</tr>

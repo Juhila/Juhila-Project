@@ -49,7 +49,7 @@ public class ShippingAddressController
 			{
 
 		model.addAttribute("buttonLabel","Submit");
-
+		model.addAttribute("message",0);
 			model.addAttribute("shippingAddress", new ShippingAddress());
 			return "shippingAddress";
 			
@@ -58,7 +58,7 @@ public class ShippingAddressController
 		
 		catch(Exception e)
 		{   model.addAttribute("billingAddress", new BillingAddress());
-
+		model.addAttribute("buttonLabel","Submit");
 			model.addAttribute("message",1);
 			return "billingAddress";
 		}
@@ -76,7 +76,7 @@ public class ShippingAddressController
 	
 	
 	@RequestMapping("/addshippingaddress")
-	public String addBrand(@Valid @ModelAttribute("shippingAddress")ShippingAddress shippingAddress, BindingResult result, Model model,Authentication auth)
+	public String addShippingAddress(@Valid @ModelAttribute("shippingAddress")ShippingAddress shippingAddress, BindingResult result, Model model,Authentication auth)
 	{
 		User user= userService.getUserByUserName(auth.getName());	
 		int userId=user.getUserId();
@@ -96,7 +96,20 @@ public class ShippingAddressController
 
 		shippingAddressService.addShippingAddress(shippingAddress,userId);
 		
-		return "redirect:/shippingaddress";
+		return "redirect:/payment";
+	}
+	
+	
+
+	@RequestMapping("/editshippingaddress")
+	public String editBillingAddress( Model model,Authentication auth)
+	{
+		User user= userService.getUserByUserName(auth.getName());	
+		int userId=user.getUserId();
+		model.addAttribute("shipping", shippingAddressService.getShippingAddressById(userId));
+		model.addAttribute("buttonLabel","Update");
+	
+		return "shippingAddress";
 	}
 	
 
