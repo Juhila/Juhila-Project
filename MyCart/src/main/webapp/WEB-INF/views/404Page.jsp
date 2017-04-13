@@ -1,11 +1,6 @@
 <%@ include file="header.jsp" %>
- <c:if test="${message eq wishlistquantity}">
- <h1>Your can have only upto 4 quantities of items in your WISHLIST </h1>
- </c:if>
- HELLLLLLLLLLLLLLo
- <c:if test="${message eq cartlistquantity}">
- <h1>Your can have only upto 4 quantities of items in your CARTLIST </h1>
- </c:if>
+ <center><h1 class="paddingg">OOPs!!!!......No Resource available for the request you made.</h1></center>
  
+   <center><h1>TRY AGAIN</h1></center>
  <%@ include file="footer.jsp" %>
  	

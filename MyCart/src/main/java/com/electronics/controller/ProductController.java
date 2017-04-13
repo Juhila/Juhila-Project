@@ -101,7 +101,7 @@ public class ProductController
 	{
 		
 		
-		String path="E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products\\";
+		String path="D:\\S170012700291--Juhi\\My software\\MyCart\\src\\main\\webapp\\resources\\images\\products\\";
 		if(result.hasErrors())
 		{
 			model.addAttribute("categoryList", categoryService.getAllCategories());
@@ -159,7 +159,7 @@ public class ProductController
 	public String deleteProduct(@PathVariable("productId")int productId)
 	{
 		productService.deleteProduct(productId);
-		 File file = new File("E:\\Program\\M eclipse sw\\project\\MyCart\\src\\main\\webapp\\resources\\images\\products\\productImage-"+productId+"."+"jpg");
+		 File file = new File("D:\\S170012700291--Juhi\\My software\\MyCart\\src\\main\\webapp\\resources\\images\\products\\productImage-"+productId+"."+"jpg");
 			file.delete();
 	        return "redirect:/product";
 	}
@@ -301,7 +301,6 @@ public class ProductController
 		return "productDisplay";
 	
 	}
-	
 	
 	
 }

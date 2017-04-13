@@ -55,6 +55,16 @@ public class CartItemsDaoImpl implements CartItemsDao
 	
 		return cartItems;
 	}
+	
+	
+	
+
+	public List<CartItems> getAllCartItemsByFlag(boolean b, int userId) 
+	{
+		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag ="+b).getResultList();
+		return cartList;
+	}
+	
 	}
 
 

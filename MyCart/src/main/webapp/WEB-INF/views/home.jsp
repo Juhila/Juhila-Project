@@ -55,7 +55,7 @@
     <div class="desc"><strong>${p.productName}</strong><br>
    <strong> Rs.${p.productPrice}</strong>
    </div>
-      
+     
   </div>
  </div>
   </c:forEach> 

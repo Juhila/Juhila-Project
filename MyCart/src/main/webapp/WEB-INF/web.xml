@@ -34,11 +34,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	   </listener>
 	
-	   <!--  <listener>
-	<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-    	
-	 </listener>-->
-	 
+	  
   
   <servlet>
 		<servlet-name>dispatcher</servlet-name>
@@ -53,4 +49,10 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	
+	
+	<error-page>
+	<error-code>404</error-code>
+	<location>/404</location>
+	</error-page>
 </web-app>

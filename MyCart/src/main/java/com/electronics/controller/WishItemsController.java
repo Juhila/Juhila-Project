@@ -34,7 +34,7 @@ public class WishItemsController
 	@RequestMapping("/wishitems")
 	public String getWishItemsPage(Authentication auth,Model model)
 	{
-		//System.out.println("HELOOOOOOOOOOOOO");
+		
 		if(auth!=null)
 		{
 		User user= userService.getUserByUserName(auth.getName());	

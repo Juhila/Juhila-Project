@@ -64,30 +64,39 @@
 		<intercept-url pattern="/adduser**" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/enableuser-{userId}**" access="hasRole('ROLE_ADMIN')"/> 
 				
-<!--  <session-management>
-      		<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
-  			</session-management>
-
+			
 		  
-            
-            <intercept-url pattern="/buyNow-{productId}" access="hasRole('ROLE_CUSTOMER')"/>
+             
+         <intercept-url pattern="/billingaddress-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+          <intercept-url pattern="/addbillingaddress-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+           <intercept-url pattern="/editbillingaddress-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+             
+            <intercept-url pattern="/billingaddress" access="hasRole('ROLE_CUSTOMER')"/>
+            <intercept-url pattern="/addbillingaddress" access="hasRole('ROLE_CUSTOMER')"/>
+             <intercept-url pattern="/editbillingaddress" access="hasRole('ROLE_CUSTOMER')"/>
+               
+               
+            <intercept-url pattern="/shippingaddress-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+           <intercept-url pattern="/addshippingaddress-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+             <intercept-url pattern="/editshippingaddress-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+             
+             <intercept-url pattern="/shippingaddress" access="hasRole('ROLE_CUSTOMER')"/>
+              <intercept-url pattern="/addshippingaddress" access="hasRole('ROLE_CUSTOMER')"/>
+              <intercept-url pattern="/editshippingaddress" access="hasRole('ROLE_CUSTOMER')"/>
+             
+                <intercept-url pattern="/confirmorder--{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+                <intercept-url pattern="/confirmorder" access="hasRole('ROLE_CUSTOMER')"/>
+         
+      
+						<intercept-url pattern="/cartitems" access="hasRole('ROLE_CUSTOMER')"/>
 						<intercept-url pattern="/addtocartitems-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
-						<intercept-url pattern="/wishitems" access="hasRole('ROLE_CUSTOMER')"/>
-						<intercept-url pattern="/addtowishitems-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
-						
-						<intercept-url pattern="/deletefromwishitems-{wishItemsId}" access="hasRole('ROLE_CUSTOMER')"/>
-						
-						<intercept-url pattern="/buyNowList-{productId}" access="hasRole('ROLE_CUSTOMER')"/>
-						<intercept-url pattern="/checkoutfromcartitems-{cartItemsId}" access="hasRole('ROLE_CUSTOMER')"/>
 						<intercept-url pattern="/deletefromcartitems-{cartItemsId}" access="hasRole('ROLE_CUSTOMER')"/>
 						
-						<intercept-url pattern="/cartitems" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/wishitems" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/addtowishitems-{productId}-{quantity}" access="hasRole('ROLE_CUSTOMER')"/>
+						<intercept-url pattern="/deletefromwishitems-{wishItemsId}" access="hasRole('ROLE_CUSTOMER')"/>
 						
 					
-		  <intercept-url pattern="/**" access="isAuthenticated()" />
-<access-denied-handler error-page="/403"/>-->
-
-
 
 		<form-login
 		    login-page="/login"

@@ -5,10 +5,17 @@
  	<div class="text-center">
  		<a href="wishitems" class="btn btn-danger" role="button">My WishList</a>
 		<a href="cartitems" class="btn btn-danger" role="button">My CartList</a>
-		<a href="#" class="btn btn-danger" role="button">My OrderSummary</a>
+		<a href="confirmorder" class="btn btn-danger" role="button">Confirm OrderSummary</a>
 		
 		</div>
+		
+<c:if test="${empty wishItemsListByJson}">
+<div class="text-center">
+ <h1 class="heading">There are no products in your CARTLIST</h1>
+</c:if>
 
+
+<c:if test="${not empty wishItemsListByJson}">
 <div ng-app="myApp">
  <div class="text-center">
  <h1 class="heading">MY   WISHLIST</h1>
@@ -62,6 +69,7 @@
 </div>
 </div>
 </div>
+</c:if>
 </div>
 
 <script>

@@ -18,9 +18,10 @@
                      <a href="addtocartitems-{{myscope.productId}}-{{quantity}}" class="btn btn-danger btn-lg">
                         <span class="glyphicon glyphicon-shopping-cart"></span>Add To Cart</a>
       
-        <a href="billingaddress-{{myscope.productId}}-{{quantity}}" class="btn btn-danger btn-lg">
+        <a href="confirmorder-{{myscope.productId}}-{{quantity}}" class="btn btn-danger btn-lg">
       <span class="glyphicon glyphicon-check"></span>Buy Now</a>
       </c:if>
+      
       
      </div>
      </div>

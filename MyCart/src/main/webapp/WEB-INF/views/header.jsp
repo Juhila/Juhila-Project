@@ -144,7 +144,7 @@
                     <li class="divider"></li>
           			<li><a href="cartitems">My CartList</a></li>
                     <li class="divider"></li>
-          			<li><a href="#">My OrderSummary</a></li>
+          			<li><a href="confirmorder">Confirm OrderSummary</a></li>
                     <li class="divider"></li>
                     
         		</ul>    

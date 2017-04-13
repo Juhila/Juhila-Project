@@ -1,5 +1,7 @@
 package com.electronics.dao;
 
+import java.util.List;
+
 import com.electronics.model.CartItems;
 
 public interface CartItemsDao
@@ -12,6 +14,7 @@ public interface CartItemsDao
 		public void deleteCartItem(int cartItemId);
 		
 		public CartItems findCartItemId(int productId, int userId);
-	}
+		public List<CartItems> getAllCartItemsByFlag(boolean b, int userId);
+}
 
 

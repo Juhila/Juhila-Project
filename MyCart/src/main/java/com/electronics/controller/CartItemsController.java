@@ -43,6 +43,8 @@ public class CartItemsController
 			User user= userService.getUserByUserName(auth.getName());	
 			int userId=user.getUserId();	
 			model.addAttribute("cartItemsListByJson", cartItemsService.getAllCartItemsByJson(userId));
+			//model.addAttribute("cartItemsLists", cartItemsService.getAllCartItemsByFlag(false, userId));
+
 			return "cartItems";
 			}
 			else

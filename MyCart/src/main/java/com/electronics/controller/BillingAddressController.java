@@ -1,5 +1,7 @@
 package com.electronics.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -13,8 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.electronics.model.BillingAddress;
+import com.electronics.model.CartItems;
+import com.electronics.model.ShippingAddress;
 import com.electronics.model.User;
 import com.electronics.service.BillingAddressService;
+import com.electronics.service.CartItemsService;
+import com.electronics.service.ShippingAddressService;
 import com.electronics.service.UserService;
 
 @Controller
@@ -24,11 +30,19 @@ public class BillingAddressController
 	BillingAddressService billingAddressService;
 	
 	@Autowired
+	ShippingAddressService shippingAddressService;
+	
+	
+	@Autowired
 	UserService userService;
+	
+	@Autowired
+	private CartItemsService cartItemsService; 
+	
     
 	
 	@RequestMapping("/billingaddress-{productId}-{quantity}")
-	public String getBillingAddressPage(Authentication auth, Model model, HttpSession session, @PathVariable("productId") int productId,@PathVariable("quantity") int quantity) 
+	public String getBillingAddressPage( @PathVariable("productId") int productId,@PathVariable("quantity") int quantity, Authentication auth, Model model,HttpSession session) 
 	{
 		
 		if(auth!=null)
@@ -36,9 +50,14 @@ public class BillingAddressController
 		User user= userService.getUserByUserName(auth.getName());	
 		int userId=user.getUserId();
 		model.addAttribute("buttonLabel","Submit");
-		model.addAttribute("message",0);
-		session.setAttribute("productId",productId);
-		session.setAttribute("quantity",quantity);
+		model.addAttribute("message",1);
+		
+		
+		
+		model.addAttribute("msg","PQ");
+		model.addAttribute("PRODUCTID",productId);
+		model.addAttribute("QUANTITY",quantity);
+		
 		model.addAttribute("billingAddress", new BillingAddress());
 		return "billingAddress";
 		}
@@ -54,8 +73,8 @@ public class BillingAddressController
 	
 	
 	
-	@RequestMapping("/billingaddress-{cartItemsId}")
-	public String getBillingAddressPagee(Authentication auth, Model model,@PathVariable("cartItemsId") int cartItemsId,HttpSession session) 
+	@RequestMapping("/billingaddress")
+	public String getBillingAddressPagee(Authentication auth, Model model) 
 	{
 		
 		if(auth!=null)
@@ -63,8 +82,13 @@ public class BillingAddressController
 		User user= userService.getUserByUserName(auth.getName());	
 		int userId=user.getUserId();
 		model.addAttribute("buttonLabel","Submit");
-		model.addAttribute("message",0);
-		session.setAttribute("cartItemsId",cartItemsId);
+		model.addAttribute("message",1);
+		
+		
+		
+		model.addAttribute("msg","C");
+		//model.addAttribute("CARTITEMSID",cartItemsId);
+		
 		model.addAttribute("billingAddress", new BillingAddress());
 		return "billingAddress";
 		}
@@ -80,8 +104,8 @@ public class BillingAddressController
 	
 	
 	
-	@RequestMapping("/addbillingaddress")
-	public String addBillingAddress(@Valid @ModelAttribute("billingAddress")BillingAddress billingAddress,Authentication auth, BindingResult result, Model model)
+	@RequestMapping("/addbillingaddress-{productId}-{quantity}")
+	public String addBillingAddress(@Valid @ModelAttribute("billingAddress") BillingAddress billingAddress,BindingResult result,Authentication auth,Model model, @PathVariable("productId") int productId,@PathVariable("quantity") int quantity)
 	{
 		
 		//if(auth!=null)
@@ -94,7 +118,10 @@ public class BillingAddressController
 			
 		{  
 			model.addAttribute("message",0);
-			//model.addAttribute("billingAddressList", billingAddress.getAllBillingAddress());
+			model.addAttribute("msg","PQ");
+			model.addAttribute("PRODUCTID",productId);
+			model.addAttribute("QUANTITY",quantity);
+			
 			model.addAttribute("buttonLabel","Add BillingAddress");
 			model.addAttribute("buttonLabel","Submit");
 
@@ -104,25 +131,86 @@ public class BillingAddressController
 		model.addAttribute("buttonLabel","Submit");
           
 		model.addAttribute("message",0);
+		model.addAttribute("msg","PQ");
+		model.addAttribute("PRODUCTID",productId);
+		model.addAttribute("QUANTITY",quantity);
+		
 		billingAddressService.addBillingAddress(billingAddress,userId);
-		return "redirect:/shippingaddress";
-	//}
-		//return "redirect:/billingaddress";
+		return "redirect:/shippingaddress-{productId}-{quantity}";
+	
 	
 	}
 	
+	
+	
+	@RequestMapping("/addbillingaddress")
+	public String addBillingAddresss(@Valid @ModelAttribute("billingAddress")BillingAddress billingAddress,BindingResult result, Authentication auth, Model model)
+	{
+		
+		
+		User user= userService.getUserByUserName(auth.getName());	
+		int userId=user.getUserId();
+		
+		
+		if(result.hasErrors())
+			
+		{  
+			model.addAttribute("message",0);
+			model.addAttribute("msg","C");
+			//model.addAttribute("CARTITEMSID",cartItemsId);
+			
+			
+			model.addAttribute("buttonLabel","Submit");
+
+			return "billingAddress";
+		}
+		
+		model.addAttribute("buttonLabel","Submit");
+          
+		model.addAttribute("message",0);
+		model.addAttribute("msg","C");
+		//model.addAttribute("CARTITEMSID",cartItemsId);
+		
+		billingAddressService.addBillingAddress(billingAddress,userId);
+		return "redirect:/shippingaddress";
+	
+	}
+	
+	
+
+	
+	@RequestMapping("/editbillingaddress-{productId}-{quantity}")
+	public String editBillingAddress( Model model,Authentication auth, @PathVariable("productId") int productId,@PathVariable("quantity") int quantity)
+	{
+		User user= userService.getUserByUserName(auth.getName());	
+		int userId=user.getUserId();
+		
+		//model.addAttribute("message",0);
+		model.addAttribute("msg","PQ");
+		model.addAttribute("PRODUCTID",productId);
+		model.addAttribute("QUANTITY",quantity);
+		
+		model.addAttribute("billingAddress", billingAddressService.getBillingAddressById(userId));
+		model.addAttribute("buttonLabel","Update");
+	    
+		return "billingAddress";
+	}
 	
 	@RequestMapping("/editbillingaddress")
 	public String editBillingAddress( Model model,Authentication auth)
 	{
 		User user= userService.getUserByUserName(auth.getName());	
 		int userId=user.getUserId();
-		model.addAttribute("billing", billingAddressService.getBillingAddressById(userId));
+		
+		//model.addAttribute("message",0);
+		model.addAttribute("msg","C");
+		
+	//	model.addAttribute("CARTITEMSID",cartItemsId);
+		model.addAttribute("billingAddress", billingAddressService.getBillingAddressById(userId));
 		model.addAttribute("buttonLabel","Update");
-	
+	    
 		return "billingAddress";
 	}
 	
-	
-	
+			
 }
