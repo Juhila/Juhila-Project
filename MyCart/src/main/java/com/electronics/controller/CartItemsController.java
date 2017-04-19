@@ -1,6 +1,6 @@
 package com.electronics.controller;
 
-
+import java.util.List;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,10 @@ import com.electronics.model.CartItems;
 import com.electronics.model.Product;
 import com.electronics.model.User;
 import com.electronics.service.CartItemsService;
-import com.electronics.service.CartItemsService;
+
 import com.electronics.service.ProductService;
 import com.electronics.service.UserService;
+
 
 @Controller
 
@@ -40,10 +41,26 @@ public class CartItemsController
 		{
 			if(auth!=null)
 			{
+				double a=0;
+				double b=0;
 			User user= userService.getUserByUserName(auth.getName());	
-			int userId=user.getUserId();	
+			int userId=user.getUserId();
+			
 			model.addAttribute("cartItemsListByJson", cartItemsService.getAllCartItemsByJson(userId));
-			//model.addAttribute("cartItemsLists", cartItemsService.getAllCartItemsByFlag(false, userId));
+            
+			List<CartItems> cartItemsLists=cartItemsService.getAllCartItemsByFlag(false, userId);
+             
+			for(CartItems c:cartItemsLists)
+			{
+				 b=c.getAmount();
+				a=a+b;
+				
+			}
+			model.addAttribute("cartItemsLists", cartItemsLists);
+			model.addAttribute("total", a);
+			model.addAttribute("FROM","CARTLIST");
+			
+		
 
 			return "cartItems";
 			}
@@ -107,8 +124,8 @@ public class CartItemsController
 					
 					catch(Exception e)
 					{
-						model.addAttribute("message","cartlistquantity");
-						return  "404Page";
+						model.addAttribute("message","Sorry!...Either Your CartItems or OrderedItems  already has 3 products. You cant add more than 3 items at once");
+						return  "page";
 					}
 				
 				
@@ -153,19 +170,26 @@ public class CartItemsController
 			else
 			{
 				
-				if(quantity<=0)
+				/**if(quantity<=0)
 				{
 				model.addAttribute("message", " entered quantity is wrong");
 				return "redirect:/viewproduct-"+productId;
-				}
+				}**/
+				
 				if(auth==null)
 				{
 			model.addAttribute("message", "Please Login!");
 			return "redirect:/login";
+			
+			//return "login";
 				}
 			}
 			
-			return "null";
+			model.addAttribute("message", "<div class=\"alert alert-warning\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>Sorry!...Either Your CartItems or OrderedItems  already has 3 products. You cant add more than 3 items at once</div>");
+
+			//model.addAttribute("message","Sorry!...Either Your CartItems or OrderedItems  already has 3 products. You cant add more than 3 items at once");
+
+			return "page";
 			
 		}
 		

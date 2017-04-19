@@ -15,6 +15,7 @@ public interface CartItemsDao
 		
 		public CartItems findCartItemId(int productId, int userId);
 		public List<CartItems> getAllCartItemsByFlag(boolean b, int userId);
+		
 }
 
 

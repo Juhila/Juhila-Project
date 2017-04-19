@@ -40,6 +40,8 @@ public class WishItemsController
 		User user= userService.getUserByUserName(auth.getName());	
 		int userId=user.getUserId();	
 		model.addAttribute("wishItemsListByJson", wishItemsService.getAllWishItemsByJson(userId));
+		model.addAttribute("wishItemsLists", wishItemsService.getAllWishItems(userId));
+		model.addAttribute("FROM","CARTLIST");
 		return "wishItems";
 		}
 		else
@@ -108,8 +110,9 @@ public class WishItemsController
 					
 					catch(Exception e)
 					{
-						model.addAttribute("message","wishlistquantity");
-						return  "404Page";
+					model.addAttribute("message", "<div class=\"alert alert-warning\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>Your total quantity in wishlist must be exceeding 3</div>");
+
+						return  "page";
 					}
 					
 					
@@ -144,7 +147,8 @@ public class WishItemsController
 		
 		wishItemsService.addWishItem(wishItems);
 		
-		model.addAttribute("message", "Item is Successfully Added To WishList");
+		//model.addAttribute("message", "Item is Successfully Added To WishList");
+
 		return "redirect:/wishitems";
 		}
 	}
@@ -164,8 +168,11 @@ public class WishItemsController
 		return "redirect:/login";
 			}
 		}
-		return "null";
 		
+		model.addAttribute("message", "<div class=\"alert alert-warning\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>Your total quantity in wishlist must be exceeding 3</div>");
+
+		return  "page";
+	
 	}
 	
 	@RequestMapping("/deletefromwishitems-{wishItemsId}")

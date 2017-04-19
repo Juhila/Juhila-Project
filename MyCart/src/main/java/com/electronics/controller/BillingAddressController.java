@@ -58,6 +58,8 @@ public class BillingAddressController
 		model.addAttribute("PRODUCTID",productId);
 		model.addAttribute("QUANTITY",quantity);
 		
+		 model.addAttribute("FROM", "BUYNOW");
+		 
 		model.addAttribute("billingAddress", new BillingAddress());
 		return "billingAddress";
 		}
@@ -84,7 +86,7 @@ public class BillingAddressController
 		model.addAttribute("buttonLabel","Submit");
 		model.addAttribute("message",1);
 		
-		
+		model.addAttribute("FROM","CARTLIST");
 		
 		model.addAttribute("msg","C");
 		//model.addAttribute("CARTITEMSID",cartItemsId);
@@ -190,6 +192,8 @@ public class BillingAddressController
 		model.addAttribute("PRODUCTID",productId);
 		model.addAttribute("QUANTITY",quantity);
 		
+		 model.addAttribute("FROM", "BUYNOW");
+		 
 		model.addAttribute("billingAddress", billingAddressService.getBillingAddressById(userId));
 		model.addAttribute("buttonLabel","Update");
 	    
@@ -204,6 +208,8 @@ public class BillingAddressController
 		
 		//model.addAttribute("message",0);
 		model.addAttribute("msg","C");
+		
+		model.addAttribute("FROM","CARTLIST");
 		
 	//	model.addAttribute("CARTITEMSID",cartItemsId);
 		model.addAttribute("billingAddress", billingAddressService.getBillingAddressById(userId));

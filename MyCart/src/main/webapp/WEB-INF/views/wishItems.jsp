@@ -5,17 +5,24 @@
  	<div class="text-center">
  		<a href="wishitems" class="btn btn-danger" role="button">My WishList</a>
 		<a href="cartitems" class="btn btn-danger" role="button">My CartList</a>
-		<a href="confirmorder" class="btn btn-danger" role="button">Confirm OrderSummary</a>
+        
+		<c:if test="${FROM eq 'BUYNOW'}">
+		<a href="payment-${PRODUCT.productId}-${QUANTITY}-${AMOUNT}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
 		
+		<c:if test="${FROM eq 'CARTLIST'}">
+		<a href="payment-${total}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
 		</div>
+
 		
-<c:if test="${empty wishItemsListByJson}">
+<c:if test="${empty wishItemsLists}">
 <div class="text-center">
- <h1 class="heading">There are no products in your CARTLIST</h1>
+ <h1 class="heading">There are no products in your WISHLIST</h1>
 </c:if>
 
 
-<c:if test="${not empty wishItemsListByJson}">
+<c:if test="${not empty wishItemsLists}">
 <div ng-app="myApp">
  <div class="text-center">
  <h1 class="heading">MY   WISHLIST</h1>

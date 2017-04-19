@@ -1,8 +1,21 @@
 <%@ include file="header.jsp" %>
  		
-<div class="container">
+<div class="container pad">
 
- <div class="text-center pad"><h1>SHIPPING ADDRESS</h1></div>
+<div class="text-center">
+ 		<a href="wishitems" class="btn btn-danger" role="button">My WishList</a>
+		<a href="cartitems" class="btn btn-danger" role="button">My CartList</a>
+        
+      <c:if test="${FROM eq 'BUYNOW'}">
+		<a href="payment-${PRODUCT.productId}-${QUANTITY}-${AMOUNT}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
+		
+		<c:if test="${FROM eq 'CARTLIST'}">
+		<a href="payment-${total}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
+		</div>
+      
+ <div class="text-center"><h1>SHIPPING ADDRESS</h1></div>
  
   <c:if test="${message eq 0}">
 <center><h4 style="color:blue">(You Can Skip If You Have Already Submitted)</h4></center>

@@ -3,6 +3,7 @@ package com.electronics.daoimpl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -64,6 +65,9 @@ public class CartItemsDaoImpl implements CartItemsDao
 		List<CartItems> cartList = sessionFactory.getCurrentSession().createQuery("from CartItems where userId="+userId+" and flag ="+b).getResultList();
 		return cartList;
 	}
+
+
+	
 	
 	}
 

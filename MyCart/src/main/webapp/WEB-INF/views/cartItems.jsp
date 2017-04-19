@@ -5,16 +5,25 @@
  	<div class="text-center">
  		<a href="wishitems" class="btn btn-danger" role="button">My WishList</a>
 		<a href="cartitems" class="btn btn-danger" role="button">My CartList</a>
-		<a href="confirmorder" class="btn btn-danger" role="button">Confirm OrderSummary</a>
+        
+       
 		
+		<c:if test="${FROM eq 'BUYNOW'}">
+		<a href="payment-${PRODUCT.productId}-${QUANTITY}-${AMOUNT}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
+		
+		<c:if test="${FROM eq 'CARTLIST'}">
+		<a href="payment-${total}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
 		</div>
 
-<c:if test="${empty cartItemsListByJson}">
+
+<c:if test="${empty cartItemsLists}">
 <div class="text-center">
  <h1 class="heading">There are no products in your CARTLIST</h1>
 </c:if>
 
-<c:if test="${not empty cartItemsListByJson}">
+<c:if test="${not empty cartItemsLists}">
 <div ng-app="myApp">
  <div class="text-center">
  <h1 class="heading">MY  CARTLIST</h1>
@@ -66,6 +75,11 @@
 					<td><a href="deletefromcartitems-{{cartItemsList.cartItemsId}}" class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>
 			</tr>
 			
+			
+			<tr class="success" >
+	  <th colspan="7"> <center>Total Amount :Rs. ${total}</center></th>
+	    </tr>
+	    
 			<tr class="info" >
 	    <td  colspan="7"><a href="confirmorder" class="btn btn-danger">Checkout</a></td>
 	    </tr>

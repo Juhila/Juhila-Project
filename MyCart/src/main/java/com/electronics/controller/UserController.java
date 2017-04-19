@@ -118,7 +118,7 @@ public class UserController
 	@RequestMapping(value="/login")
 	public String loginPage(Model model)
 	{
-		model.addAttribute("msg",0);
+		//model.addAttribute("msg",0);
 		
 		return "login";
 	}

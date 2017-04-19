@@ -4,7 +4,14 @@
  	<div class="text-center">
  		<a href="wishitems" class="btn btn-danger" role="button">My WishList</a>
 		<a href="cartitems" class="btn btn-danger" role="button">My CartList</a>
-		<a href="confirmorder" class="btn btn-danger" role="button">Confirm OrderSummary</a>
+		
+		<c:if test="${FROM eq 'BUYNOW'}">
+		<a href="payment-${PRODUCT.productId}-${QUANTITY}-${AMOUNT}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
+		
+		<c:if test="${FROM eq 'CARTLIST'}">
+		<a href="payment-${total}" class="btn btn-danger" role="button">fINAL OrderSummary</a>
+		</c:if>
 		</div>
 
 
@@ -26,56 +33,61 @@
 		<th>Product Price </th>
 		<th>Product Discount Price </th>
 		<th>Product Quantity </th>
+		<c:if test="${FROM eq 'CARTLIST'}">
 		<th>Product SubTotal </th>
-		<th>Edit BillingAddress</th>
-		<th>Edit ShippingAddress</th>
+		</c:if>
+		
+		<c:if test="${FROM eq 'BUYNOW'}">
+		<th>Product TotalAmount </th>
+		</c:if>
+	
 		<!--<c:if test="${FROM eq 'CARTLIST'}">
 		<th>Remove Product</th>
 		</c:if>-->
+		
 	</tr>
 
 
 	 <c:if test="${FROM eq 'CARTLIST'}">
-	  <c:forEach items="${cc}" var="CARTITEMS">
+	  <c:forEach items="${orderedlist}" var="C">
 		<tr class="danger">
 		    
 		     
-		    <td><a href="viewproduct-${CARTITEMS.productId}"><img src="resources/images/products/productImage-${CARTITEMS.productId}.jpg" height="100px" width="100px" alt="error"/></a></td>
+		    <td><a href="viewproduct-${C.productId}"><img src="resources/images/products/productImage-${C.productId}.jpg" height="100px" width="100px" alt="error"/></a></td>
       
-			<td>${CARTITEMS.productName}</td>
+			<td>${C.productName}</td>
 			
-			<td>${CARTITEMS.productPrice}</td>
-			<td>${CARTITEMS.productDiscount}</td>
-			<td>${CARTITEMS.productQuantity}</td>
+			<td>${C.productPrice}</td>
+			<td>${C.productDiscount}</td>
+			<td>${C.productQuantity}</td>
 			
-			<td>${CARTITEMS.amount}</td>
+			<td>${C.amount}</td>
 			
-			<!--   <c:if test="${msg eq 'PQ'}">
-			<td><a href="editbillingaddress-${PRODUCTID}-${QUANTITY}">${BILLING.address}</a></td>
-			</c:if>
-			-->
+		<!-- <td><a href="editbillingaddress">${BILLING.address}</a></td>
 			
 			
-			<td><a href="editbillingaddress">${BILLING.address}</a></td>
-			
-			
-         <!--   <c:if test="${msg eq 'PQ'}">
-			<td><a href="editshippingaddress-${PRODUCTID}-${QUANTITY}">${SHIPPING.address}</a></td>
-			</c:if>-->
-			
-			
-			<td><a href="editshippingaddress">${SHIPPING.address}</a></td>
-			
-					
-			<!-- <td><a href="deletefromconfirmorder-${CARTITEMS.cartItemsId}" class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>-->
-			
+			<td><a href="editshippingaddress">${SHIPPING.address}</a></td>-->
 			
 			</tr>
 			</c:forEach>
+			
+		<tr class="success" >
+	  <th colspan="9"> <center>Total Amount :Rs.${total}</center></th>
+	    </tr>
+			
+		<tr class="info" >
+		<th colspan="9"><center><a href="editbillingaddress" class="btn btn-danger">Edit BillingAddress</a>${BILLING.address}</center></th>
+		 </tr>
+	    
+	    <tr class="info" >
+	    <th colspan="9"><center><a href="editshippingaddress" class="btn btn-danger">Edit ShippingAddress</a>${SHIPPING.address}</center></th>
+	    </tr>
 					
-			</c:if>	
+		<!-- <td><a href="deletefromconfirmorder-${C.cartItemsId}" class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true" title="Delete"></a></td>-->
+		</c:if>	
 			
 			
+		
 			
 			
 			 <c:if test="${FROM eq 'BUYNOW'}">
@@ -89,22 +101,19 @@
 			<td>${AMOUNT}</td>
 			 
 			
-			<td><a href="editbillingaddress-${PRODUCTID}-${QUANTITY}">${BILLING.address}</a></td>
-			
-			<!--<c:if test="${msg eq 'C'}">
-			<td><a href="editbillingaddress-${CARTITEMSID}">${BILLING.address}</a></td>
-			</c:if>-->
-			
-             
-			<td><a href="editshippingaddress-${PRODUCTID}-${QUANTITY}">${SHIPPING.address}</a></td>
-			
-			
-		<!--  	<c:if test="${msg eq 'C'}">
-			<td><a href="editshippingaddress-${CARTITEMSID}">${SHIPPING.address}</a></td>
-			</c:if>	
-			-->
-			
+			<!-- <td><a href="editbillingaddress-${PRODUCTID}-${QUANTITY}">${BILLING.address}</a></td>
+		
+			<td><a href="editshippingaddress-${PRODUCTID}-${QUANTITY}" class="btn btn-danger">${SHIPPING.address}</a></td>-->
+
 			</tr>
+			
+			<tr class="info" >
+		<th colspan="9"><center><a href="editbillingaddress-${PRODUCTID}-${QUANTITY}" class="btn btn-danger">Edit BillingAddress</a>${BILLING.address}</center></th>
+		 </tr>
+	    
+	    <tr class="info" >
+	    <th colspan="9"><center><a href="editshippingaddress-${PRODUCTID}-${QUANTITY}" class="btn btn-danger">Edit ShippingAddress</a>${SHIPPING.address}</center></th>
+	    </tr>
 			</c:if>	
 			
 			
@@ -118,7 +127,15 @@
 <div class="row text-center">
 <h1 style="color:red">PAYMENT GATEWAY</h1>
 <strong>Your Total Amount:</strong> 
-<input type="text" name="text" readonly/>		
+ <c:if test="${FROM eq 'BUYNOW'}">
+<input type="text" name="text" value="${AMOUNT}" readOnly/>
+</c:if>
+
+ <c:if test="${FROM eq 'CARTLIST'}">
+
+ <input type="text" name="text" value="${total}"  readOnly/>
+ </c:if>
+ 	
 </div> 
 
 <br>
@@ -136,7 +153,15 @@
   <br><br>
   
   <div class="row text-center"> 
-  <a href="finalorder" class="btn btn-danger" role="button">Make Payment</a>
+  
+   <c:if test="${FROM eq 'CARTLIST'}">
+  <a href="payment-${total}" class="btn btn-danger" role="button">Make Payment</a>
+  </c:if>
+  
+   <c:if test="${FROM eq 'BUYNOW'}">
+    <a href="payment-${PRODUCT.productId}-${QUANTITY}-${AMOUNT}" class="btn btn-danger" role="button">Make Payment</a>
+   </c:if>
+   
    </div> 
 
 </form>

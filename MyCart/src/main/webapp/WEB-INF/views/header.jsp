@@ -144,9 +144,8 @@
                     <li class="divider"></li>
           			<li><a href="cartitems">My CartList</a></li>
                     <li class="divider"></li>
-          			<li><a href="confirmorder">Confirm OrderSummary</a></li>
+          			 <li><a href="payment">fINAL orderSummary</a></li>
                     <li class="divider"></li>
-                    
         		</ul>    
             </li>
     <!--   <li><a class="colorr" href="cartitems"><span class="glyphicon glyphicon-user colorr"></span> My Profile</a></li-->

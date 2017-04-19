@@ -64,6 +64,8 @@ public class ShippingAddressController
 		model.addAttribute("message",1);
 		model.addAttribute("msg","PQ");
 		
+		 model.addAttribute("FROM", "BUYNOW");
+		 
 		model.addAttribute("shippingAddress", new ShippingAddress());
 		return "shippingAddress";
 		}
@@ -93,6 +95,8 @@ public class ShippingAddressController
 		model.addAttribute("buttonLabel","Submit");
 		model.addAttribute("message",1);
 		model.addAttribute("msg","C");
+		
+		model.addAttribute("FROM","CARTLIST");
 		
 		model.addAttribute("shippingAddress", new ShippingAddress());
 		return "shippingAddress";
@@ -174,9 +178,11 @@ public class ShippingAddressController
 		
 		//model.addAttribute("message",0);
 		
+	   model.addAttribute("FROM", "BUYNOW");
 		model.addAttribute("msg","PQ");
 		model.addAttribute("PRODUCTID",productId);
 		model.addAttribute("QUANTITY",quantity);
+		
 		
 		model.addAttribute("shippingAddress", shippingAddressService.getShippingAddressById(userId));
 		model.addAttribute("buttonLabel","Update");
@@ -195,7 +201,7 @@ public class ShippingAddressController
 		model.addAttribute("msg","C");
 		//model.addAttribute("CARTITEMSID",cartItemsId);
 		
-		
+		model.addAttribute("FROM","CARTLIST");
 		model.addAttribute("shippingAddress", shippingAddressService.getShippingAddressById(userId));
 		model.addAttribute("buttonLabel","Update");
 	
@@ -203,155 +209,4 @@ public class ShippingAddressController
 	}
 	
 	
-	@RequestMapping("/confirmorder")
-	public String getConfirmOrderPage( Authentication auth, Model model) 
-	{
-		
-		if(auth!=null)
-		{
-		User user= userService.getUserByUserName(auth.getName());	
-		int userId=user.getUserId();
-		
-		try
-		{
-			BillingAddress b=billingAddressService.getBillingAddressById(userId);
-			ShippingAddress s=shippingAddressService.getShippingAddressById(userId);
-
-			if(b!=null && s!=null)
-			{
-		
-		List<CartItems> l=cartItemsService.getAllCartItemsByFlag(false, userId);
-		for(CartItems c:l)
-			
-		{
-			c.setFlag(true);
-			cartItemsService.addCartItem(c);
 		}
-		
-		List<CartItems> list=cartItemsService.getAllCartItemsByFlag(true, userId);
-		
-		model.addAttribute("cc",list);
-		
-		 model.addAttribute("BILLING", billingAddressService.getBillingAddressById(userId));
-
-			
-		 model.addAttribute("SHIPPING", shippingAddressService.getShippingAddressById(userId));
-			
-		
-		model.addAttribute("FROM","CARTLIST");
-		return "confirmOrderSummary";
-		
-		
-		}
-				
-		}
-		catch(Exception e)
-		{
-			try
-			{
-				BillingAddress b=billingAddressService.getBillingAddressById(userId);
-				//ShippingAddress s=shippingAddressService.getShippingAddressById(userId);
-                
-				if(b!=null)
-				return "redirect:/shippingaddress";
-			}
-                
-				catch(Exception f)
-				{
-					return "redirect:/billingaddress";
-				
-				}
-                
-				
-		}
-		
-		
-		}
-		else
-		{
-			
-			model.addAttribute("message", " Please Login!");
-			return "login";	
-		}
-		return null;
-		
-		
-	}
-
-	
-
-	
-		@RequestMapping("/confirmorder-{productId}-{quantity}")
-	public String getConfirmOrderPagee( Model model,Authentication auth,HttpSession session,@PathVariable("productId") int productId,@PathVariable("quantity") int quantity)
-	{
-		
-		if(auth!=null)
-		{
-		User user= userService.getUserByUserName(auth.getName());	
-		int userId=user.getUserId();	
-		
-		
-		try
-		{
-			BillingAddress b=billingAddressService.getBillingAddressById(userId);
-			ShippingAddress s=shippingAddressService.getShippingAddressById(userId);
-
-			if(b!=null && s!=null)
-			{
-				Product product= productService.getProductById(productId);
-				 double amount=quantity*(product.getProductPrice()-(product.getProductPrice()*product.getProductDiscountPrice()/100));
-				 
-				 model.addAttribute("QUANTITY", quantity);
-				 model.addAttribute("AMOUNT", amount);
-				 model.addAttribute("PRODUCT", product);
-				 model.addAttribute("PRODUCTID", productId);
-				 
-				 model.addAttribute("FROM", "BUYNOW");
-					
-
-				 model.addAttribute("BILLING", billingAddressService.getBillingAddressById(userId));
-				
-					
-				 model.addAttribute("SHIPPING", shippingAddressService.getShippingAddressById(userId));
-					
-				 return "confirmOrderSummary";
-			
-			}
-		}
-				 
-					catch(Exception e)
-					{
-						try
-						{
-							BillingAddress b=billingAddressService.getBillingAddressById(userId);
-							//ShippingAddress s=shippingAddressService.getShippingAddressById(userId);
-			                
-							if(b!=null)
-							return "redirect:/shippingaddress-{productId}-{quantity}";
-						}
-			                
-							catch(Exception f)
-							{
-								return "redirect:/billingaddress-{productId}-{quantity}";
-							
-							}
-			                
-							
-					}
-
-				}
-		
-		
-		else
-		{
-			
-			model.addAttribute("message", " Please Login!");
-			return "login";	
-		}
-		return null;
-	
-				
-			
-	}
-
-	}

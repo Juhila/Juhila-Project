@@ -29,6 +29,14 @@ public class WishItemsDaoImpl implements WishItemsDao
 	}
 	
 	
+	public List<WishItems> getAllWishItems(int userId) 
+	{
+		List<WishItems> wishList = sessionFactory.getCurrentSession().createQuery("from WishItems where userId="+userId).getResultList();
+		return wishList;
+		
+	}
+	
+	
 	public WishItems getWishItemById(int wishItemsId) 
 	{
 		List<WishItems> wishList = sessionFactory.getCurrentSession().createQuery("from WishItems where wishItemsId="+wishItemsId).getResultList();
